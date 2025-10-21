@@ -471,10 +471,10 @@
 
         function {
             bindings = <
-&to 0     &m9    &kp F2             &kp LG(F12)     &kp F12    &kp F9               &kp F5          &kp F10  &kp F11   &kp LS(F11)    &m8    &to 0
-&to 0     &m20   &kp LC(LA(LG(S)))  &kp LS(LG(N4))  &kp LG(F)  &kp LS(LG(F))        &kp LS(LG(F5))  &kp F4   &m15      &kp LS(LG(L))  &none  &none
-&kp CAPS  &none  &none              &kp LS(LG(C))   &kp LG(V)  &kp LC(LA(LG(V)))    &kp LS(F5)      &m4      &none     &none          &none  &caps_word
-                                    &kp LGUI        &none      &caps_word           &kp LCTRL       &none    &kp LALT
+&to 0     &m9    &kp F2             &kp LG(F12)     &kp F12    &kp F9               &kp F5          &kp F10            &kp F11   &kp LS(F11)    &m8    &to 0
+&to 0     &m20   &kp LC(LA(LG(S)))  &kp LS(LG(N4))  &kp LG(F)  &kp LS(LG(F))        &kp LS(LG(F5))  &kp F4             &m15      &kp LS(LG(L))  &none  &none
+&kp CAPS  &none  &none              &kp LS(LG(C))   &kp LG(V)  &kp LC(LA(LG(V)))    &kp LS(F5)      &m4                &none     &none          &none  &caps_word
+                                    &kp LGUI        &none      &caps_word           &kp LCTRL       &kp LA(LS(SPACE))  &kp LALT
             >;
 
             display-name = "function";
