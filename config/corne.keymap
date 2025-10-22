@@ -352,7 +352,7 @@
         };
 
         layer5 {
-            bindings = <&mo 5>;
+            bindings = <&sl 5>;
             key-positions = <1 13 25>;
         };
     };
@@ -439,10 +439,10 @@
 
         numbers {
             bindings = <
-&to 0  &kp N1      &kp N2      &kp N3      &kp N4      &kp N5       &none      &kp N7  &kp N8    &kp N9  &kp ASTERISK  &to 0
-&to 0  &kp LC(N1)  &kp LC(N2)  &kp LC(N3)  &kp LC(N4)  &none        &kp PLUS   &kp N4  &kp N5    &kp N6  &kp PLUS      &none
-&none  &none       &none       &none       &none       &none        &kp MINUS  &kp N1  &kp N2    &kp N3  &kp MINUS     &kp DOT
-                               &kp LGUI    &kp SPACE   &kp LSHFT    &kp DOT    &kp N0  &kp LALT
+&to 0  &kp N1      &kp N2      &kp N3      &kp N4      &kp N5       &none             &kp N7  &kp N8    &kp N9  &kp ASTERISK  &to 0
+&to 0  &kp LC(N1)  &kp LC(N2)  &kp LC(N3)  &kp LC(N4)  &none        &kp PLUS          &kp N4  &kp N5    &kp N6  &kp PLUS      &none
+&none  &none       &none       &none       &none       &none        &kp MINUS         &kp N1  &kp N2    &kp N3  &kp MINUS     &kp DOT
+                               &kp LGUI    &kp SPACE   &kp LSHFT    &kp LEFT_CONTROL  &kp N0  &kp LALT
             >;
 
             display-name = "numbers";
@@ -474,7 +474,7 @@
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR    &trans  &trans  &trans  &trans  &trans  &trans
 &trans        &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans
-&trans        &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans        &kp A         &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans
                                           &trans        &trans        &trans        &trans  &trans  &trans
             >;
         };
