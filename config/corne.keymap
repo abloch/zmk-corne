@@ -268,12 +268,12 @@
 
         slash {
             bindings = <&kp SLASH>;
-            key-positions = <14 3>; // S + E
+            key-positions = <15 4>; // S + E
         };
 
         backslash {
             bindings = <&kp BACKSLASH>;
-            key-positions = <15 3>; // D + E
+            key-positions = <3 16>; // D + E
         };
 
         dash {
