@@ -278,7 +278,7 @@
 
         dash {
             bindings = <&kp MINUS>;
-            key-positions = <15 14>; // D + S
+            key-positions = <14 16>; // D + S
         };
 
         underscore {
