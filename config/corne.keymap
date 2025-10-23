@@ -235,6 +235,13 @@
             bindings = <&kp T &kp H &kp I &kp S &kp I &kp S &kp U &kp N &kp S &kp A &kp F &kp E>;
             label = "THISISUNSAFE";
         };
+
+        bruno: bruno {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(NUMBER_7)>;
+            label = "BRUNO";
+        };
     };
 
     behaviors {
@@ -397,7 +404,7 @@
             bindings = <
 &to 0      &m0  &kp COLON        &kp DQT      &kp SQT        &kp DOLLAR      &kp CARET   &kp LA(N7)  &kp LA(N8)  &kp LA(N9)  &m11              &m12
 &kp ESC    &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &term       &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &m13              &m14
-&kp QMARK  &m2  &kp EXCLAMATION  &kp AT       &kp HASH       &kp COLON       &kp LA(N0)  &kp LA(N1)  &kp LA(N2)  &kp LA(N3)  &kp LA(LC(LEFT))  &kp LA(LC(RIGHT))
+&kp QMARK  &m2  &kp EXCLAMATION  &kp AT       &kp HASH       &kp COLON       &kp LA(N0)  &kp LA(N1)  &kp LA(N2)  &kp LA(N3)  &kp LA(LG(LEFT))  &kp LA(LG(RIGHT))
                                  &kp LGUI     &kp SPACE      &kp LSHFT       &kp LCTRL   &kp RET     &kp LALT
             >;
 
@@ -461,9 +468,9 @@
 
         function {
             bindings = <
-&to 0     &m9    &kp F2             &kp LG(F12)     &kp F12             &kp F9               &kp F5          &kp F10            &kp F11        &kp LS(F11)    &m8    &to 0
-&to 0     &m20   &kp LC(LA(LG(S)))  &kp LS(LG(N4))  &kp LG(F)           &kp LS(LG(F))        &kp LS(LG(F5))  &kp F4             &m15           &kp LS(LG(L))  &none  &none
-&kp CAPS  &none  &none              &kp LS(LG(C))   &kp LG(V)           &kp LC(LA(LG(V)))    &kp LS(F5)      &m4                &thisisunsafe  &none          &none  &none
+&to 0     &m9    &kp F2             &kp LG(F12)     &kp F12             &kp F9               &kp F5          &kp F10            &kp F11        &kp LS(F11)    &m8               &to 0
+&to 0     &m20   &kp LC(LA(LG(S)))  &kp LS(LG(N4))  &kp LG(F)           &kp LS(LG(F))        &kp LS(LG(F5))  &kp F4             &m15           &kp LS(LG(L))  &kp LG(F8)        &none
+&kp CAPS  &none  &none              &kp LS(LG(C))   &kp LG(V)           &kp LC(LA(LG(V)))    &kp LS(F5)      &m4                &thisisunsafe  &sl 5          &kp LC(LA(LEFT))  &kp LA(LC(RIGHT))
                                     &kp LGUI        &kp LG(LS(ESCAPE))  &caps_word           &kp LCTRL       &kp LS(LG(SPACE))  &kp LALT
             >;
 
@@ -472,10 +479,10 @@
 
         bt {
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR    &trans  &trans  &trans  &trans  &trans  &trans
-&trans        &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans
-&trans        &trans        &kp A         &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans
-                                          &trans        &trans        &trans        &trans  &trans  &trans
+&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_CLR        &trans     &kp F7   &kp F8    &kp F9  &trans  &trans
+&bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_CLR_ALL    &trans     &kp F4   &kp F5    &kp F6  &trans  &trans
+&trans         &trans         &kp A          &trans         &trans         &trans            &trans     &kp F1   &kp F2    &kp F3  &trans  &trans
+                                             &kp LGUI       &trans         &kp LSHFT         &kp LCTRL  &kp F10  &kp LALT
             >;
         };
     };
