@@ -250,7 +250,7 @@
 
         semicolon {
             bindings = <&kp SEMI>;
-            key-positions = <4 16>; // R + F (adapted from T+G)
+            key-positions = <5 17>; // R + F (adapted from T+G)
         };
 
         pipe {
@@ -298,11 +298,6 @@
             key-positions = <19 20 21>; // J + K + L
         };
 
-        mo4_bottom {
-            bindings = <&sl 4>;
-            key-positions = <31 32 33>; // M + , + .
-        };
-
         mo2 {
             bindings = <&mo 2>;
             key-positions = <14 3 16>; // S + E + F
@@ -318,34 +313,14 @@
             key-positions = <13 14 15 16>; // A + S + D + F
         };
 
-        to4 {
-            bindings = <&to 4>;
-            key-positions = <30 31 32 33>; // N + M + , + .
-        };
-
         mouse1 {
-            bindings = <&mkp LCLK>;
+            bindings = <&kp A>;
             key-positions = <0 12>; // W + D
         };
 
         mouse2 {
-            bindings = <&mkp RCLK>;
+            bindings = <&kp B>;
             key-positions = <12 24>; // A + C
-        };
-
-        bootloader-left {
-            bindings = <&bootloader>;
-            key-positions = <0 13 24>;
-        };
-
-        bootloader-right {
-            bindings = <&bootloader>;
-            key-positions = <11 22 35>;
-        };
-
-        layer5 {
-            bindings = <&sl 5>;
-            key-positions = <1 13 25>;
         };
     };
 
