@@ -365,10 +365,10 @@
 
         base {
             bindings = <
-&kp TAB             &kp Q  &kp W  &kp E     &kp R        &kp T        &kp Y      &kp U        &kp I         &kp O    &kp P      &td10
-&kp ESCAPE          &kp A  &kp S  &kp D     &kp F        &kp G        &kp H      &kp J        &kp K         &kp L    &kp BSPC   &mkp MB4
-&lt 5 LS(QUESTION)  &kp Z  &kp X  &kp C     &kp V        &kp B        &kp N      &kp M        &kp COMMA     &kp DOT  &kp SLASH  &lt 5 GRAVE
-                                  &kp LGUI  &lt 2 SPACE  &kp LSHFT    &kp LCTRL  &lt 1 ENTER  &kp LEFT_ALT
+&kp TAB      &kp Q  &kp W  &kp E     &kp R        &kp T        &kp Y      &kp U        &kp I         &kp O    &kp P      &td10
+&kp ESCAPE   &kp A  &kp S  &kp D     &kp F        &kp G        &kp H      &kp J        &kp K         &kp L    &kp BSPC   &mkp MB4
+&lt 5 TILDE  &kp Z  &kp X  &kp C     &kp V        &kp B        &kp N      &kp M        &kp COMMA     &kp DOT  &kp SLASH  &lt 5 TILDE
+                           &kp LGUI  &lt 2 SPACE  &kp LSHFT    &kp LCTRL  &lt 1 ENTER  &kp LEFT_ALT
             >;
 
             display-name = "base";
