@@ -239,6 +239,7 @@
 
     combos {
         compatible = "zmk,combos";
+        timeout-ms = <150>;
 
         // Adapted combos for Corne 42-key layout
         // Key positions for Corne (0-41):
