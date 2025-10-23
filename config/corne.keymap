@@ -148,23 +148,7 @@
         };
 
         // M13: Alt+Ctrl+Left
-
-        m13: m13 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(LC(LEFT_ARROW))>;
-            label = "M13";
-        };
-
         // M14: Alt+Ctrl+Right
-
-        m14: m14 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(LC(RIGHT_ARROW))>;
-            label = "M14";
-        };
-
         // M15: "kubiya" text
 
         m15: m15 {
@@ -403,8 +387,8 @@
         symbols {
             bindings = <
 &to 0      &m0  &kp COLON        &kp DQT      &kp SQT        &kp DOLLAR      &kp CARET   &kp LA(N7)  &kp LA(N8)  &kp LA(N9)  &m11              &m12
-&kp ESC    &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &term       &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &m13              &m14
-&kp QMARK  &m2  &kp EXCLAMATION  &kp AT       &kp HASH       &kp COLON       &kp LA(N0)  &kp LA(N1)  &kp LA(N2)  &kp LA(N3)  &kp LA(LG(LEFT))  &kp LA(LG(RIGHT))
+&kp ESC    &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &term       &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &kp LA(LG(LEFT))  &kp LG(LA(RIGHT))
+&kp QMARK  &m2  &kp EXCLAMATION  &kp AT       &kp HASH       &kp COLON       &kp LA(N0)  &kp LA(N1)  &kp LA(N2)  &kp LA(N3)  &kp LA(LC(LEFT))  &kp LA(LC(RIGHT))
                                  &kp LGUI     &kp SPACE      &kp LSHFT       &kp LCTRL   &kp RET     &kp LALT
             >;
 
