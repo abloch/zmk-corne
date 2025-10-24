@@ -226,6 +226,13 @@
             bindings = <&kp LA(NUMBER_7)>;
             label = "BRUNO";
         };
+
+        layer5: layer5 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp LS(L) &kp LS(A) &kp LS(Y) &kp LS(E) &kp LS(R) &kp SPACE &kp N5>;
+            label = "LAYER5";
+        };
     };
 
     behaviors {
@@ -234,6 +241,24 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mkp MB5>, <&none>, <&m10>;
+        };
+
+        gui5: gui5 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "GUI5";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_GUI>, <&kp LEFT_GUI>, <&to 5>;
+
+            tapping-term-ms = <400>;
+        };
+
+        alt5: alt5 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ALT5";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_ALT>, <&kp LEFT_ALT>, <&to 5>;
+
+            tapping-term-ms = <400>;
         };
     };
 
@@ -340,10 +365,10 @@
 
         base {
             bindings = <
-&kp TAB      &kp Q  &kp W  &kp E     &kp R        &kp T        &kp Y      &kp U        &kp I         &kp O    &kp P      &td10
-&kp ESCAPE   &kp A  &kp S  &kp D     &kp F        &kp G        &kp H      &kp J        &kp K         &kp L    &kp BSPC   &mkp MB4
-&lt 5 GRAVE  &kp Z  &kp X  &kp C     &kp V        &kp B        &kp N      &kp M        &kp COMMA     &kp DOT  &kp SLASH  &lt 5 LS(GRAVE)
-                           &kp LGUI  &lt 2 SPACE  &kp LSHFT    &kp LCTRL  &lt 1 ENTER  &kp LEFT_ALT
+&kp TAB     &kp Q  &kp W  &kp E  &kp R        &kp T        &kp Y      &kp U        &kp I      &kp O    &kp P      &td10
+&kp ESCAPE  &kp A  &kp S  &kp D  &kp F        &kp G        &kp H      &kp J        &kp K      &kp L    &kp BSPC   &mkp MB4
+&kp GRAVE   &kp Z  &kp X  &kp C  &kp V        &kp B        &kp N      &kp M        &kp COMMA  &kp DOT  &kp SLASH  &kp TILDE
+                          &gui5  &lt 2 SPACE  &kp LSHFT    &kp LCTRL  &lt 1 ENTER  &alt5
             >;
 
             display-name = "base";
@@ -384,10 +409,10 @@
 
         nav {
             bindings = <
-&to 0          &kp LG(N1)     &kp LG(N2)     &kp LG(N3)  &none       &none         &foldall          &kp HOME  &kp UP    &kp PG_UP  &none         &to 0
-&kp ESC        &kp LC(N1)     &kp LC(N2)     &kp LC(N3)  &kp LC(N4)  &kp LC(N5)    &fold             &kp LEFT  &kp DOWN  &kp RIGHT  &kp LA(BSPC)  &kp LC(TAB)
-&kp LC(GRAVE)  &kp LG(LS(E))  &kp LA(LG(T))  &none       &kp LS(F4)  &kp F4        &expand           &kp END   &kp DEL   &kp PG_DN  &kp LA(DEL)   &kp LC(GRAVE)
-                                             &kp LGUI    &kp SPACE   &kp LSHFT     &kp LEFT_CONTROL  &kp RET   &kp LALT
+&to 0          &kp LG(N1)     &kp LG(N2)     &kp LG(N3)  &msc SCRL_RIGHT  &msc SCRL_RIGHT    &foldall          &kp HOME  &kp UP    &kp PG_UP  &none         &to 0
+&kp ESC        &kp LC(N1)     &kp LC(N2)     &kp LC(N3)  &kp LC(N4)       &kp LC(N5)         &fold             &kp LEFT  &kp DOWN  &kp RIGHT  &kp LA(BSPC)  &msc SCRL_UP
+&kp LC(GRAVE)  &kp LG(LS(E))  &kp LA(LG(T))  &none       &kp LS(F4)       &kp F4             &expand           &kp END   &kp DEL   &kp PG_DN  &kp LA(DEL)   &msc SCRL_DOWN
+                                             &kp LGUI    &kp SPACE        &kp LSHFT          &kp LEFT_CONTROL  &kp RET   &kp LALT
             >;
 
             display-name = "nav";
@@ -439,10 +464,10 @@
 
         bt {
             bindings = <
-&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_CLR        &bt BT_CLR      &kp F7   &kp F8    &kp F9  &trans  &trans
-&bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_CLR_ALL    &bt BT_CLR_ALL  &kp F4   &kp F5    &kp F6  &trans  &trans
-&trans         &trans         &kp A          &trans         &trans         &bootloader       &bootloader     &kp F1   &kp F2    &kp F3  &trans  &trans
-                                             &kp LGUI       &trans         &kp LSHFT         &kp LCTRL       &kp F10  &kp LALT
+&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_CLR        &bt BT_CLR        &kp F7  &kp F8        &kp F9  &none  &none
+&bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_CLR_ALL    &bt BT_CLR_ALL    &kp F4  &kp F5        &kp F6  &none  &none
+&layer5        &none          &none          &none          &none          &bootloader       &bootloader       &kp F1  &kp F2        &kp F3  &none  &layer5
+                                             &kp LEFT_GUI   &to 0          &kp LEFT_SHIFT    &kp LEFT_CONTROL  &to 0   &kp LEFT_ALT
             >;
         };
     };
