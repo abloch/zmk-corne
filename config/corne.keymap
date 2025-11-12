@@ -262,6 +262,12 @@
 
             tapping-term-ms = <400>;
         };
+
+        mouse: mouse {
+            compatible = "zmk,behavior-mouse-key-press";
+            label = "MOUSE";
+            #binding-cells = <1>;
+        };
     };
 
     combos {
@@ -373,7 +379,7 @@
         base {
             bindings = <
 &kp TAB     &kp Q  &kp W  &kp E  &kp R        &kp T        &kp Y      &kp U        &kp I      &kp O    &kp P      &td10
-&kp ESCAPE  &kp A  &kp S  &kp D  &kp F        &kp G        &kp H      &kp J        &kp K      &kp L    &kp BSPC   &kp K_BACK
+&kp ESCAPE  &kp A  &kp S  &kp D  &kp F        &kp G        &kp H      &kp J        &kp K      &kp L    &kp BSPC   &mkp MB4
 &kp GRAVE   &kp Z  &kp X  &kp C  &kp V        &kp B        &kp N      &kp M        &kp COMMA  &kp DOT  &kp SLASH  &kp TILDE
                           &gui5  &lt 2 SPACE  &kp LSHFT    &kp LCTRL  &lt 1 ENTER  &alt5
             >;
