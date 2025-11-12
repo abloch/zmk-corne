@@ -5,6 +5,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+&sl { release-after-ms = <60000>; };
+
 / {
     macros {
         // M0: {} with cursor inside
@@ -339,12 +341,12 @@
         };
 
         mouse1 {
-            bindings = <&kp A>;
+            bindings = <&mkp LCLK>;
             key-positions = <0 12>; // W + D
         };
 
         mouse2 {
-            bindings = <&kp B>;
+            bindings = <&mkp RCLK>;
             key-positions = <12 24>; // A + C
         };
 
