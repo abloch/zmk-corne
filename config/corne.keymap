@@ -228,13 +228,6 @@
             bindings = <&kp LA(NUMBER_7)>;
             label = "BRUNO";
         };
-
-        layer5: layer5 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp LS(L) &kp LS(A) &kp LS(Y) &kp LS(E) &kp LS(R) &kp SPACE &kp N5>;
-            label = "LAYER5";
-        };
     };
 
     behaviors {
@@ -477,9 +470,9 @@
 
         bt {
             bindings = <
-&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_CLR        &bt BT_CLR        &kp F7  &kp F8        &kp F9  &none  &none
-&bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_CLR_ALL    &bt BT_CLR_ALL    &kp F4  &kp F5        &kp F6  &none  &none
-&layer5        &thisisunsafe  &none          &none          &none          &bootloader       &bootloader       &kp F1  &kp F2        &kp F3  &none  &layer5
+&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_CLR        &bt BT_CLR        &kp F7  &kp F8        &kp F9  &mmv MOVE_UP    &msc SCRL_UP
+&bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_CLR_ALL    &bt BT_CLR_ALL    &kp F4  &kp F5        &kp F6  &mmv MOVE_LEFT  &mmv MOVE_RIGHT
+&none          &thisisunsafe  &none          &none          &none          &bootloader       &bootloader       &kp F1  &kp F2        &kp F3  &mmv MOVE_DOWN  &msc SCRL_DOWN
                                              &kp LEFT_GUI   &to 0          &kp LEFT_SHIFT    &kp LEFT_CONTROL  &to 0   &kp LEFT_ALT
             >;
         };
