@@ -345,6 +345,11 @@
             bindings = <&sl 4>;
             key-positions = <31 32 33>;
         };
+
+        tolayer5_combo {
+            bindings = <&to 5>;
+            key-positions = <33 21>;
+        };
     };
 
     keymap {
