@@ -458,7 +458,7 @@
             bindings = <
 &to 0     &m9    &kp F2                &kp LG(F12)     &kp F12             &kp F9               &kp F5          &kp F10            &kp F11        &kp LS(F11)    &m8               &to 0
 &to 0     &m20   &kp LC(LA(LG(S)))     &kp LS(LG(N5))  &kp LG(F)           &kp LS(LG(F))        &kp LS(LG(F5))  &kp F4             &m15           &kp LS(LG(L))  &kp LG(F8)        &none
-&kp CAPS  &none  &kp LG(LS(NUMBER_4))  &kp LS(LG(C))   &kp LG(V)           &kp LC(LA(LG(V)))    &kp LS(F5)      &m4                &thisisunsafe  &to 5          &kp LC(LA(LEFT))  &kp LA(LC(RIGHT))
+&kp CAPS  &none  &kp LG(LS(NUMBER_4))  &kp LS(LG(C))   &kp LG(V)           &kp LC(LA(LG(V)))    &kp LS(F5)      &m4                &thisisunsafe  &sl 5          &kp LC(LA(LEFT))  &kp LA(LC(RIGHT))
                                        &kp LGUI        &kp LG(LS(ESCAPE))  &caps_word           &kp LCTRL       &kp LS(LG(SPACE))  &kp LALT
             >;
 
