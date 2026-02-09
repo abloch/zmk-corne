@@ -3,6 +3,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 &sl { release-after-ms = <60000>; };
 
@@ -502,9 +503,9 @@
 
         base {
             bindings = <
-&kp TAB     &kp Q  &kp W  &kp E  &kp R        &kp T        &kp Y      &kp U        &kp I      &kp O    &kp P      &td10
-&kp ESCAPE  &kp A  &kp S  &kp D  &kp F        &kp G        &kp H      &kp J        &kp K      &kp L    &kp BSPC   &mkp MB4
-&kp GRAVE   &kp Z  &kp X  &kp C  &kp V        &kp B        &kp N      &kp M        &kp COMMA  &kp DOT  &kp SLASH  &kp TILDE
+&kp TAB     &kp Q  &kp W  &kp E  &kp R        &kp T        &kp Y            &kp U        &kp I      &kp O    &kp P      &td10
+&kp ESCAPE  &kp A  &kp S  &kp D  &kp F        &kp G        &kp H            &kp J        &kp K      &kp L    &kp BSPC   &mkp MB4
+&kp GRAVE   &kp Z  &kp X  &kp C  &kp V        &kp B        &kp N            &kp M        &kp COMMA  &kp DOT  &kp SLASH  &kp TILDE
                           &gui5  &lt 2 SPACE  &kp LSHFT    &control_record  &lt 1 ENTER  &alt5
             >;
 
@@ -525,7 +526,7 @@
         symbols {
             bindings = <
 &to 0      &m0  &kp COLON        &kp DQT      &kp SQT        &kp DOLLAR      &kp CARET   &kp LA(N7)  &kp LA(N8)  &kp LA(N9)  &m11              &m12
-&kp ESC    &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &term       &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &kp LA(LG(LEFT))  &kp LG(LA(RIGHT))
+&kp ESC    &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &term       &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &kp LA(LEFT)      &kp LA(RIGHT)
 &kp QMARK  &m2  &kp EXCLAMATION  &kp AT       &kp HASH       &kp COLON       &kp LA(N0)  &kp LA(N1)  &kp LA(N2)  &kp LA(N3)  &kp LA(LC(LEFT))  &kp LA(LC(RIGHT))
                                  &kp LGUI     &kp SPACE      &kp LSHFT       &kp LCTRL   &kp RET     &kp LALT
             >;
@@ -590,10 +591,10 @@
 
         function {
             bindings = <
-&to 0     &m9    &kp F2                &kp LG(F12)     &kp F12             &kp F9               &kp F5          &kp F10            &kp F11        &kp LS(F11)    &m8               &to 0
+&to 0     &m9            &kp F2                &kp LG(F12)     &kp F12             &kp F9               &kp F5          &kp F10            &kp F11        &kp LS(F11)    &m8               &to 0
 &to 0     &m20           &kp LC(LA(LG(S)))     &kp LS(LG(N5))  &kp LG(F)           &kp LS(LG(F))        &kp LS(LG(F5))  &kp F4             &m15           &kp LS(LG(L))  &kp LG(F8)        &kp LC(LG(LA(BACKSLASH)))
 &kp CAPS  &thisisunsafe  &kp LG(LS(NUMBER_4))  &kp LS(LG(C))   &kp LG(V)           &kp LC(LA(LG(V)))    &kp LS(F5)      &m4                &thisisunsafe  &to 5          &kp LC(LA(LEFT))  &kp LA(LC(RIGHT))
-                                       &kp LGUI        &kp LG(LS(ESCAPE))  &caps_word           &kp LCTRL       &kp LS(LG(SPACE))  &kp LALT
+                                               &kp LGUI        &kp LG(LS(ESCAPE))  &caps_word           &kp LCTRL       &kp LS(LG(SPACE))  &kp LALT
             >;
 
             display-name = "function";
