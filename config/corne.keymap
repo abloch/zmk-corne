@@ -468,12 +468,12 @@
 
         left_brackets {
             bindings = <&kp LEFT_BRACKET>;
-            key-positions = <12 13>;
+            key-positions = <0 13>;
         };
 
         right_brackets {
             bindings = <&kp RIGHT_BRACKET>;
-            key-positions = <13 14>;
+            key-positions = <1 12>;
         };
 
         think_hard {
