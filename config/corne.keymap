@@ -246,8 +246,6 @@
         thisisunsafe: thisisunsafe {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
             bindings = <&kp T &kp H &kp I &kp S &kp I &kp S &kp U &kp N &kp S &kp A &kp F &kp E>;
             label = "THISISUNSAFE";
         };
@@ -298,8 +296,6 @@
         thinkhard: thinkhard {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
             bindings = <&none &kp T &kp H &kp I &kp N &kp K &kp SPACE &kp H &kp A &kp R &kp D &kp SPACE &kp A &kp N &kp D &kp SPACE &kp B &kp E &kp SPACE &kp S &kp M &kp A &kp R &kp T>;
             label = "THINKHARD";
         };
