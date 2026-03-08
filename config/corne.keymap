@@ -491,6 +491,16 @@
             bindings = <&to 5>;
             key-positions = <33 21>;
         };
+
+        bt4 {
+            bindings = <&bt BT_SEL 3>;
+            key-positions = <11 3>;
+        };
+
+        clr3 {
+            bindings = <&bt BT_DISC 3>;
+            key-positions = <11 15>;
+        };
     };
 
     keymap {
@@ -608,10 +618,10 @@
 
         bt {
             bindings = <
-&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_CLR        &bt BT_CLR        &kp F7  &kp F8        &kp F9  &mmv MOVE_UP    &msc SCRL_UP
-&bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_CLR_ALL    &bt BT_CLR_ALL    &kp F4  &kp F5        &kp F6  &mmv MOVE_LEFT  &mmv MOVE_RIGHT
+&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_CLR        &bt BT_CLR        &kp F7  &kp F8        &kp F9  &mmv MOVE_UP    &msc SCRL_UP
+&bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2   &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_CLR_ALL    &bt BT_CLR_ALL    &kp F4  &kp F5        &kp F6  &mmv MOVE_LEFT  &mmv MOVE_RIGHT
 &soft_off      &thisisunsafe  &studio_unlock  &none          &none          &bootloader       &bootloader       &kp F1  &kp F2        &kp F3  &mmv MOVE_DOWN  &msc SCRL_DOWN
-                                             &kp LEFT_GUI   &to 0          &kp LEFT_SHIFT    &kp LEFT_CONTROL  &to 0   &kp LEFT_ALT
+                                              &kp LEFT_GUI   &to 0          &kp LEFT_SHIFT    &kp LEFT_CONTROL  &to 0   &kp LEFT_ALT
             >;
         };
     };
