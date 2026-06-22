@@ -501,6 +501,16 @@
             bindings = <&bt BT_DISC 3>;
             key-positions = <11 15>;
         };
+
+        scrollup {
+            bindings = <&msc SCRL_UP>;
+            key-positions = <1 3>;
+        };
+
+        scrolldown {
+            bindings = <&msc SCRL_DOWN>;
+            key-positions = <13 15>;
+        };
     };
 
     keymap {
