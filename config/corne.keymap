@@ -186,7 +186,9 @@
             #binding-cells = <0>;
             wait-ms = <50>;
             tap-ms = <50>;
-            bindings = <&macro_tap>, <&kp K &kp U &kp B &kp I &kp Y &kp A>;
+            bindings =
+                <&macro_tap>,
+                <&kp A &kp K &kp B &kp L &kp O &kp C &kp H &kp AT_SIGN &kp D &kp R &kp I &kp V &kp E &kp N &kp E &kp T &kp S &kp DOT &kp C &kp O &kp M>;
 
             label = "M15";
         };
@@ -248,8 +250,8 @@
         thisisunsafe: thisisunsafe {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <50>;
-            tap-ms = <50>;
+            wait-ms = <20>;
+            tap-ms = <10>;
             bindings = <&kp T &kp H &kp I &kp S &kp I &kp S &kp U &kp N &kp S &kp A &kp F &kp E>;
             label = "THISISUNSAFE";
         };
@@ -300,8 +302,8 @@
         thinkhard: thinkhard {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <50>;
-            tap-ms = <50>;
+            wait-ms = <20>;
+            tap-ms = <10>;
             bindings = <&none &kp T &kp H &kp I &kp N &kp K &kp SPACE &kp H &kp A &kp R &kp D &kp SPACE &kp A &kp N &kp D &kp SPACE &kp B &kp E &kp SPACE &kp S &kp M &kp A &kp R &kp T>;
             label = "THINKHARD";
         };
