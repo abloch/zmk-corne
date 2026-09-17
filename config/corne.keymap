@@ -129,12 +129,12 @@
             label = "M10";
         };
 
-        // M12: "./" — duplicate of M4 in the Vial table, kept for 1:1 parity
+        // M12: "../" — was a second copy of M4's "./" until Ximi de-duplicated it
 
         m12: m12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOT &kp SLASH>;
+            bindings = <&kp DOT &kp DOT &kp SLASH>;
             label = "M12";
         };
 
@@ -183,7 +183,8 @@
             label = "M20";
         };
 
-        // M22: "thisisunsafe"
+        // M22: "thisisunsafe" — defined but unbound. Its layer 4 key went to the path
+        // macros when Ximi de-duplicated them, and Ximi has no binding for it either.
 
         m22: m22 {
             compatible = "zmk,behavior-macro";
@@ -195,10 +196,10 @@
         };
 
         // Ximi M11: Caps Lock held for 120 ms. macOS ignores a Caps Lock press shorter
-        // than ~80 ms, so a plain tap never toggles it. Kept defined but bound to
-        // nothing — Ximi reaches it from the left thumb's tap-then-hold, a gesture
-        // ZMK cannot express, and layer 4's old Caps key is gone. Bind it if a home
-        // turns up.
+        // than ~80 ms, so a plain tap never toggles it. Bound on layer 4's left outer
+        // bottom key, which is where Ximi put it back after the thumb move. Ximi also
+        // still reaches Caps Lock from the left thumb's tap-then-hold; ZMK cannot
+        // express that gesture, so on the Corne this key is the only route to it.
 
         capslock: capslock {
             compatible = "zmk,behavior-macro";
@@ -637,7 +638,7 @@
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
         // │ ␛ │⌃1 │⌃2 │⌃3 │⌃4 │⌃5 │   │ ⊟ │ ← │ ↓ │ → │⌥⌫ │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │⌃` │⇧⌘E│⌘⌥T│⇧⌘E│⇧F4│F4 │   │ ⊞ │ ⇲ │ ⌦ │ ⇟ │⌃⌦ │▒▒▒│
+        // │⌃` │   │   │   │   │   │   │ ⊞ │ ⇲ │ ⌦ │ ⇟ │⌃⌦ │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │ ␣ │ ⇧ │   │ ⌃ │⇧⌘⏎│ ⌥ │
         //             └───┴───┴───┘   └───┴───┴───┘
@@ -646,16 +647,16 @@
             bindings = <
 &to 0          &kp LG(N1)     &kp LG(N2)  &kp LG(N3)     &none       &to 0       &m7        &kp HOME  &kp UP    &kp PG_UP  &kp LS(LG(DOT))  &none
 &kp ESC        &kp LC(N1)     &kp LC(N2)  &kp LC(N3)     &kp LC(N4)  &kp LC(N5)  &m5        &kp LEFT  &kp DOWN  &kp RIGHT  &kp LA(BSPC)     &none
-&kp LC(GRAVE)  &kp LS(LG(E))  &m27        &kp LS(LG(E))  &kp LS(F4)  &kp F4      &m6        &kp END   &kp DEL   &kp PG_DN  &kp LC(DEL)      &none
+&kp LC(GRAVE)  &none          &none       &none          &none       &none       &m6        &kp END   &kp DEL   &kp PG_DN  &kp LC(DEL)      &none
                                           &kp LGUI       &kp SPACE   &kp LSHFT   &kp LCTRL  &kp LS(LG(ENTER))  &kp LALT
             >;
 
             display-name = "nav";
         };
 
-        // Layer 3: Numpad — mirrors akiva.vil layer 3 (right pinky 9 is a known Ximi dup)
+        // Layer 3: Numpad — mirrors akiva.vil layer 3 (right pinky is dead; it held a dup 9)
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
-        // │TO0│ 1 │ 2 │ 3 │ 4 │TO0│   │ * │ 7 │ 8 │ 9 │ 9 │▒▒▒│
+        // │TO0│ 1 │ 2 │ 3 │ 4 │TO0│   │ * │ 7 │ 8 │ 9 │   │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
         // │TO0│⌃1 │⌃2 │⌃3 │⌃4 │   │   │ + │ 4 │ 5 │ 6 │ ⌫ │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
@@ -666,7 +667,7 @@
 
         numbers {
             bindings = <
-&to 0  &kp N1      &kp N2      &kp N3      &kp N4      &to 0      &kp KP_MULTIPLY  &kp N7   &kp N8    &kp N9  &kp N9    &none
+&to 0  &kp N1      &kp N2      &kp N3      &kp N4      &to 0      &kp KP_MULTIPLY  &kp N7   &kp N8    &kp N9  &none     &none
 &to 0  &kp LC(N1)  &kp LC(N2)  &kp LC(N3)  &kp LC(N4)  &none      &kp KP_PLUS      &kp N4   &kp N5    &kp N6  &kp BSPC  &none
 &none  &none       &none       &none       &none       &none      &kp KP_MINUS     &kp N1   &kp N2    &kp N3  &none     &none
                                &kp LGUI    &kp SPACE   &kp LSHFT  &kp KP_DOT       &kp N0   &kp LALT
@@ -683,7 +684,7 @@
         // │TO0│🔁 │⌃⌥⌘│🎥 │🔍 │🔍 │   │⇧⌘ │F4 │📧 │⇧⌘L│⇧⌥M│▒▒▒│
         // │   │!! │ S │   │   │all│   │F5 │   │   │   │   │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │   │💭 │📷 │⇧⌘C│ ⌃ │⌃⌥⌘│   │⇧F5│./ │🔓 │./ │~/ │▒▒▒│
+        // │ ⇪ │💭 │📷 │⇧⌘C│ ⌃ │⌃⌥⌘│   │⇧F5│~/ │./ │../│   │▒▒▒│
         // │   │   │   │   │Ins│ V │   │   │   │   │   │   │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │⇧⌘␛│⇪w │   │ ⌃ │⇧⌘␣│ ⌥ │
@@ -693,7 +694,7 @@
             bindings = <
 &to 0     &m9   &kp F2             &kp LG(F12)     &kp F12             &to 0           &kp F5          &kp F10            &kp F11    &kp LS(F11)    &m8            &none
 &to 0     &m20  &kp LC(LA(LG(S)))  &kp LS(LG(N5))  &kp LG(F)           &kp LS(LG(F))   &kp LS(LG(F5))  &kp F4             &m15       &kp LS(LG(L))  &kp LS(LA(M))  &none
-&none     &m23  &kp LS(LG(N4))     &kp LS(LG(C))   &kp LC(INSERT)      &kp LC(LA(LG(V)))  &kp LS(F5)   &m4                &m22       &m12           &m24           &none
+&capslock &m23  &kp LS(LG(N4))     &kp LS(LG(C))   &kp LC(INSERT)      &kp LC(LA(LG(V)))  &kp LS(F5)   &m24               &m4        &m12           &none          &none
                                    &kp LGUI        &kp LS(LG(ESCAPE))  &caps_word      &kp LCTRL       &kp LS(LG(SPACE))  &kp LALT
             >;
 
