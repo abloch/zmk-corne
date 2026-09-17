@@ -8,7 +8,7 @@ Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 >
 > The divergence the status note used to apologise for is paid off. Stage 4 — converge the two keyboards — is done for the bindings, and stages 1, 2, 3, 5 and 6 came with it. What is left is stage 7, retiring the left outer column, which is the only gate on buying hardware.
 >
-> The two maps now differ in exactly three places, all of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for; the layer-tap protection on `&lt`, which QMK has no equivalent knob for either; and the left thumb, where ZMK's tap-dance cannot express the Ximi2's tap-then-hold Caps Lock. Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
+> The two maps now differ in exactly three places, all of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for; the layer-tap protection on `&lt`, which QMK has no equivalent knob for either; and Caps Lock, which the Ximi2 reaches from a tap-then-hold on the left thumb and the Corne does not reach at all, because ZMK's tap-dance has no tap-hold slot to port it to. Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
 
 ---
 
@@ -55,7 +55,7 @@ Within a layer, the shade says what kind of key it is — lightest to deepest:
 | lightest | plain unmodified keypress — a letter, a digit, an F-key, an arrow |
 | light | a modifier — a chord like `⌘1`, or a thumb modifier |
 | mid | a macro — a sequence, not a single chord |
-| deepest | the layer's own signature output — the symbols on layer 1, the operators on layer 3, Caps on layer 4 |
+| deepest | the layer's own signature output — the symbols on layer 1, the operators on layer 3, the macros on layer 4 |
 
 Three classes ignore the layer hue, because what they mean does not change between layers: **red** is destructive, irreversible, or a known defect; **dashed slate ⌷** is `&trans`, showing whatever is underneath; **dashed grey ❌** is `&none`.
 
@@ -186,7 +186,7 @@ columns 13
 
   to0["TO0"] vz["␛ZZ"] f2["F2"] gf["⌘F12"] lf12["F12"] t0b["TO0"] space f5["F5"] f10["F10"] f11["F11"] s11["⇧F11"] ap["⌥⌘P"] x1["❌"]
   t0c["TO0"] rr["!!"] rec["⌃⌥⌘S"] c5["⇧⌘5"] fnd["⌘F"] fna["⇧⌘F"] space sgf5["⇧⌘F5"] f4["F4"] mai["📧"] lck["⇧⌘L"] mut["⇧⌥M"] x2["❌"]
-  cap["⇪"] thk["💭"] c4["⇧⌘4"] cpy["⇧⌘C"] ins["⌃Ins"] pst["⌃⌥⌘V"] space sf5["⇧F5"] ds["./"] uns["🔓"] ds2["./"] ts["~/"] x3["❌"]
+  x0["❌"] thk["💭"] c4["⇧⌘4"] cpy["⇧⌘C"] ins["⌃Ins"] pst["⌃⌥⌘V"] space sf5["⇧F5"] ds["./"] uns["🔓"] ds2["./"] ts["~/"] x3["❌"]
   space:3 cmd["⌘"] ses["⇧⌘␛"] cw["⇪w"] space ctl["⌃"] ssp["⇧⌘␣"] alt["⌥"] space:3
 
   classDef plain fill:#f3ecfb,stroke:#4a1f72,stroke-width:2px,color:#240c39
@@ -199,9 +199,9 @@ columns 13
   class f2,lf12,f5,f10,f11,f4 plain
   class gf,rec,c5,fnd,fna,c4,cpy,ins,pst,s11,sgf5,lck,mut,sf5,cmd,ses,ctl,ssp,alt mod
   class vz,rr,thk,ap,mai,ds,uns,ds2,ts seq
-  class cap,cw spec
+  class cw spec
   class to0,t0b,t0c goL0
-  class x1,x2,x3 dead
+  class x0,x1,x2,x3 dead
 ```
 
 ### Layer 5 — F-keys
@@ -272,7 +272,7 @@ The second `9` on the right pinky is a known Ximi2 defect, drawn in red. It is r
 
 ### Function — sticky, never locked
 
-Caps Lock sits on the left outer column and `&caps_word` on the left inner thumb. Layer 4 has a sticky form and no locked form, by design.
+`&caps_word` sits on the left inner thumb. The left outer column is empty: Caps Lock used to live there and moved to the Ximi2's left thumb, a tap-then-hold the Corne cannot mirror, so the Corne lost the key rather than gained a gesture. Layer 4 has a sticky form and no locked form, by design.
 
 `./` appears twice because `M4` and `M12` are both `./` in the Vial table. Another deliberate reproduction.
 
@@ -322,7 +322,7 @@ One tap-dance. No hold-taps, no mod-morphs, no `&mt` anywhere.
 
 The `gui5` and `alt5` triple-tap dances are gone. They put a 400 ms tapping term on Cmd and Alt, which are the two modifiers this user's zellij config leans on hardest. `td10` is gone too; its lock-screen tap is now a plain macro on the key it already shared.
 
-The left thumb is a plain Shift. The Ximi2 gets Caps Lock there from a tap-then-hold, which ZMK's tap-dance cannot express, and a double-tap-to-caps would fire while typing two capitals in a row. Caps Lock is on layer 4's left outer column and `&caps_word` on layer 4's left inner thumb.
+The left thumb is a plain Shift. The Ximi2's dance there now carries both caps behaviours — Caps Word on a double-tap, Caps Lock on a tap-then-hold — and ZMK can express neither slot faithfully: it has no tap-hold at all, and a double-tap-to-caps would fire while typing two capitals in a row. `&caps_word` is on layer 4's left inner thumb on both boards. Caps Lock is the one casualty: it vacated layer 4's left outer column when the Ximi2 gave it a thumb gesture, and the Corne has no binding for it anywhere. The `capslock` macro stays defined in the keymap, unbound, for whenever a home turns up.
 
 `&lt` now carries `quick-tap-ms = 200`, `require-prior-idle-ms = 125` and `flavor = "tap-preferred"`, so a fast Space or Enter cannot resolve as a layer hold. This is a Corne-only improvement; QMK has no equivalent knob, so the Ximi2 goes without.
 
@@ -486,7 +486,7 @@ The duplicated `9` on the pinky is a pre-existing defect, still unfixed.
 ```
 TO0  M9  F2  ⌘F12 F12 TO0      F5   F10 F11 ⇧F11  M8    ·
 DF0  M20 ⌃⌥⌘S ⇧⌘5 ⌘F  ⇧⌘F      ⇧⌘F5 F4  M15 ⇧⌘L   ⇧⌥M   ·
-CAPS M23 ⇧⌘4 ⇧⌘C ⌃Ins ⌃⌥⌘V     ⇧F5  M4  M22 M12   M24   ·
+·    M23 ⇧⌘4 ⇧⌘C ⌃Ins ⌃⌥⌘V     ⇧F5  M4  M22 M12   M24   ·
 ```
 
 **Layer 5 — F-keys**

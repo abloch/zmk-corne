@@ -194,6 +194,19 @@
             label = "M22";
         };
 
+        // Ximi M11: Caps Lock held for 120 ms. macOS ignores a Caps Lock press shorter
+        // than ~80 ms, so a plain tap never toggles it. Kept defined but bound to
+        // nothing — Ximi reaches it from the left thumb's tap-then-hold, a gesture
+        // ZMK cannot express, and layer 4's old Caps key is gone. Bind it if a home
+        // turns up.
+
+        capslock: capslock {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp CAPS>, <&macro_wait_time 120>, <&macro_release &kp CAPS>;
+            label = "CAPSLOCK";
+        };
+
         // M23: "think hard and be smart"
 
         m23: m23 {
@@ -276,11 +289,14 @@
             bindings = <&kp LEFT_CONTROL>, <&kp LC(LA(LG(BACKSLASH)))>;
         };
 
-        // Vial TD(0) on the left outer thumb is tap = Shift, tap-then-HOLD = Caps Lock.
-        // ZMK tap-dance has no tap-hold slot, and a plain double-tap-to-caps would fire
-        // while typing two capitals in a row, so the thumb stays a plain Shift here.
-        // Caps Lock lives on layer 4 (left outer column) and Caps Word on the layer 4
-        // thumb, exactly as on Ximi.
+        // Vial TD(0) on the left outer thumb: tap = Shift, double tap = Caps Word,
+        // tap-then-HOLD = Caps Lock. ZMK tap-dance counts taps and has no tap-hold
+        // slot, and a plain double-tap-to-caps would fire while typing two capitals
+        // in a row, so the thumb stays a plain Shift here.
+        //
+        // Caps Word is on the layer 4 thumb, as on Ximi. Caps Lock is unbound on the
+        // Corne: it left layer 4 when Ximi gave it the thumb gesture, and there is no
+        // ZMK gesture to give it in exchange.
     };
 
     combos {
@@ -659,7 +675,7 @@
             display-name = "numbers";
         };
 
-        // Layer 4: Function / macros — mirrors akiva.vil layer 4 (⇪ caps lock · ⇪w caps word)
+        // Layer 4: Function / macros — mirrors akiva.vil layer 4 (⇪w caps word)
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
         // │TO0│␛ZZ│F2 │ ⌘ │F12│TO0│   │F5 │F10│F11│ ⇧ │⌥⌘P│▒▒▒│
         // │   │   │   │F12│   │   │   │   │   │   │F11│   │▒▒▒│
@@ -667,7 +683,7 @@
         // │TO0│🔁 │⌃⌥⌘│🎥 │🔍 │🔍 │   │⇧⌘ │F4 │📧 │⇧⌘L│⇧⌥M│▒▒▒│
         // │   │!! │ S │   │   │all│   │F5 │   │   │   │   │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ⇪ │💭 │📷 │⇧⌘C│ ⌃ │⌃⌥⌘│   │⇧F5│./ │🔓 │./ │~/ │▒▒▒│
+        // │   │💭 │📷 │⇧⌘C│ ⌃ │⌃⌥⌘│   │⇧F5│./ │🔓 │./ │~/ │▒▒▒│
         // │   │   │   │   │Ins│ V │   │   │   │   │   │   │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │⇧⌘␛│⇪w │   │ ⌃ │⇧⌘␣│ ⌥ │
@@ -677,7 +693,7 @@
             bindings = <
 &to 0     &m9   &kp F2             &kp LG(F12)     &kp F12             &to 0           &kp F5          &kp F10            &kp F11    &kp LS(F11)    &m8            &none
 &to 0     &m20  &kp LC(LA(LG(S)))  &kp LS(LG(N5))  &kp LG(F)           &kp LS(LG(F))   &kp LS(LG(F5))  &kp F4             &m15       &kp LS(LG(L))  &kp LS(LA(M))  &none
-&kp CAPS  &m23  &kp LS(LG(N4))     &kp LS(LG(C))   &kp LC(INSERT)      &kp LC(LA(LG(V)))  &kp LS(F5)   &m4                &m22       &m12           &m24           &none
+&none     &m23  &kp LS(LG(N4))     &kp LS(LG(C))   &kp LC(INSERT)      &kp LC(LA(LG(V)))  &kp LS(F5)   &m4                &m22       &m12           &m24           &none
                                    &kp LGUI        &kp LS(LG(ESCAPE))  &caps_word      &kp LCTRL       &kp LS(LG(SPACE))  &kp LALT
             >;
 
