@@ -684,31 +684,33 @@
             display-name = "function";
         };
 
-        // Layer 5: Bluetooth (left, ZMK-only) · F-keys (right, mirrors akiva.vil layer 5)
-        // Ximi2 leaves its whole left half transparent here, so ZMK's radio controls move
-        // in without displacing anything that exists on Ximi2. The two TO0 corners and
-        // both middle thumbs are Ximi2's own escape hatches and are kept. ⌷ = transparent.
+        // Layer 5: F-keys — mirrors akiva.vil layer 5 almost exactly.
+        // Bluetooth used to occupy this left half; it now lives entirely in the o+p
+        // combo grid, which hands the left half back to &trans and puts the two
+        // boards one step closer to identical. What is left here is the three things
+        // ZMK needs and QMK has no equivalent for, parked on keys the layer-entry
+        // combo (x+c+v) does not touch. ⌷ = transparent.
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
-        // │TO0│BT0│BT1│BT2│BT3│TO0│   │ ⌷ │F7 │F8 │F9 │▒▒▒│▒▒▒│
+        // │TO0│ ⌷ │ ⌷ │ ⌷ │ ⌷ │TO0│   │ ⌷ │F7 │F8 │F9 │▒▒▒│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ⌷ │✂0 │✂1 │✂2 │✂3 │OFF│   │ ⌷ │F4 │F5 │F6 │F12│▒▒▒│
+        // │ ⌷ │ ⌷ │ ⌷ │ ⌷ │ ⌷ │OFF│   │ ⌷ │F4 │F5 │F6 │F12│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ⌷ │CLR│CLA│STU│   │BLD│   │F10│F1 │F2 │F3 │F11│▒▒▒│
+        // │ ⌷ │STU│ ⌷ │ ⌷ │ ⌷ │BLD│   │F10│F1 │F2 │F3 │F11│▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │TO0│ ⇧ │   │ ⌃ │TO0│ ⌥ │
         //             └───┴───┴───┘   └───┴───┴───┘
-        // BT0-3 select profile · ✂ disconnect profile · CLR clear current profile
-        // CLA clear all profiles · STU ZMK Studio unlock · OFF soft off · BLD bootloader
+        // STU ZMK Studio unlock · OFF soft off · BLD bootloader
+        // Bluetooth is combos only: o+p plus a third key. See combos.md.
 
-        bt {
+        fkeys {
             bindings = <
-&to 0    &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3   &to 0          &trans     &kp F7  &kp F8  &kp F9  &none    &none
-&trans   &bt BT_DISC 0  &bt BT_DISC 1   &bt BT_DISC 2   &bt BT_DISC 3  &soft_off      &trans     &kp F4  &kp F5  &kp F6  &kp F12  &none
-&trans   &bt BT_CLR     &bt BT_CLR_ALL  &studio_unlock  &none          &bootloader    &kp F10    &kp F1  &kp F2  &kp F3  &kp F11  &none
-                                        &kp LGUI        &to 0          &kp LSHFT      &kp LCTRL  &to 0   &kp LALT
+&to 0    &trans          &trans  &trans  &trans  &to 0          &trans     &kp F7  &kp F8  &kp F9  &none    &none
+&trans   &trans          &trans  &trans  &trans  &soft_off      &trans     &kp F4  &kp F5  &kp F6  &kp F12  &none
+&trans   &studio_unlock  &trans  &trans  &trans  &bootloader    &kp F10    &kp F1  &kp F2  &kp F3  &kp F11  &none
+                                 &kp LGUI  &to 0  &kp LSHFT     &kp LCTRL  &to 0   &kp LALT
             >;
 
-            display-name = "bt";
+            display-name = "fkeys";
         };
     };
 };

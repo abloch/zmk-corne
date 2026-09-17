@@ -8,7 +8,7 @@ Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 >
 > The divergence the status note used to apologise for is paid off. Stage 4 — converge the two keyboards — is done for the bindings, and stages 1, 2, 3, 5 and 6 came with it. What is left is stage 7, retiring the left outer column, which is the only gate on buying hardware.
 >
-> The two maps now differ in exactly three places, all of them deliberate: Bluetooth, which the Ximi2 has no use for and which lives on layer 5's otherwise-transparent left half; the layer-tap protection on `&lt`, which QMK has no equivalent knob for; and the left thumb, where ZMK's tap-dance cannot express the Ximi2's tap-then-hold Caps Lock.
+> The two maps now differ in exactly three places, all of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for; the layer-tap protection on `&lt`, which QMK has no equivalent knob for either; and the left thumb, where ZMK's tap-dance cannot express the Ximi2's tap-then-hold Caps Lock. Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
 
 ---
 
@@ -215,18 +215,22 @@ columns 13
 
 `./` appears twice because `M4` and `M12` are both `./` in the Vial table. Another deliberate reproduction.
 
-### Layer 5 — bluetooth and F-keys
+### Layer 5 — F-keys
 
-The right half is the Ximi2's F-key block, ported straight across. The Ximi2 leaves its **entire left half transparent** on this layer, which is exactly the room ZMK's radio needs — so the Bluetooth grid, soft off, Studio unlock and the bootloader live there without displacing anything that exists on the other board. Wireless is the one place the two maps may legitimately differ.
+The right half is the Ximi2's F-key block, ported straight across. The Ximi2 leaves its **entire left half transparent** here, and so, now, does the Corne — bar three keys.
+
+Bluetooth used to fill that left half. It has moved out entirely into the `o`+`p` combo grid, which means the radio occupies no keymap position on either board and this layer is down to the three things ZMK needs and QMK has no equivalent for: Studio unlock, soft off and the bootloader. They sit on `z`, `g` and `b`, none of which the layer-entry combo `x`+`c`+`v` touches.
+
+That takes layer 5 from fifteen divergent positions to three, and it is the single largest parity gain since the port itself.
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
 block
 columns 13
 
-  to0["TO0"] b0["BT0"] b1["BT1"] b2["BT2"] b3["BT3"] t0b["TO0"] space tra["⌷"] f7["F7"] f8["F8"] f9["F9"] x1["❌"] x2["❌"]
-  trc["⌷"] d0["✂0"] d1["✂1"] d2["✂2"] d3["✂3"] off["⏻"] space trd["⌷"] f4["F4"] f5["F5"] f6["F6"] f12["F12"] x3["❌"]
-  tre["⌷"] clr["CLR"] cla["CLA"] stu["STU"] x4["❌"] bld["BLD"] space f10["F10"] f1["F1"] f2["F2"] f3["F3"] f11["F11"] x5["❌"]
+  to0["TO0"] tra["⌷"] trb["⌷"] trc["⌷"] trd["⌷"] t0b["TO0"] space tre["⌷"] f7["F7"] f8["F8"] f9["F9"] x1["❌"] x2["❌"]
+  trf["⌷"] trg["⌷"] trh["⌷"] tri["⌷"] trj["⌷"] off["⏻"] space trk["⌷"] f4["F4"] f5["F5"] f6["F6"] f12["F12"] x3["❌"]
+  trl["⌷"] stu["STU"] trm["⌷"] trn["⌷"] tro["⌷"] bld["BLD"] space f10["F10"] f1["F1"] f2["F2"] f3["F3"] f11["F11"] x4["❌"]
   space:3 cmd["⌘"] t0c["TO0"] sft["⇧"] space ctl["⌃"] t0d["TO0"] alt["⌥"] space:3
 
   classDef radio fill:#bfe6f0,stroke:#0a4f63,stroke-width:3px,color:#04222b
@@ -236,17 +240,15 @@ columns 13
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class b0,b1,b2,b3,d0,d1,d2,d3,clr,stu radio
-  class cla,off,bld danger
+  class stu radio
+  class off,bld danger
   class to0,t0b,t0c,t0d layerk
   class f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12 core
   class cmd,sft,ctl,alt thumb
-  class tra,trc,trd,tre,x1,x2,x3,x4,x5 dead
+  class tra,trb,trc,trd,tre,trf,trg,trh,tri,trj,trk,trl,trm,trn,tro,x1,x2,x3,x4 dead
 ```
 
-`CLR` clears the current profile, `CLA` clears all of them, `STU` is ZMK Studio unlock, `⏻` is soft off and `BLD` the bootloader. Reaching the layer is `x`+`c`+`v` held, or `z`+`x`+`c`+`v` to lock it, the same on both boards. Nothing on the base thumbs opens it any more.
-
-The day-to-day radio work now happens on the `o`+`p` combo grid instead, so what this layer is really for is the four things no combo covers: Studio unlock, soft off, the bootloader, and profile 4, which the `TO0` corner crowds off the top row here.
+`STU` is ZMK Studio unlock, `⏻` is soft off and `BLD` the bootloader. Reaching the layer is `x`+`c`+`v` held, or `z`+`x`+`c`+`v` to lock it, the same on both boards. Nothing on the base thumbs opens it any more.
 
 ---
 
@@ -356,7 +358,7 @@ The whole radio is one posture with fifteen destinations. **ZMK counts profiles 
 
 The anchor has a cost, and it is paid explicitly. `o` and `p` are adjacent columns of the same hand — the exact pattern every other combo here avoids — and `t`-`o`-`p` is a triple that "top" and "stop" roll straight through. So every Bluetooth combo carries `require-prior-idle-ms = <250>` and will not fire unless the keyboard was already idle, which mid-word it never is. A deliberate press starts from a standing stop and is unaffected.
 
-Every key in the grid is inside the 36-key core, so all sixteen survive the move to a smaller board.
+Every key in the grid is inside the 36-key core, so all sixteen survive the move to a smaller board. Bluetooth exists nowhere else in the keymap — there are no radio keys on any layer, which is what lets layer 5 hand its left half back to `&trans` and match the Ximi2.
 
 **Everything else** — `q`+`b` types the prose macro.
 
@@ -384,9 +386,9 @@ The deprecated mouse-emulation flag is gone along with mouse movement and scroll
 
 **Still open on the Corne**
 
-- Layer 5 holds `&bootloader` and `&soft_off`, and the layer has two entrances, one of them a three-key combo. Nothing guards the destructive keys once you are there; they are placed away from the `x`+`c`+`v` entry keys, which is mitigation, not a fix.
+- Layer 5 holds `&bootloader` and `&soft_off`, and the layer has two entrances, one of them a three-key combo. Nothing guards them once you are there; they sit on keys the entry combo does not touch, which is mitigation, not a fix.
+- Bluetooth is now reachable only through combos. If a combo ever stops firing — a debounce change, a timeout change, a dead switch under `o` or `p` — there is no keymap position to fall back on, and re-pairing needs the physical reset button.
 - The Bluetooth anchor `o`+`p` sits on two adjacent columns of the same hand, breaking the rule the rest of the combo set follows. `require-prior-idle-ms = <250>` is what makes it safe, so that number is load-bearing: lower it and `t`-`o`-`p` starts switching profiles inside the word "stop".
-- Layer 5's select row reaches profiles 0-3 only, because the `TO0` corner the Ximi2 puts on the `t` position takes the fifth slot. Profile 4 is combo-only.
 - The 1 ms press debounce widens the window for a slow roll to emit `-` instead of entering a layer. The combo overlap itself is accepted; the debounce is not examined.
 - The lock-screen macro is the only tenant of the right outer column, on either board. It needs a home inside the 36-key core before that column can be retired.
 - Tab and Escape still sit on the left outer column and have no new home.
@@ -461,7 +463,7 @@ TO0  ·  ·  ·  ·  TO0        ·  F7 F8 F9  ·    ·
  ·   ·  ·  ·  ·   ·        F10 F1 F2 F3  F11  ·
 ```
 
-The left half is `KC_TRNS`, not `KC_NO` — reserved for the Bluetooth controls a wired work board does not need. Both middle thumbs are `TO(0)`.
+The left half is `KC_TRNS`, not `KC_NO` — it was reserved for the Bluetooth controls a wired work board does not need. The Corne has since put Bluetooth entirely into combos, so nothing needs that room any more and both boards now leave it transparent bar the Corne's three ZMK-only keys. Both middle thumbs are `TO(0)`.
 
 ### Layer access — uniform momentary/locked pairs
 
@@ -543,7 +545,7 @@ Note that the fix chosen here was the mirror image of the one `32-keys.md` propo
 
 **`td[4]` stays a tap dance.** `[tap=LCTRL, hold=LCTRL, double=LCAG(\), 210 ms]`. Stage 3 says replace tap-dance modifiers with plain ones, and this one is declined on purpose: the Corne has no spare key for the record hotkey, so keeping the double-Ctrl habit on the Ximi2 is what lets it transfer.
 
-**Layer 5's left half stays `KC_TRNS`.** Reserved for the Bluetooth controls the Corne needs and the work board does not. The consequence is real and accepted: while locked into layer 5, every left-hand combo is still armed.
+**Layer 5's left half stays `KC_TRNS`.** Originally reserved for the Bluetooth controls the Corne needs and the work board does not; the Corne then moved Bluetooth into combos, so the reservation turned out to be unnecessary and the transparency is now simply parity. The consequence is real and accepted either way: while locked into layer 5, every left-hand combo is still armed.
 
 **Dropped and not missed:** `⌥↑`/`⌥↓`, `⌥3`, layer-4 `F8` and `F9`, layer-3's left-half `5`, `TO(4)`, and the `q`+`a`+`z` sticky layer-5 combo.
 
@@ -580,7 +582,7 @@ The approach is deliberately gradual, and the hardware is bought **last**, only 
 | 1 | **Make both maps honest** — fix diagrams, delete dead and duplicated macros. No key changes | done — diagrams regenerated, twelve legacy macros deleted, macro numbering matched to Vial | partial — mouse cruft gone, but orphan macros, the duplicate `9` and the double-bound `SGUI(E)` remain |
 | 2 | **Let the trackpads take the pointer** — delete movement, scroll and clicks; keep browser back/forward | done — movement and scroll deleted, four pointer combos kept | done — movement and scroll deleted, four pointer combos kept by choice |
 | 3 | **Take your hands off the brake** — plain modifiers, sane sticky timeout, per-layer combo scoping, layer-tap protection | done — `gui5`/`alt5` and `td10` deleted, the 60-second sticky window dropped, combos scoped to base, `&lt` given quick-tap, prior-idle and tap-preferred | partly declined — `td[4]` kept for Corne parity, `td[2]` still gating layer-1 Shift, combos still unscoped |
-| 4 | **Converge the two keyboards** — identical 30-key core on both | done — every binding on all six layers ported from `akiva.vil` | done |
+| 4 | **Converge the two keyboards** — identical 30-key core on both | done — every binding on all six layers ported from `akiva.vil`, and layer 5 down from fifteen divergent positions to three now that Bluetooth is combos-only | done |
 | 5 | **Two homes for every orphan** — new locations go live while the old keys still work | done — `/`, backtick and the square brackets moved with the port | done for `/`, backtick and the square brackets |
 | 6 | **Retire the right column** — nearly free after stage 2 | done except `M10` (lock screen), matching the Ximi2 | done except `M10` (lock screen), which is deferred |
 | 7 | **Retire the left column** — Tab, Escape and backtick; the real test, and the only gate on buying hardware | started — the outer bottom key is dead and the `TO(0)` escape hatch is pre-placed on the `t` column | started — the outer bottom key is dead and the `TO(0)` escape hatch is pre-placed on the `t` column |

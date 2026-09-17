@@ -576,7 +576,7 @@ columns 13
   class x1,x2,x3 dead
 ```
 
-Three adjacent bottom-row keys. This is the only way onto layer 5 now that the thumb tap-dances are gone — the bootloader and soft off both live behind it.
+Three adjacent bottom-row keys. This is the only way onto layer 5 now that the thumb tap-dances are gone — the bootloader, soft off and Studio unlock all live behind it.
 
 ### `z`+`x`+`c`+`v` → layer 5, locked
 
@@ -663,6 +663,8 @@ Sixteen combos on one shared anchor, and the only part of the keymap with no Xim
 `o`+`p` is the anchor, drawn in cyan below. Every Bluetooth combo holds it, and a third key names the profile. The row the third key sits on picks the verb: **top row selects, home row disconnects, bottom row clears.** So the whole radio is one posture with fifteen destinations, plus a sixth-key escalation to clear everything.
 
 **ZMK counts profiles from 0.** The five keys of a row are profiles 0 through 4, so the first key of a row is profile 0, not profile 1.
+
+Bluetooth exists nowhere else in the keymap. There are no radio keys on any layer, which is what lets layer 5 hand its left half back to `&trans` and match the Ximi2 position for position. The trade is stated plainly: if a combo ever stops firing — a debounce change, a timeout change, a dead switch under `o` or `p` — there is no keymap position to fall back on, and re-pairing needs the physical reset button.
 
 The anchor has a cost that has to be paid explicitly. `o` and `p` are adjacent columns of the same hand, which is exactly the pattern the rest of this document avoids, and `t`-`o`-`p` is a combo triple that "top" and "stop" both roll straight through. So every Bluetooth combo carries `require-prior-idle-ms = <250>`: it will not fire unless the keyboard was already idle, which mid-word it never is. Deliberate presses start from a standing stop and are unaffected.
 
