@@ -317,7 +317,6 @@
             layers = <0>;
         };
 
-
         esc {
             bindings = <&kp ESCAPE>;
             key-positions = <1 3>; // Q + E
@@ -372,13 +371,13 @@
             layers = <0>;
         };
 
-        sl4_left {
+        sl4_home {
             bindings = <&sl 4>;
             key-positions = <19 20 21>; // J + K + L
             layers = <0>;
         };
 
-        sl4_right {
+        sl4_bottom {
             bindings = <&sl 4>;
             key-positions = <31 32 33>; // M + , + .
             layers = <0>;
