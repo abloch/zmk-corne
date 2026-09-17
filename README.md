@@ -4,11 +4,11 @@ ZMK firmware configuration for a 42-key Corne split keyboard on nice!nano v2 con
 
 Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 
-> **Status:** the 36-key migration documented in [`32-keys.md`](32-keys.md) **has caught the Corne up.** `config/corne.keymap` is now a position-for-position port of `akiva.vil`: every binding on all six layers matches the Ximi2, with the Ximi2-only hardware left behind — the outer seventh column, the extra per-half cluster, the rotary encoders and the attached mouse have no representation here.
+> **Status:** the 36-key migration documented in [`32-keys.md`](32-keys.md) **has caught the Corne up.** `config/corne.keymap` is now a position-for-position port of `akiva.vil`: every binding on all six layers matches the Ximi2, with the Ximi2-only hardware left behind — the outer seventh column, the extra per-half cluster, the rotary encoders and the attached mouse have no representation here. That hardware is **staying** on the work board rather than being drained: the plan no longer tries to empty it, it only forbids anything from living there alone.
 >
 > The divergence the status note used to apologise for is paid off. Stage 4 — converge the two keyboards — is done for the bindings, and stages 1, 2, 3, 5 and 6 came with it. What is left is stage 7, retiring the left outer column, which is the only gate on buying hardware.
 >
-> The two maps now differ in exactly three places, all of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for; the layer-tap protection on `&lt`, which QMK has no equivalent knob for either; and Caps Lock, which the Ximi2 reaches from a tap-then-hold on the left thumb and the Corne does not reach at all, because ZMK's tap-dance has no tap-hold slot to port it to. Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
+> The two maps now differ in exactly two places, both of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for, and the layer-tap protection on `&lt`, which QMK has no equivalent knob for either. Caps Lock used to be the third; the Ximi2 has put it back on layer 4's left outer bottom key alongside its left-thumb gesture, and the Corne binds the same key, so that gap is closed. Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
 
 ---
 
@@ -130,7 +130,7 @@ columns 13
 
   to0["TO0"] g1["⌘1"] g2["⌘2"] g3["⌘3"] x1["❌"] t0b["TO0"] space fa["⊟≡"] hom["⇱"] up["↑"] pgu["⇞"] emj["⇧⌘."] x2["❌"]
   esc["␛"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] c5["⌃5"] space fo["⊟"] lft["←"] dn["↓"] rgt["→"] abs["⌥⌫"] x3["❌"]
-  cgr["⌃` "] e1["⇧⌘E"] gat["⌘⌥T"] e2["⇧⌘E"] sf4["⇧F4"] f4["F4"] space uf["⊞"] endk["⇲"] del["⌦"] pgd["⇟"] cdl["⌃⌦"] x4["❌"]
+  cgr["⌃` "] xa["❌"] xb["❌"] xc["❌"] xd["❌"] xe["❌"] space uf["⊞"] endk["⇲"] del["⌦"] pgd["⇟"] cdl["⌃⌦"] x4["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] sen["⇧⌘⏎"] alt["⌥"] space:3
 
   classDef plain fill:#e8f7ec,stroke:#0b5946,stroke-width:2px,color:#06241c
@@ -139,11 +139,11 @@ columns 13
   classDef goL0 fill:#adc2d8,stroke:#1d2c3d,stroke-width:3px,color:#060c12
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class esc,f4,hom,up,pgu,lft,dn,rgt,endk,del,pgd plain
-  class g1,g2,g3,c1,c2,c3,c4,c5,cgr,e1,e2,sf4,emj,abs,cdl,cmd,spc,sft,ctl,sen,alt mod
-  class gat,fa,fo,uf seq
+  class esc,hom,up,pgu,lft,dn,rgt,endk,del,pgd plain
+  class g1,g2,g3,c1,c2,c3,c4,c5,cgr,emj,abs,cdl,cmd,spc,sft,ctl,sen,alt mod
+  class fa,fo,uf seq
   class to0,t0b goL0
-  class x1,x2,x3,x4,tra,trb,trc,trd,tre,trf,trg,trh,tri,trj,trk,trl,trm,trn,tro dead
+  class x1,x2,x3,x4,xa,xb,xc,xd,xe dead
 ```
 
 ### Layer 3 — numbers
@@ -155,7 +155,7 @@ A calculator numpad on the right, 7-8-9 ascending upward, with the operators run
 block
 columns 13
 
-  to0["TO0"] n1["1"] n2["2"] n3["3"] n4["4"] t0b["TO0"] space mul["*"] s7["7"] s8["8"] s9["9"] d9["9"] x1["❌"]
+  to0["TO0"] n1["1"] n2["2"] n3["3"] n4["4"] t0b["TO0"] space mul["*"] s7["7"] s8["8"] s9["9"] x12["❌"] x1["❌"]
   t0c["TO0"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] x2["❌"] space pls["+"] s4["4"] s5["5"] s6["6"] bsp["⌫"] x3["❌"]
   x4["❌"] x5["❌"] x6["❌"] x7["❌"] x8["❌"] x9["❌"] space mns["-"] s1["1"] s2["2"] s3["3"] x10["❌"] x11["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space kdt["."] zro["0"] alt["⌥"] space:3
@@ -171,8 +171,7 @@ columns 13
   class c1,c2,c3,c4,cmd,spc,sft,kdt,zro,alt mod
   class mul,pls,mns spec
   class to0,t0b,t0c goL0
-  class d9 alert
-  class x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11 dead
+  class x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12 dead
 ```
 
 ### Layer 4 — function
@@ -186,7 +185,7 @@ columns 13
 
   to0["TO0"] vz["␛ZZ"] f2["F2"] gf["⌘F12"] lf12["F12"] t0b["TO0"] space f5["F5"] f10["F10"] f11["F11"] s11["⇧F11"] ap["⌥⌘P"] x1["❌"]
   t0c["TO0"] rr["!!"] rec["⌃⌥⌘S"] c5["⇧⌘5"] fnd["⌘F"] fna["⇧⌘F"] space sgf5["⇧⌘F5"] f4["F4"] mai["📧"] lck["⇧⌘L"] mut["⇧⌥M"] x2["❌"]
-  x0["❌"] thk["💭"] c4["⇧⌘4"] cpy["⇧⌘C"] ins["⌃Ins"] pst["⌃⌥⌘V"] space sf5["⇧F5"] ds["./"] uns["🔓"] ds2["./"] ts["~/"] x3["❌"]
+  cl["⇪"] thk["💭"] c4["⇧⌘4"] cpy["⇧⌘C"] ins["⌃Ins"] pst["⌃⌥⌘V"] space sf5["⇧F5"] ts["~/"] ds["./"] dds["../"] x4["❌"] x3["❌"]
   space:3 cmd["⌘"] ses["⇧⌘␛"] cw["⇪w"] space ctl["⌃"] ssp["⇧⌘␣"] alt["⌥"] space:3
 
   classDef plain fill:#f3ecfb,stroke:#4a1f72,stroke-width:2px,color:#240c39
@@ -198,10 +197,10 @@ columns 13
 
   class f2,lf12,f5,f10,f11,f4 plain
   class gf,rec,c5,fnd,fna,c4,cpy,ins,pst,s11,sgf5,lck,mut,sf5,cmd,ses,ctl,ssp,alt mod
-  class vz,rr,thk,ap,mai,ds,uns,ds2,ts seq
+  class vz,rr,thk,ap,mai,cl,ts,ds,dds seq
   class cw spec
   class to0,t0b,t0c goL0
-  class x0,x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 ### Layer 5 — F-keys
@@ -260,19 +259,19 @@ Left hand: the three bracket-pair macros stacked vertically, each leaving the cu
 
 ### Nav — what sits where
 
-Left hand: Cmd+1..3, Ctrl+1..5, the screen-capture and terminal chords, F4 and Shift+F4. Right hand: an inverted-T arrow cluster with Home, End, PgUp, PgDn and Delete, the three editor fold macros down the inner column, and word-wise delete on the pinky.
+Left hand: Cmd+1..3, Ctrl+1..5, and Ctrl+backtick on the outer column. The bottom row is empty now — it carried `⇧⌘E` on two separate keys, plus `⌘⌥T`, F4 and Shift+F4, and the Ximi2 cleared the whole row when it fixed the duplicate. Five positions inside the core are free there. Right hand: an inverted-T arrow cluster with Home, End, PgUp, PgDn and Delete, the three editor fold macros down the inner column, and word-wise delete on the pinky.
 
 ### Numbers — the emptiest layer
 
 The operators `* + -` run down the inner column, which is where they belong and where the Corne did not have them before. The left hand carries digits 1–4 and Ctrl+1..4, and the whole bottom-left row is `&none`.
 
-The second `9` on the right pinky is a known Ximi2 defect, drawn in red. It is reproduced here on purpose: the two boards being identical is worth more than one key being right on one of them.
+The right pinky is dead. It used to carry a second `9`, a Ximi2 defect this file reproduced on purpose; the Ximi2 has since fixed it and the Corne followed in the same pass.
 
 ### Function — sticky, never locked
 
-`&caps_word` sits on the left inner thumb. The left outer column is empty: Caps Lock used to live there and moved to the Ximi2's left thumb, a tap-then-hold the Corne cannot mirror, so the Corne lost the key rather than gained a gesture. Layer 4 has a sticky form and no locked form, by design.
+`&caps_word` sits on the left inner thumb, and **Caps Lock is back on the left outer bottom key** — the Ximi2 restored it there rather than leaving the thumb gesture as its only route, and the Corne, which cannot express that gesture at all, gains a real binding for it. Layer 4 has a sticky form and no locked form, by design.
 
-`./` appears twice because `M4` and `M12` are both `./` in the Vial table. Another deliberate reproduction.
+The three path prefixes run `~/`, `./`, `../` inward along the bottom row. `M12` used to be a second copy of `M4`'s `./`; it is `../` now. `thisisunsafe` lost its key in the same shuffle and is defined but unbound on both boards.
 
 ### F-keys — what the left half is for
 
@@ -292,7 +291,8 @@ Twenty-five definitions. Twenty are numbered to match the Vial macro table in `a
 |---|---|
 | `m0` `m1` `m2` | `{}`, `()`, `[]`, cursor left into the pair |
 | `m3` | terminal: `⌃⌥⌘T`, wait 100 ms, `⌥3` |
-| `m4` `m12` | `./` — both, as in the Vial table |
+| `m4` | `./` |
+| `m12` | `../` |
 | `m5` `m6` `m7` | editor fold, unfold, fold all |
 | `m8` | `⌥⌘P` |
 | `m9` | Escape then `ZZ` — vim exit |
@@ -300,7 +300,7 @@ Twenty-five definitions. Twenty are numbered to match the Vial macro table in `a
 | `m13` `m14` | `⌥⌃←` and `⌥⌃→` |
 | `m15` | the email address |
 | `m20` | `⇧⌥T`, wait 300 ms, `!!`, Enter — re-run the last shell command |
-| `m22` | `thisisunsafe` |
+| `m22` | `thisisunsafe` — defined, bound to nothing on either board |
 | `m23` | `think hard and be smart` |
 | `m24` | `~/` |
 | `m27` | `⌘⌥T` |
@@ -320,7 +320,7 @@ One tap-dance. No hold-taps, no mod-morphs, no `&mt` anywhere.
 
 The `gui5` and `alt5` triple-tap dances are gone. They put a 400 ms tapping term on Cmd and Alt, which are the two modifiers this user's zellij config leans on hardest. `td10` is gone too; its lock-screen tap is now a plain macro on the key it already shared.
 
-The left thumb is a plain Shift. The Ximi2's dance there now carries both caps behaviours — Caps Word on a double-tap, Caps Lock on a tap-then-hold — and ZMK can express neither slot faithfully: it has no tap-hold at all, and a double-tap-to-caps would fire while typing two capitals in a row. `&caps_word` is on layer 4's left inner thumb on both boards. Caps Lock is the one casualty: it vacated layer 4's left outer column when the Ximi2 gave it a thumb gesture, and the Corne has no binding for it anywhere. The `capslock` macro stays defined in the keymap, unbound, for whenever a home turns up.
+The left thumb is a plain Shift. The Ximi2's dance there now carries both caps behaviours — Caps Word on a double-tap, Caps Lock on a tap-then-hold — and ZMK can express neither slot faithfully: it has no tap-hold at all, and a double-tap-to-caps would fire while typing two capitals in a row. `&caps_word` is on layer 4's left inner thumb on both boards. Caps Lock stopped being a casualty: the Ximi2 put it back on layer 4's left outer bottom key while keeping the thumb gesture, and the `capslock` macro is bound to that same position here. The Corne reaches Caps Lock by one route, the Ximi2 by two.
 
 `&lt` now carries `quick-tap-ms = 200`, `require-prior-idle-ms = 125` and `flavor = "tap-preferred"`, so a fast Space or Enter cannot resolve as a layer hold. This is a Corne-only improvement; QMK has no equivalent knob, so the Ximi2 goes without.
 
@@ -410,11 +410,7 @@ The deprecated mouse-emulation flag is gone along with mouse movement and scroll
 
 ## Known issues in the current layout
 
-**Carried over from the Ximi2 on purpose.** These are real defects in `akiva.vil`, reproduced here because two identical boards are worth more than one correct key:
-
-- Layer 3's duplicate `9` on the right pinky.
-- Layer 2 binds `⇧⌘E` on two different keys.
-- `M4` and `M12` are both `./`.
+**The three reproduced Ximi2 defects are fixed.** Layer 3's duplicate `9`, layer 2's two `⇧⌘E` keys and the second `./` macro were all carried over on purpose, on the rule that two identical boards beat one correct key. The Ximi2 fixed all three, so the Corne followed in the same pass: the numpad pinky is dead, layer 2's bottom-left row is empty, and `m12` types `../`. Nothing in either file is now defined twice.
 
 **Still open on the Corne**
 
@@ -429,7 +425,7 @@ The deprecated mouse-emulation flag is gone along with mouse movement and scroll
 
 ## The second keyboard — Ximi2
 
-`akiva.vil` is a Vial export for a **Ximi2** used at work: QMK rather than ZMK, already fitted with a trackpad, and carrying a four-key extra cluster per half that has no Corne equivalent (window-management chords, a record hotkey, browser refresh, hyper shortcuts). It is the board the migration is running on, and it is now several stages ahead of the Corne.
+`akiva.vil` is a Vial export for a **Ximi2** used at work: QMK rather than ZMK, already fitted with a trackpad, and carrying a four-key extra cluster per half that has no Corne equivalent (window-management chords, a record hotkey, browser refresh, hyper shortcuts). That cluster is **staying**: it is work-board hardware, it costs nothing to keep, and the plan's rule about it is now a rule about tenancy rather than removal — anything on it must also be reachable inside the 36-key core, so nothing there is muscle memory in only one place. It is the board the migration is running on, and it is now several stages ahead of the Corne.
 
 What changed: the right outer column is dead on every layer except one tenant; mouse movement and scrolling are gone; backtick moved down onto the old `/` key; layer access was rebuilt into a uniform momentary/locked pair; and two structural Vial bugs were found and fixed.
 
@@ -462,24 +458,24 @@ The high-frequency `⌥←`/`⌥→` pair took the tight adjacent slot on the bo
 ```
 TO0  ⌘1 ⌘2 ⌘3  ·  TO0     foldall HOME  ↑  PgUp  ⇧⌘.   ·
  ␛   ⌃1 ⌃2 ⌃3 ⌃4  ⌃5      fold     ←    ↓   →    ⌥⌫    ·
-⌃`   ⇧⌘E M27 ⇧⌘E ⇧F4 F4   expand  END  ⌦  PgDn   ⌃⌦    ·
+ ·    ·   ·   ·   ·  ·    expand  END  ⌦  PgDn   ⌃⌦    ·
 ```
 
 **Layer 3 — numpad**
 ```
-TO0  1 2 3 4  TO0       *  7 8 9  9   ·
+TO0  1 2 3 4  TO0       *  7 8 9  ·   ·
 DF0  ⌃1 ⌃2 ⌃3 ⌃4  ·     +  4 5 6  ⌫   ·
  ·   ·  ·  ·  ·   ·     -  1 2 3  ·   ·
                             thumbs: ⌥  0  .
 ```
 
-The duplicated `9` on the pinky is a pre-existing defect, still unfixed.
+The duplicated `9` on the pinky is fixed — that position is dead now.
 
 **Layer 4 — function**
 ```
 TO0  M9  F2  ⌘F12 F12 TO0      F5   F10 F11 ⇧F11  M8    ·
 DF0  M20 ⌃⌥⌘S ⇧⌘5 ⌘F  ⇧⌘F      ⇧⌘F5 F4  M15 ⇧⌘L   ⇧⌥M   ·
-·    M23 ⇧⌘4 ⇧⌘C ⌃Ins ⌃⌥⌘V     ⇧F5  M4  M22 M12   M24   ·
+M11  M23 ⇧⌘4 ⇧⌘C ⌃Ins ⌃⌥⌘V     ⇧F5  M24 M4  M12   ·     ·
 ```
 
 **Layer 5 — F-keys**
@@ -584,11 +580,11 @@ Open, known, and deliberately not fixed yet. Twenty-three combos are live (`UI1`
 - `UI31` is a malformed leftover: no trigger keys at all, but a `KC_BTN1` output keycode still stranded in the slot. Inert, and untidy.
 - `td[2]` gates layer 1's Shift behind a 200 ms dance while base-layer Shift is plain — an inconsistency with no justification.
 - Ten configured tap-dance slots are unreferenced; only `TD(2)` and `TD(4)` are bound anywhere.
-- Orphan macros: `M11`, `M21`, `M25`, `M26`.
-- `M12` and `M4` are both `./`.
-- Layer 3's duplicate `9`.
-- Layer 2 binds `SGUI(E)` twice.
-- The extra cluster is undrained and has no Toucan2 equivalent; everything on it eventually has to move or die.
+- Orphan macros: `M21`, `M25`, `M26`. `M11` is not one any more — it is Caps Lock, bound on layer 4's left outer bottom key.
+- ~~`M12` and `M4` are both `./`.~~ Fixed. `M12` is `../`, and the function layer's bottom row now runs `~/`, `./`, `../` inward. `M22`, `thisisunsafe`, lost its key in the shuffle and is unbound on both boards.
+- ~~Layer 3's duplicate `9`.~~ Fixed; that pinky position is dead.
+- ~~Layer 2 binds `SGUI(E)` twice.~~ Fixed by clearing the whole bottom-left row, which also freed `M27`, F4 and Shift+F4 — five core positions on the nav layer with nothing in them.
+- ~~The extra cluster is undrained and has no Toucan2 equivalent; everything on it eventually has to move or die.~~ Withdrawn. The cluster stays. It is not the Toucan2's problem because the Toucan2 is the *home* board; the work board is allowed extra hardware. The live constraint is tenancy: nothing may have its only home there.
 - ~~The Corne keymap bindings are unported.~~ Ported. The Corne now matches this file position for position, so every remaining item on this list is a defect on **both** boards.
 - Combos are still global on the Ximi2; the Corne has scoped its own to the base layer, and QMK should follow.
 - The base-layer left thumb is `KC_RGUI` while every other layer uses `KC_LGUI`. Copied faithfully to the Corne rather than silently corrected; worth deciding one way or the other.
@@ -605,7 +601,7 @@ The approach is deliberately gradual, and the hardware is bought **last**, only 
 
 | # | Stage | Corne | Ximi2 |
 |---|---|---|---|
-| 1 | **Make both maps honest** — fix diagrams, delete dead and duplicated macros. No key changes | done — diagrams regenerated, twelve legacy macros deleted, macro numbering matched to Vial | partial — mouse cruft gone, but orphan macros, the duplicate `9` and the double-bound `SGUI(E)` remain |
+| 1 | **Make both maps honest** — fix diagrams, delete dead and duplicated macros. No key changes | done — diagrams regenerated, twelve legacy macros deleted, macro numbering matched to Vial | done — the duplicate `9`, the double-bound `SGUI(E)` and the second `./` macro are all fixed, and the orphan macro slots are empty |
 | 2 | **Let the trackpads take the pointer** — delete movement, scroll and clicks; keep browser back/forward | done — movement and scroll deleted, four pointer combos kept | done — movement and scroll deleted, four pointer combos kept by choice |
 | 3 | **Take your hands off the brake** — plain modifiers, sane sticky timeout, per-layer combo scoping, layer-tap protection | done — `gui5`/`alt5` and `td10` deleted, the 60-second sticky window dropped, combos scoped to base, `&lt` given quick-tap, prior-idle and tap-preferred | partly declined — `td[4]` kept for Corne parity, `td[2]` still gating layer-1 Shift, combos still unscoped |
 | 4 | **Converge the two keyboards** — identical 30-key core on both | done — every binding on all six layers ported from `akiva.vil`, and layer 5 down from fifteen divergent positions to three now that Bluetooth is combos-only | done |

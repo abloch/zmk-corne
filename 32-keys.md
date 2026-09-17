@@ -47,7 +47,7 @@ Both right halves are now finished apart from one tenant, and it is the same ten
 
 The Corne's copy of that column used to carry browser forward, browser back and tilde. All three are gone: forward and back rolled inward onto `i`+`p` and `k`+`⌫`, and tilde left with the backtick move, since tilde is nothing but shifted backtick. What the plan asked for was that column dead on every layer, and that is not quite what happened — `m10` survives on it, because the lock screen has no home inside the core yet and inventing a bad one to satisfy a diagram would be the wrong trade. It is a named deferral on both boards rather than an oversight on either.
 
-The left half is the hard one and it is two-thirds alive on both boards. Tab and Escape are both high-frequency, both still on the outer column, and neither has a decided execution yet — though Escape now has a combo, which is new since this was written and is covered in stage five. The bottom position is dead on both boards: that is where backtick used to live, and the same move that freed it on the Ximi2 freed it on the Corne.
+The left half is the hard one and it is two-thirds alive on both boards. Tab and Escape are both high-frequency, both still on the outer column, and neither has a decided execution yet — though Escape now has a combo, which is new since this was written and is covered in stage four. The bottom position is dead on both boards: that is where backtick used to live, and the same move that freed it on the Ximi2 freed it on the Corne.
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
@@ -70,7 +70,9 @@ columns 13
   class cmd,spc,sft,ctl,ent,alt thumb
 ```
 
-The Ximi2 has one more thing to shed that the Corne never had: a four-key cluster per half, beyond the 42, carrying hyper chords, window-management arrows, browser refresh and a duplicate of the record hotkey. That cluster is the two boards' only genuine hardware asymmetry, and because the Toucan2 has no equivalent it resolves in the Corne's favour — all eight of those keys need homes inside the core.
+The Ximi2 has one thing the Corne never had: a four-key cluster per half, beyond the 42, carrying hyper chords, window-management arrows, browser refresh and a duplicate of the record hotkey. This document used to treat that cluster as something to drain and then switch off, and it had a whole stage for the job. **That is withdrawn.** The cluster is work-board hardware on a board that is staying at work; emptying it buys nothing, and eight keys of free capacity are not a debt.
+
+What parity actually requires is narrower than removal, and it is a rule about tenancy rather than about hardware: **nothing may have its only home on those eight keys.** Anything bound there has to be reachable inside the 36-key core as well, so no habit your hands form at work goes missing when you sit down at home. Under that rule the cluster is a bonus — a second, shorter route to things you can already reach — and the duplicate hyper-M and the duplicate record hotkey stop being defects, because duplication is exactly what that hardware is now for. The same reasoning covers the rotary encoders: Ximi2-only, no Toucan2 equivalent, and no reason to strip them as long as nothing depends on them alone.
 
 ### Why most of your design already fits
 
@@ -110,7 +112,7 @@ The Ctrl dance is the one exception and it survives on purpose, on both boards �
 
 The left thumb is the one place the purge could not reach. The Ximi2's Shift there is a dance, and it has since taken on both caps behaviours — tap for Shift, double-tap for Caps Word, tap-then-hold for Caps Lock. ZMK can express neither of those slots: it has no tap-then-hold at all, and a double-tap-to-caps is the obvious substitute and the wrong one, because it fires the moment you type two capitals in a row. So the Corne's left thumb is a plain Shift, and Caps Word sits on layer 4's left inner thumb on both boards.
 
-Caps Lock is where the gap shows. When it moved onto the Ximi2's thumb it vacated layer 4's left outer column, and that key was deleted on both boards rather than kept alive on one — so the Corne now has no Caps Lock binding anywhere. The `capslock` macro stays defined in the keymap, unbound, so the day a gesture turns up it is one line of work. That is the third and last deliberate difference between the two maps, and the only one where the Corne is the poorer of the two.
+Caps Lock is where the gap used to show, and it has closed. When Caps Lock moved onto the Ximi2's thumb it vacated layer 4's left outer column, and that key was deleted on both boards — which left the Corne with no Caps Lock binding at all, because ZMK cannot express the thumb gesture that replaced it. The Ximi2 has since put the key back, alongside the gesture rather than instead of it, and the Corne binds the same position. Two routes on one board, one route on the other, and nothing unreachable on either. The `capslock` macro is bound rather than parked, and the count of deliberate differences between the two maps is down from three to two.
 
 **Combo overlaps are acceptable.** Thirteen subset relationships exist among the Ximi2's twenty-four live combos, and the same thirteen exist among the Corne's forty — `f`+`s` inside all four home-row layer combos, `f`+`e` inside both nav ones, `j`+`l` inside `j`+`k`+`l`, `m`+`.` inside `m`+`,`+`.`, `x`+`v` inside both layer-5 combos, and the three-key combos inside their own four-key locking variants. The Corne has since added four of its own, all inside the Bluetooth grid: `o`+`p` plus `z`, `x`, `c` or `v` each sits inside the six-key clear-everything. The old reading of that was a design defect. The correct reading is narrower: QMK does not fire a combo the instant its keys are all down. While a longer combo containing those same keys is still reachable, it waits. `x`+`v` does not escape merely because `x` and `v` are both held; it escapes only when the third key lands after `COMBO_TERM` has already expired. That is a timing bug, not an always-on one — it fires on a slow roll and never on a fast one, which makes it the one class of bug that gets rarer the more you use the board. ZMK defers to the longer combo the same way, so the reading transferred to the Corne intact rather than needing to be re-argued there. Not worth retraining deep muscle memory to remove.
 
@@ -201,7 +203,7 @@ Three differences still do **not** port, and the list is shorter than it reads, 
 
 Bluetooth has now left the keymap altogether. It is sixteen combos hanging off one shared anchor, `o`+`p`, with a third key naming the profile and that third key's row picking the verb: **top row selects, home row disconnects, bottom row clears**, plus `o`+`p`+`z`+`x`+`c`+`v` to clear everything. Every key in the grid is inside the 36-key core, so all sixteen survive the move to a smaller board — which the old four bottom-row pairs also did, but they only reached profiles 0 to 2 and a clear-current, and they were four unrelated shapes rather than one posture. Two ZMK facts shaped the rest of it. **Profiles count from 0**, so the first key of each row is profile 0, not profile 1, and there is no profile 5. And `BT_CLR` takes no profile index at all — it clears whichever profile is current — so clearing a *named* profile is a sequence rather than a keypress: select, wait 30 ms, clear. That is why the macro table grew five entries it did not have, `btclr0`-`btclr4`. Two budgets in `corne.conf` had to be raised to hold the grid: `CONFIG_ZMK_COMBO_MAX_COMBOS_PER_KEY=24`, because `p` now sits in seventeen combos against a default of five, and `CONFIG_ZMK_COMBO_MAX_KEYS_PER_COMBO=6`, because clear-everything needs six keys against a default of four.
 
-So the **first** difference that remains is not Bluetooth but what is left standing beside where it used to be: three keys on layer 5, `&studio_unlock` on `z`, `&soft_off` on `g` and `&bootloader` on `b`, positioned so the layer-entry combo `x`+`c`+`v` touches none of them. Those three stay because ZMK has them and QMK has no equivalent to port them to — they are a capability difference, not a leftover. Everything else on that half is `&trans` again, and the layer is renamed from `bt` to `fkeys` because that is now all it is. **Layer 5 went from fifteen divergent positions to three,** which is the largest parity gain since the port itself, and it came from deleting keys rather than finding homes for them. The **second** difference is the `&lt` layer-tap protection, which has no QMK equivalent knob and so stays a Corne-only improvement. The **third** is Caps Lock, described above: the Ximi2 keeps it on the left thumb's tap-then-hold, ZMK can express neither that slot nor a safe substitute, and the Corne goes without.
+So the **first** difference that remains is not Bluetooth but what is left standing beside where it used to be: three keys on layer 5, `&studio_unlock` on `z`, `&soft_off` on `g` and `&bootloader` on `b`, positioned so the layer-entry combo `x`+`c`+`v` touches none of them. Those three stay because ZMK has them and QMK has no equivalent to port them to — they are a capability difference, not a leftover. Everything else on that half is `&trans` again, and the layer is renamed from `bt` to `fkeys` because that is now all it is. **Layer 5 went from fifteen divergent positions to three,** which is the largest parity gain since the port itself, and it came from deleting keys rather than finding homes for them. The **second** difference is the `&lt` layer-tap protection, which has no QMK equivalent knob and so stays a Corne-only improvement. There is no third any more. It used to be Caps Lock, and it stopped being a difference when the Ximi2 restored the layer 4 key beside its thumb gesture and the Corne bound the same position.
 
 Two things about that outcome are worth being explicit about rather than letting the parity number carry them. It broke this document's own combo-adjacency rule, knowingly, and bought its way out with `require-prior-idle-ms = <250>` — the argument is above, under the rule it broke. And Bluetooth now has **no fallback key anywhere**. If a combo stops firing — a debounce change, a timeout change, a dead switch under `o` or `p` — there is no position to press instead, and re-pairing the board needs the physical reset button. That is the right trade while `o` and `p` are healthy, and it is the reason no Bluetooth combo should be moved or retimed casually.
 
@@ -213,47 +215,29 @@ It was done as one sitting, not as a drip. A half-ported Corne would have been w
 
 ## Stage three — housekeeping, both boards
 
-**Status — done on the Corne. Open on the Ximi2, and a good deal smaller than it was.**
+**Status — done on both boards. Nothing on the list is still open.**
 
-None of this changes anything you press. All of it blocks clear thinking, and you are about to do a lot of thinking about where eight more keys should go.
+None of this changes anything you press. All of it blocks clear thinking, and the thinking left to do is about the left outer column.
 
 On the **Ximi2**, in rough order of how much confusion it causes. Four of the seven items below have quietly closed since they were written, which is worth recording rather than deleting — it says something about which kinds of clutter actually get cleaned:
 
 - ~~**Ten unused tap-dance slots.**~~ Closed. The dance table is compacted: `td[0]` is Shift with double-tap Caps Word and tap-then-hold Caps Lock, `td[1]` is the Ctrl-and-record dance, and every other slot is genuinely empty rather than half-populated. The old `TD(2)`/`TD(4)` numbering in your notes is stale.
-- ~~**Orphan macros `M11`, `M21`, `M25`, `M26`.**~~ Closed; those slots are empty in the current export. The duplication that is left is `M28` and `M29`, byte-for-byte copies of `M18` and `M19` — the `⌘⌥` up and down arrows. Both pairs live on the extra cluster, so both die with stage four.
-- **`M4` and `M12` are both `./`.** Two macro slots, one string, both bound on the function layer. Still true, and now true on the Corne as well, deliberately.
+- ~~**Orphan macros `M11`, `M21`, `M25`, `M26`.**~~ Closed, and `M11` is not merely non-orphaned — it is Caps Lock again, bound on layer 4's left outer bottom key on both boards. The duplication that is left is `M28` and `M29`, byte-for-byte copies of `M18` and `M19` — the `⌘⌥` up and down arrows. Both pairs live on the extra cluster, which is staying, so that duplication is now a feature of a bonus cluster rather than a defect awaiting a stage.
+- ~~**`M4` and `M12` are both `./`.**~~ Closed. `M12` is `../`, and the function layer's bottom row now runs `~/`, `./`, `../` inward. The shuffle cost `M22`, `thisisunsafe`, its key: it is defined and unbound on both boards, which is an acceptable price for three distinct path prefixes on three keys.
 - ~~**Combo slot `UI31` is malformed.**~~ Closed. The combo table was compacted in the same pass that added `q`+`e` for Escape, and the stranded `KC_BTN1` went with the empty slots.
-- **Layer 3's duplicated `9`.** The numpad's top row has `9` twice, so one numpad position is silently dead. Pre-existing, known, still unfixed — and reproduced on the Corne on purpose.
-- **Layer 2 binds `⇧⌘E` on two different keys.** One of those two positions is free and nobody knows it. Also reproduced on the Corne.
+- ~~**Layer 3's duplicated `9`.**~~ Closed. The right pinky is bound to nothing now, which is honest: it was never a second nine, it was a dead key wearing a label.
+- ~~**Layer 2 binds `⇧⌘E` on two different keys.**~~ Closed, and closed generously: the whole bottom-left row went with it, `⌘⌥T`, F4 and Shift+F4 included. That is **five free positions inside the core on the nav layer** — the largest block of empty, combo-adjacent, both-boards space the migration has, and the obvious place to look first when the left outer column needs somewhere to go.
 - ~~**`td[2]` gates layer 1's Shift** behind a 200 ms dance while base-layer Shift is plain.~~ Closed, though not the way this bullet wanted: layer 1 and the base layer now carry the *same* dance, `td[0]`, so the inconsistency is gone but the tax is on both. That dance is the one binding the Corne could not mirror.
 
 On the **Corne**, what used to be a bigger and older pile is cleared. Twelve unreferenced macros are gone, nine of them exact duplicates, including the two copies each of fold, unfold and fold-all, and including the pair whose names were inverted — where `fold` bound unfold and `expand` bound fold, which is the single most misleading thing that has ever been in either file. The ASCII diagrams were regenerated against the bindings rather than patched. `scroll-right`, bound on two adjacent keys while `scroll-left` appeared nowhere, went out with mouse emulation. The duplicate `thisisunsafe` is gone, every layer has a `display-name`, and the macros are numbered to the Vial table so the two files can be read side by side. Most of that died with stage two, exactly as predicted; nothing survived it needing a second pass.
 
-One honest exception has to be named. Three of the Ximi2's defects were reproduced on the Corne rather than fixed: layer 3's duplicate `9`, layer 2's two `⇧⌘E` keys, and the two macros that both type `./`. That was a decision, not sloppiness — two identical boards are worth more than one correct key, and a file that claims to be a position-for-position port loses the property that makes it useful the moment it starts quietly improving on its source. Fix them on the Ximi2 and the Corne follows in the same commit. Fix them on the Corne alone and you have re-opened the gap this stage exists to close.
+Three of the Ximi2's defects were reproduced on the Corne rather than fixed — layer 3's duplicate `9`, layer 2's two `⇧⌘E` keys, and the two macros that both type `./` — and that reproduction is worth keeping on the page now that all three are gone, because it is the thing that made fixing them cheap. They were copied on the rule that two identical boards are worth more than one correct key, and a file claiming to be a position-for-position port loses the property that makes it useful the moment it starts quietly improving on its source. The prediction attached to that rule was: *fix them on the Ximi2 and the Corne follows in the same commit.* That is precisely what happened — one Vial pass, one keymap pass, no divergence at any point. The discipline paid out exactly as advertised, which is the best argument for keeping it the next time a defect looks trivially fixable on one board.
 
-*You've finished this stage when you can read either board's layer map and believe it, and nothing in either file is defined twice* — with those three reproductions as the named, deliberate exception, and only for as long as they are still deliberate.
+*You've finished this stage when you can read either board's layer map and believe it, and nothing in either file is defined twice.* Both are now true, with no exceptions outstanding.
 
-## Stage four — drain the Ximi2's extra cluster
+One more item closed here rather than executed: **this document used to have a fourth stage, to drain and switch off the Ximi2's extra cluster.** It is deleted, not deferred. The cluster is staying, for the reasons under *What is still on the block* above, and what replaced the stage is a one-line rule — nothing may have its only home out there. Every stage after it moved up a number.
 
-**Status — Ximi2 only, not started. Nothing to do on the Corne.**
-
-This is the two boards' one real asymmetry, and it resolves in the Corne's favour: the Corne has no such cluster, the Toucan2 has no equivalent, so everything on it needs a home inside the core. Four keys per half. What is on them today:
-
-| Half | Contents |
-|---|---|
-| Left | Three hyper chords — hyper-D, hyper-F, hyper-M — with hyper-M bound twice |
-| Right | `⌃⌥←` and `⌃⌥→`, browser refresh, and a duplicate of the record hotkey |
-| On layer 1 | `⌘⌥` arrows on all four positions, plus two more hyper chords |
-
-The duplicate hyper-M and the duplicate record hotkey can simply go — one copy of each is enough, and the record hotkey already lives on the double-tap of `td[4]`. The `⌘⌥` arrows are window management and belong on the nav layer, in positions that also exist on the Corne, which is now the binding constraint on where anything lands. Browser refresh and the hyper chords need real homes and there is room: the nav layer has a hole at the inner-index top position, and layer 3's entire bottom row is empty. Both holes now exist on the Corne too, in the same positions, because the port copied the emptiness along with everything else — so whatever lands in them lands on both boards in one decision rather than two.
-
-One tail end belongs here too. The base-layer **encoder** still turns as wheel up and wheel down — the last scrap of mouse emulation on the board, missed by the pointer purge because it is not a key. It has no Toucan2 equivalent either, so it goes out with the cluster.
-
-Do not switch the cluster off before its contents have somewhere to go. This is the one move in the whole migration that would cost you working shortcuts rather than merely comfort.
-
-*You've finished this stage when every Ximi2 key outside the 36 is bound to nothing, and you have not lost a single shortcut.*
-
-## Stage five — find homes for the left outer column
+## Stage four — find homes for the left outer column
 
 **Status — undecided, but no longer untouched, and it is now the same set of decisions on both boards. This is where the open questions live.**
 
@@ -265,9 +249,9 @@ Here is everything currently living on it, across all six layers, on both boards
 |---|---|---|---|
 | 0 — base | `⇥` | `␛` | dead — backtick left in stage two |
 | 1 — symbols | `DF(0)`, `&to 0` on the Corne | `␛` | `?` |
-| 2 — nav | `TO(0)` | `␛` | `LCTL(GRAVE)` |
+| 2 — nav | `TO(0)` | `␛` | `LCTL(GRAVE)` — Corne only; the Ximi2 cleared it |
 | 3 — numpad | `TO(0)` | `DF(0)`, `&to 0` on the Corne | dead |
-| 4 — function | `TO(0)` | `DF(0)`, `&to 0` on the Corne | dead — Caps Lock left for the Ximi2's left thumb |
+| 4 — function | `TO(0)` | `DF(0)`, `&to 0` on the Corne | Caps Lock — back, and on both boards |
 | 5 — F-keys | `TO(0)` | transparent | transparent |
 
 Read that table and most of the column turns out to be return-to-base keys. `TO(0)` is already prepared on the inner-index top key — the `t` position — on layers 2, 3, 4 and 5, and that column survives. So the left-outer `TO(0)` and `DF(0)` copies may simply be deletable rather than relocatable.
@@ -280,13 +264,13 @@ The port took a position on half of that without being asked to. Every `DF(0)` b
 
 **`?` on layer 1** may not need a home at all. Slash already exists as `d`+`r`, and `?` is shifted slash — so the question is simply whether Shift plus the `d`+`r` combo produces it cleanly, which is a five-minute test nobody has run.
 
-**Caps Lock** is resolved, and it resolved the way this section predicted: moved on one board, dropped on the other. The Ximi2 took it onto the left thumb's tap-then-hold, where it costs no key at all; the Corne, which has no ZMK gesture to match, simply lost it. Both boards keep `caps_word` on layer 4's left inner thumb, inside the core and inside the 36 keys, which is what made dropping it cheap enough to do. That is one more tenant off the left outer column, and the bottom position is now dead on layers 0, 3 and 4.
+**Caps Lock** is resolved, and it resolved the other way from what this section predicted. The prediction was: moved on one board, dropped on the other. What happened is that the Ximi2 took it onto the left thumb's tap-then-hold *and then put the layer 4 key back beside it*, so the gesture is a shortcut rather than the only route — and the Corne, which cannot express that gesture, binds the key. Both boards also keep `caps_word` on layer 4's left inner thumb, inside the core. The cost is that Caps Lock is a **tenant of the left outer column again**, on layer 4, and it has to be rehoused with the rest of them rather than being one fewer thing to think about. The bottom position is dead on layers 0 and 3 only.
 
 **`LCTL(GRAVE)`** — Ctrl plus backtick, the terminal-cycling chord — is still unresolved, and still has no substitute at all.
 
 *You've finished this stage when every tenant of the left outer column has either a decided new home or a decided execution, on both boards.*
 
-## Stage six — retire the left column
+## Stage five — retire the left column
 
 **Status — not started on either board, which is now the same point on both. This is the gate.**
 
@@ -315,17 +299,17 @@ There is a second way to do this, and it is worth naming because it is free and 
 
 The trade-off is real and it cuts the other way. A key that is dead but still physically present is *feedback*. You hit it, nothing happens, and you learn exactly which habit hasn't migrated and how often. That is the whole diagnostic value of these two weeks, and it disappears the moment the keycap is in a drawer — a finger landing on bare plate tells you something happened, but not nearly as precisely. There is also a middle route: run the two weeks with the keys dead but present, harvest the feedback, and pull the caps afterwards as the thing that makes it permanent.
 
-Either way, if a specific key keeps catching you, don't revert the column. Go back to stage five, give that one key a better home, and continue. Reverting teaches your hands that the old position still pays.
+Either way, if a specific key keeps catching you, don't revert the column. Go back to stage four, give that one key a better home, and continue. Reverting teaches your hands that the old position still pays.
 
 *You've finished this stage when two weeks pass, on both boards, and you stop noticing the dead columns.* This is the gate for buying hardware — the only one, and it may now gate two purchases rather than one.
 
-## Stage seven — buy the hardware
+## Stage six — buy the hardware
 
-**Status — not started. Gated on stage six.**
+**Status — not started. Gated on stage five.**
 
 Your layout already runs on it, on both boards. The dead keys simply stop existing physically. There is no migration event, no adjustment day, no flashing anxiety — you will have been typing this layout for weeks.
 
-For home: order the Toucan2's 36-key build, port the keymap to the new shield with the six dead entries dropped per layer, and set up the trackpad. For work there are two routes and they cost very differently. A 36-key Ximi, if such a build exists, is the clean answer. De-keying the board you already own is the free one — pull the outer switches, keep everything else, accept that the extra cluster is still physically there and decide separately whether it stays usable or goes dark for parity. Neither route needs deciding now; both are downstream of the gate.
+For home: order the Toucan2's 36-key build, port the keymap to the new shield with the six dead entries dropped per layer, and set up the trackpad. For work there are two routes and they cost very differently. A 36-key Ximi, if such a build exists, is the clean answer. De-keying the board you already own is the free one — pull the outer switches and keep everything else, the extra cluster included and live. That part is already decided: the cluster stays usable, under the rule that nothing has its only home there. Which of the two routes to take is not decided, and both are downstream of the gate.
 
 Two things will surprise you on the Toucan2, both new capability rather than migration. The columnar stagger is steeper than the Corne's and the pitch is tighter — a finger-position adjustment, not a layout one, and days rather than weeks. And the trackpad will quietly change what the nav layer is for. Once pointing and scrolling are gestures, that layer's real job is arrows, word-motion and the browser back/forward you kept. Expect to redesign it, but after a week of living with the trackpad rather than in advance.
 
@@ -370,21 +354,21 @@ This is the stage most people abandon. Abandoning it costs you nothing here — 
 
 ## Open questions
 
-Unresolved, and listed rather than papered over. Most of stage five is in here.
+Unresolved, and listed rather than papered over. Most of stage four is in here.
 
 1. **Does `q`+`e` hold up as Escape?** It is live on both boards, it took the question over from the `w`+`x` proposal, and it has not yet been tested by a long vim session or a bad afternoon in an LLM shell. The key stays live beside it until it has been — a missed Escape mid-vim is expensive in a way a missed Tab is not, which is why this is the one dual-homing exception the plan allows.
 2. **Where does Tab go?** Still no candidate, and now the only tenant of the left column without one. Symbols-layer thumb area and left inner column are both untried.
 3. **Can `?` on layer 1 just be Shift plus `d`+`r`?** If shifted combo output works cleanly, the layer-1 bottom key needs no replacement at all. Five-minute test, never run.
 4. **Are the left-outer `TO(0)` and `DF(0)` copies redundant now** that `TO(0)` is on the `t` position on layers 2 through 5? Probably yes for `TO(0)`. For `DF(0)` the Corne has already answered by fiat — the port turned every one of them into `&to 0` — so the live question is whether that was right and whether the Ximi2 should follow, or whether `DF(0)` was doing something nobody has noticed. Layer 1 still has no `t`-position escape hatch at all.
-5. **What happens to `LCTL(GRAVE)`?** Low-frequency enough to drop rather than relocate, and nothing substitutes for it. Caps Lock, which this question used to be half about, is settled: the Ximi2 has it on the left thumb and the Corne does without.
+5. **What happens to `LCTL(GRAVE)`?** Low-frequency enough to drop rather than relocate, and nothing substitutes for it. It is also now a divergence rather than a shared tenant: the Ximi2 cleared that position and the Corne still binds it, which makes dropping it on the Corne the cheapest way to close the gap — unless the terminal-cycling habit turns out to be real, in which case it needs a core home and the Ximi2 needs it back. Caps Lock, which this question used to be half about, is settled and is back on layer 4's left outer key on both boards.
 6. **Is slash staying combo-only acceptable permanently?** It has been fine for weeks, but weeks of a combo-only glyph is not the same test as a year of it, and file paths are a thing you type.
 7. **Do home row mods happen at all,** given how much better the board felt after the tap dances came out? The answer depends entirely on whether opposite-hand-only holds behave as advertised on both firmwares.
 8. **Where does `M10` go?** Lock screen is the last tenant of the right outer column, and it is currently the only thing keeping that column from being entirely dead.
 9. **Is combo-only Bluetooth acceptable permanently?** The same question as slash, with a worse failure mode. Slash staying combo-only costs keystrokes if it breaks; Bluetooth staying combo-only means a broken combo is answered with the physical reset button. `require-prior-idle-ms = <250>` is the only thing standing between the `o`+`p` anchor and a roll, and nothing has yet tested it against a debounce change or a worn switch.
-10. **Does a 36-key Ximi build exist at all?** Unknown, and worth finding out before stage seven rather than during it. If it does not, de-keying the current board is the only route for work, which changes nothing about the plan but changes what stage seven costs.
-11. **If the current Ximi2 is kept and de-keyed rather than replaced, what happens to the extra cluster?** It stays physically present whether or not the outer columns do. Does it remain usable as a work-board bonus, or does it go dark too, so that both boards are the same 36 keys and nothing is muscle memory in only one place?
+10. **Does a 36-key Ximi build exist at all?** Unknown, and worth finding out before stage six rather than during it. If it does not, de-keying the current board is the only route for work, which changes nothing about the plan but changes what stage six costs.
+11. ~~**If the current Ximi2 is kept and de-keyed rather than replaced, what happens to the extra cluster?**~~ Answered: it stays usable, as a work-board bonus. The question assumed the choice was between a usable cluster and strict parity, and that framing was wrong — the two are compatible under a tenancy rule. Nothing may have its **only** home out there, so every habit still transfers, and the cluster gets to be what it actually is, which is eight free keys on one of the two boards. The stage that existed to empty it is deleted.
 12. **Why is the base-layer left thumb right Cmd?** `KC_RGUI` on the Ximi2, `&kp RGUI` on the Corne, while every other layer on both boards uses left Cmd. It was copied faithfully rather than silently corrected, which was the right instinct during a port and is not an answer. Either there is a reason nobody has written down, or it is a slip that has been load-bearing long enough to feel deliberate. Decide, then make all twelve positions agree.
-13. ~~**Does the left-thumb Caps Lock dance survive?**~~ Answered, and answered the other way round. This question proposed dropping the dance on the Ximi2 so both boards could take Caps Lock off layer 4. What happened instead is that the dance grew: it now carries Caps Word on a double-tap as well, and layer 4's Caps Lock key was deleted on both boards. The Ximi2 came out ahead — two caps behaviours, no keys spent — and the Corne came out short, with no Caps Lock binding at all. The tap-dance term stayed. So the pattern in this document held for every other dance and broke for this one, which is worth remembering the next time a term looks obviously droppable.
+13. ~~**Does the left-thumb Caps Lock dance survive?**~~ Answered, twice, and the second answer reversed part of the first. The question proposed dropping the dance so both boards could take Caps Lock off layer 4. Instead the dance grew — it carries Caps Word on a double-tap too — and layer 4's key was deleted on both boards, which left the Corne with no Caps Lock at all. That was the wrong end state and it has since been corrected: the layer 4 key is back on both boards, the dance keeps its extra behaviour on the Ximi2, and the gesture is now a shortcut rather than the sole route. Worth remembering twice over — a tap-dance term can be worth paying, and a capability that exists on only one board is a bug even when that board is the one you use most.
 
 ---
 
@@ -394,11 +378,10 @@ Unresolved, and listed rather than papered over. Most of stage five is in here.
 |---|---|---|---|
 | 1 — Retire the right column | Almost nothing, as it turned out | **Done**, bar the lock key | **Done**, bar the same lock key |
 | 2 — Bring the Corne to parity | One sitting of config work | Source of truth | **Done** — layer 5 now down to three divergent keys |
-| 3 — Housekeeping, both boards | Nothing. No key changes | Open, and smaller than it was | **Done** |
-| 4 — Drain the extra cluster | Nothing, if drained before it is cut | Not started | Not applicable |
-| 5 — Homes for the left outer column | Thinking, mostly | Escape answered, Tab and the rest open | The same, on both boards at once |
-| 6 — Retire the left column | The real test. Two weeks | Not started | Not started |
-| 7 — Buy the hardware | Money — possibly twice | Gated on stage 6 | Gated on stage 6 |
+| 3 — Housekeeping, both boards | Nothing. No key changes | **Done** | **Done** |
+| 4 — Homes for the left outer column | Thinking, mostly | Escape answered, Tab, Caps Lock and the rest open | The same, on both boards at once |
+| 5 — Retire the left column | The real test. Two weeks | Not started | Not started |
+| 6 — Buy the hardware | Money — possibly twice | Gated on stage 5 | Gated on stage 5 |
 | Side quest — home row mods | Some misfires. Thumbs stay as fallback | Not started | Not started |
 
-Two rules, and they are the same two the plan started with. **Never advance a stage on a schedule** — advance when the previous stage's closing line is actually true of you; stages five and six are the ones worth being slow about. And **never advance on one board alone.** That second rule was suspended for exactly one stage, knowingly, and stage two is where it came back into force — which it now has. From here the two boards move together, because a single layout on two keyboards was the whole point, and the next stage that matters is the one that costs a column off both of them.
+Two rules, and they are the same two the plan started with. **Never advance a stage on a schedule** — advance when the previous stage's closing line is actually true of you; stages four and five are the ones worth being slow about. And **never advance on one board alone.** That second rule was suspended for exactly one stage, knowingly, and stage two is where it came back into force — which it now has. From here the two boards move together, because a single layout on two keyboards was the whole point, and the next stage that matters is the one that costs a column off both of them.
