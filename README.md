@@ -483,7 +483,7 @@ Mouse movement and scroll are deleted — the trackpad owns the pointer. Four po
 | `q`+`d` | `BTN1` | left click without leaving home row |
 | `a`+`c` | `BTN2` | right click without leaving home row |
 
-`⇥`+`b` fires the prose macro.
+`q`+`b` fires the prose macro and `q`+`e` gives a second Escape. Both are re-anchored inside the 36-key core, so neither dies with the outer columns — `⇥`+`b`, which an earlier draft of this section recorded, no longer exists on either board.
 
 ---
 
