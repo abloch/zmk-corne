@@ -32,7 +32,38 @@ There is no local build. Every push builds through GitHub Actions and produces f
 
 ## Hardware and physical shape
 
-Corne 42 keys: three rows of six columns per half, three thumb keys per half. Both halves are drawn together below, in physical left-to-right order, with the gap between them standing in for the two controllers. The outer pinky column on each half is the part the 36-key migration removes, and both boards now agree on what is still standing there — Tab and Escape on the left, the lock-screen macro on the right, ❌ everywhere else.
+Corne 42 keys: three rows of six columns per half, three thumb keys per half. Every map below draws both halves together, in physical left-to-right order, with the gap between them standing in for the two controllers.
+
+The outer pinky column on each half is the part the 36-key migration removes, and both boards now agree on what is still standing there — Tab and Escape on the left, the lock-screen macro on the right, ❌ everywhere else. Backtick sits on the right pinky bottom row, where slash used to be; slash is now the `d`+`r` combo and tilde is gone. Backspace is on the right pinky home position. The base layer carries no `-` `=` `;` `'` `[` `]` `\` at all — every one of those is a combo or a layer.
+
+---
+
+## Layer maps
+
+Six layers, each with a `display-name` and **each with its own hue**, so a glance at the colour says which layer you are looking at before you read a single key:
+
+| Layer | Hue | | Layer | Hue |
+|---|---|---|---|---|
+| 0 base | slate | | 3 numbers | amber |
+| 1 symbols | teal | | 4 function | violet |
+| 2 nav | green | | 5 F-keys | rose |
+
+Within a layer, the shade says what kind of key it is — lightest to deepest:
+
+| Shade | Meaning |
+|---|---|
+| lightest | plain unmodified keypress — a letter, a digit, an F-key, an arrow |
+| light | a modifier — a chord like `⌘1`, or a thumb modifier |
+| mid | a macro — a sequence, not a single chord |
+| deepest | the layer's own signature output — the symbols on layer 1, the operators on layer 3, Caps on layer 4 |
+
+Three classes ignore the layer hue, because what they mean does not change between layers: **red** is destructive, irreversible, or a known defect; **dashed slate ⌷** is `&trans`, showing whatever is underneath; **dashed grey ❌** is `&none`.
+
+One rule ties the hues together: **a key that switches layers wears the colour of the layer it goes to.** That is why layer 0's Space is green and its Enter is teal — holding them is how nav and symbols are reached — and why `TO0`, the escape hatch back to base, is slate on all five of the others.
+
+### Layer 0 — base
+
+QWERTY, all modifiers on the thumbs, no home row mods. Space and Enter wear nav's and symbols' colours because holding them is how you get there.
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
@@ -44,61 +75,27 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
-  classDef doomed fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
+  classDef plain fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef mod fill:#dbe3ec,stroke:#3c4a5c,stroke-width:3px,color:#0a1219
+  classDef goL1 fill:#8ed7e6,stroke:#053541,stroke-width:4px,color:#02141a
+  classDef goL2 fill:#93d9a8,stroke:#063a2c,stroke-width:4px,color:#031410
+  classDef alert fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class q,w,e,r,t,a,s,d,f,g,z,x,c,v,b,y,u,i,o,p,h,j,k,l,bspc,n,m,cma,dot,grv core
-  class cmd,spc,sft,ctl,ent,alt thumb
-  class tab,esc,lock doomed
+  class q,w,e,r,t,a,s,d,f,g,z,x,c,v,b,y,u,i,o,p,h,j,k,l,bspc,n,m,cma,dot,grv plain
+  class cmd,sft,ctl,alt mod
+  class ent goL1
+  class spc goL2
+  class tab,esc,lock alert
   class x1,x2,x3 dead
 ```
 
-Backtick sits on the right pinky bottom row, where slash used to be; slash is now the `d`+`r` combo and tilde is gone. Backspace is on the right pinky home position. Base carries no `-` `=` `;` `'` `[` `]` `\` at all — every one of those is a combo or a layer.
-
----
-
-## Corne layer structure
-
-Six layers, each with a `display-name`. The maps below are drawn the same way as the one above — both halves side by side, physical left-to-right, one layer below the next — and the colours mean the same thing on every one:
-
-| Colour | Meaning |
-|---|---|
-| grey | plain unmodified keypress — a letter, a digit, an F-key, an arrow |
-| cyan | punctuation or symbol output |
-| pink | a modifier chord, such as `⌘1` or `⇧⌘E` |
-| amber | a macro — a sequence, not a single chord |
-| purple | layer switch |
-| mint | thumb key |
-| red | destructive, irreversible, or slated for retirement |
-| dashed grey | `&none`, marked ❌ |
-
-`TO0` is `&to 0`, the escape hatch back to base. `⌷` is `&trans`, falling through to the layer below.
-
-### Layer 0 — base
-
-QWERTY, drawn in the diagram above. **All modifiers live on the thumbs** — there are no home row mods anywhere in this keymap. Five of the six thumb keys are plain; only the right inner one is a tap-dance.
-
-The diagram shows each thumb's tap only. What two of them do when held, and what the third does on a double-tap, is the table:
-
-| Thumb | Binding | Notes |
-|---|---|---|
-| Left outer | `&kp RGUI` | Cmd. Right Cmd, faithfully copied from the Ximi2, where every other layer uses left Cmd |
-| Left middle | `&lt 2 SPACE` | Space / hold for nav |
-| Left inner | `&kp LSHFT` | Shift |
-| Right inner | `&control_record` | Ctrl; double-tap for the record hotkey. 210 ms, the Ximi2's term |
-| Right middle | `&lt 1 ENTER` | Enter / hold for symbols |
-| Right outer | `&kp LALT` | Alt |
-
-The lock-screen macro on the right outer column is that column's only surviving tenant on either board. Its final home is still an open question in the plan.
-
 ### Layer 1 — symbols
 
-Left hand: the three bracket-pair macros stacked vertically, each leaving the cursor inside, then the quotes, the colons and the shifted number row. Right hand: **Alt+digit** for all ten digits — an application switcher — plus word and paragraph motion and a terminal launcher.
+Bracket-pair macros and the shifted number row on the left; ⌥+digit app switching, word motion and the terminal on the right.
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e6f6f9','primaryTextColor':'#04222b','primaryBorderColor':'#0a4f63','nodeTextColor':'#04222b','textColor':'#04222b','mainBkg':'#e6f6f9','fontSize':'18px'}}}%%
 block
 columns 13
 
@@ -107,29 +104,27 @@ columns 13
   qm["?"] sqb[" []"] exc["!"] at["@"] hsh[" #"] col[":"] space a0["⌥0"] a1["⌥1"] a2["⌥2"] al["⌥←"] ar["⌥→"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
-  classDef punc fill:#bfe6f0,stroke:#0a4f63,stroke-width:3px,color:#04222b
-  classDef macro fill:#ffe6b8,stroke:#7a4a00,stroke-width:3px,color:#3a2200
-  classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
-  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef plain fill:#e6f6f9,stroke:#0a4f63,stroke-width:2px,color:#04222b
+  classDef mod fill:#cdeef4,stroke:#0a4f63,stroke-width:3px,color:#04222b
+  classDef seq fill:#aee3ee,stroke:#07414f,stroke-width:3px,color:#03191f
+  classDef spec fill:#8ed7e6,stroke:#053541,stroke-width:3px,color:#02141a
+  classDef goL0 fill:#adc2d8,stroke:#1d2c3d,stroke-width:3px,color:#060c12
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class semi,dqt,sqt,dol,dl2,pct,amp,ast,qm,exc,at,hsh,col,car punc
-  class cur,par,sqb,wl,wr,trm macro
-  class a0,a1,a2,a4,a5,a6,a7,a8,a9,al,ar chord
-  class to0 layerk
-  class esc core
-  class cmd,spc,sft,ctl,ent,alt thumb
+  class esc plain
+  class a0,a1,a2,a4,a5,a6,a7,a8,a9,al,ar,cmd,spc,sft,ctl,ent,alt mod
+  class cur,par,sqb,wl,wr,trm seq
+  class semi,dqt,sqt,dol,dl2,pct,amp,ast,qm,exc,at,hsh,col,car spec
+  class to0 goL0
   class x1,x2,x3 dead
 ```
 
 ### Layer 2 — nav
 
-Left hand: Cmd+1..3, Ctrl+1..5, the screen-capture and terminal chords, F4 and Shift+F4. Right hand: an inverted-T arrow cluster with Home/End/PgUp/PgDn/Delete, the three editor fold macros down the inner column, and word-wise delete on the pinky.
+An inverted-T arrow cluster with the editor folds down the inner column; workspace and window chords on the left.
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e8f7ec','primaryTextColor':'#06241c','primaryBorderColor':'#0b5946','nodeTextColor':'#06241c','textColor':'#06241c','mainBkg':'#e8f7ec','fontSize':'18px'}}}%%
 block
 columns 13
 
@@ -138,27 +133,25 @@ columns 13
   cgr["⌃` "] e1["⇧⌘E"] gat["⌘⌥T"] e2["⇧⌘E"] sf4["⇧F4"] f4["F4"] space uf["⊞"] endk["⇲"] del["⌦"] pgd["⇟"] cdl["⌃⌦"] x4["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] sen["⇧⌘⏎"] alt["⌥"] space:3
 
-  classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
-  classDef macro fill:#ffe6b8,stroke:#7a4a00,stroke-width:3px,color:#3a2200
-  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef plain fill:#e8f7ec,stroke:#0b5946,stroke-width:2px,color:#06241c
+  classDef mod fill:#d0efd9,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef seq fill:#b3e5c2,stroke:#084736,stroke-width:3px,color:#041a14
+  classDef goL0 fill:#adc2d8,stroke:#1d2c3d,stroke-width:3px,color:#060c12
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class g1,g2,g3,c1,c2,c3,c4,c5,cgr,e1,e2,sf4,emj,abs,cdl chord
-  class gat,fa,fo,uf macro
-  class to0,t0b layerk
-  class esc,f4,hom,up,pgu,lft,dn,rgt,endk,del,pgd core
-  class cmd,spc,sft,ctl,sen,alt thumb
+  class esc,f4,hom,up,pgu,lft,dn,rgt,endk,del,pgd plain
+  class g1,g2,g3,c1,c2,c3,c4,c5,cgr,e1,e2,sf4,emj,abs,cdl,cmd,spc,sft,ctl,sen,alt mod
+  class gat,fa,fo,uf seq
+  class to0,t0b goL0
   class x1,x2,x3,x4 dead
 ```
 
 ### Layer 3 — numbers
 
-**Calculator-style numpad** on the right, 7-8-9 on the top row ascending upward, with `0` and `.` on the right thumbs. The operators `* + -` run down the inner column, which is where they belong and where the Corne did not have them before. The left hand carries digits 1–4 and Ctrl+1..4, and the whole bottom-left row is `&none` — the emptiest layer in the keymap on both boards.
+A calculator numpad on the right, 7-8-9 ascending upward, with the operators running down the inner column.
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fdf3e0','primaryTextColor':'#2e1e00','primaryBorderColor':'#7a5000','nodeTextColor':'#2e1e00','textColor':'#2e1e00','mainBkg':'#fdf3e0','fontSize':'18px'}}}%%
 block
 columns 13
 
@@ -167,31 +160,27 @@ columns 13
   x4["❌"] x5["❌"] x6["❌"] x7["❌"] x8["❌"] x9["❌"] space mns["-"] s1["1"] s2["2"] s3["3"] x10["❌"] x11["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space kdt["."] zro["0"] alt["⌥"] space:3
 
-  classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
-  classDef punc fill:#bfe6f0,stroke:#0a4f63,stroke-width:3px,color:#04222b
-  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
-  classDef doomed fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
+  classDef plain fill:#fdf3e0,stroke:#7a5000,stroke-width:2px,color:#2e1e00
+  classDef mod fill:#fbe8c4,stroke:#7a5000,stroke-width:3px,color:#2e1e00
+  classDef spec fill:#f4c972,stroke:#543700,stroke-width:3px,color:#1c1200
+  classDef goL0 fill:#adc2d8,stroke:#1d2c3d,stroke-width:3px,color:#060c12
+  classDef alert fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class n1,n2,n3,n4,s1,s2,s3,s4,s5,s6,s7,s8,s9,bsp core
-  class c1,c2,c3,c4 chord
-  class mul,pls,mns punc
-  class d9 doomed
-  class to0,t0b,t0c layerk
-  class cmd,spc,sft,kdt,zro,alt thumb
+  class n1,n2,n3,n4,s1,s2,s3,s4,s5,s6,s7,s8,s9,bsp plain
+  class c1,c2,c3,c4,cmd,spc,sft,kdt,zro,alt mod
+  class mul,pls,mns spec
+  class to0,t0b,t0c goL0
+  class d9 alert
   class x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11 dead
 ```
 
-The second `9` on the right pinky is a known Ximi2 defect. It is reproduced here on purpose: the two boards being identical is worth more than one key being right on one of them.
-
 ### Layer 4 — function
 
-F-keys on the right, screenshot and window chords on the left, a vim-exit macro, an email macro, the browser certificate bypass, the prose macro, and the two path-prefix macros. Caps Lock sits on the left outer column and `&caps_word` on the left inner thumb. Layer 4 has a sticky form and no locked form, by design.
+F-keys and the screenshot and window chords, plus every text macro — the email address, the path prefixes, the certificate bypass.
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#f3ecfb','primaryTextColor':'#240c39','primaryBorderColor':'#4a1f72','nodeTextColor':'#240c39','textColor':'#240c39','mainBkg':'#f3ecfb','fontSize':'18px'}}}%%
 block
 columns 13
 
@@ -200,33 +189,27 @@ columns 13
   cap["⇪"] thk["💭"] c4["⇧⌘4"] cpy["⇧⌘C"] ins["⌃Ins"] pst["⌃⌥⌘V"] space sf5["⇧F5"] ds["./"] uns["🔓"] ds2["./"] ts["~/"] x3["❌"]
   space:3 cmd["⌘"] ses["⇧⌘␛"] cw["⇪w"] space ctl["⌃"] ssp["⇧⌘␣"] alt["⌥"] space:3
 
-  classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
-  classDef macro fill:#ffe6b8,stroke:#7a4a00,stroke-width:3px,color:#3a2200
-  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef plain fill:#f3ecfb,stroke:#4a1f72,stroke-width:2px,color:#240c39
+  classDef mod fill:#e7d9f7,stroke:#4a1f72,stroke-width:3px,color:#240c39
+  classDef seq fill:#d8c0f1,stroke:#3d1a5f,stroke-width:3px,color:#1c0a2c
+  classDef spec fill:#c7a4e9,stroke:#33154f,stroke-width:3px,color:#160823
+  classDef goL0 fill:#adc2d8,stroke:#1d2c3d,stroke-width:3px,color:#060c12
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class f2,lf12,cap,f5,f10,f11,f4 core
-  class gf,rec,c5,fnd,fna,c4,cpy,ins,pst,s11,sgf5,lck,mut,sf5 chord
-  class vz,rr,thk,ap,mai,ds,uns,ds2,ts macro
-  class to0,t0b,t0c layerk
-  class cmd,ses,cw,ctl,ssp,alt thumb
+  class f2,lf12,f5,f10,f11,f4 plain
+  class gf,rec,c5,fnd,fna,c4,cpy,ins,pst,s11,sgf5,lck,mut,sf5,cmd,ses,ctl,ssp,alt mod
+  class vz,rr,thk,ap,mai,ds,uns,ds2,ts seq
+  class cap,cw spec
+  class to0,t0b,t0c goL0
   class x1,x2,x3 dead
 ```
 
-`./` appears twice because `M4` and `M12` are both `./` in the Vial table. Another deliberate reproduction.
-
 ### Layer 5 — F-keys
 
-The right half is the Ximi2's F-key block, ported straight across. The Ximi2 leaves its **entire left half transparent** here, and so, now, does the Corne — bar three keys.
-
-Bluetooth used to fill that left half. It has moved out entirely into the `o`+`p` combo grid, which means the radio occupies no keymap position on either board and this layer is down to the three things ZMK needs and QMK has no equivalent for: Studio unlock, soft off and the bootloader. They sit on `z`, `g` and `b`, none of which the layer-entry combo `x`+`c`+`v` touches.
-
-That takes layer 5 from fifteen divergent positions to three, and it is the single largest parity gain since the port itself.
+The Ximi2's F-key block, ported straight across. The left half is transparent bar the three keys ZMK needs and QMK has no equivalent for.
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fdecf2','primaryTextColor':'#3a0523','primaryBorderColor':'#7a0a4a','nodeTextColor':'#3a0523','textColor':'#3a0523','mainBkg':'#fdecf2','fontSize':'18px'}}}%%
 block
 columns 13
 
@@ -235,22 +218,71 @@ columns 13
   trl["⌷"] stu["STU"] trm["⌷"] trn["⌷"] tro["⌷"] bld["BLD"] space f10["F10"] f1["F1"] f2["F2"] f3["F3"] f11["F11"] x4["❌"]
   space:3 cmd["⌘"] t0c["TO0"] sft["⇧"] space ctl["⌃"] t0d["TO0"] alt["⌥"] space:3
 
-  classDef radio fill:#bfe6f0,stroke:#0a4f63,stroke-width:3px,color:#04222b
-  classDef danger fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
-  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef plain fill:#fdecf2,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
+  classDef mod fill:#fbd8e5,stroke:#7a0a4a,stroke-width:3px,color:#3a0523
+  classDef spec fill:#f29ebc,stroke:#560735,stroke-width:3px,color:#250317
+  classDef goL0 fill:#adc2d8,stroke:#1d2c3d,stroke-width:3px,color:#060c12
+  classDef alert fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
+  classDef ghost fill:#eef1f5,stroke:#5b6673,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class stu radio
-  class off,bld danger
-  class to0,t0b,t0c,t0d layerk
-  class f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12 core
-  class cmd,sft,ctl,alt thumb
-  class tra,trb,trc,trd,tre,trf,trg,trh,tri,trj,trk,trl,trm,trn,tro,x1,x2,x3,x4 dead
+  class f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12 plain
+  class cmd,sft,ctl,alt mod
+  class stu spec
+  class to0,t0b,t0c,t0d goL0
+  class off,bld alert
+  class tra,trb,trc,trd,tre,trf,trg,trh,tri,trj,trk,trl,trm,trn,tro ghost
+  class x1,x2,x3,x4 dead
 ```
 
-`STU` is ZMK Studio unlock, `⏻` is soft off and `BLD` the bootloader. Reaching the layer is `x`+`c`+`v` held, or `z`+`x`+`c`+`v` to lock it, the same on both boards. Nothing on the base thumbs opens it any more.
+---
+
+## Layer notes
+
+Detail that does not fit on a one-line caption, kept out of the maps above so they read as a set.
+
+### Base — the thumbs
+
+**All modifiers live on the thumbs.** There are no home row mods anywhere in this keymap. Five of the six thumb keys are plain; only the right inner one is a tap-dance. The map shows each thumb's tap — the table is what they do when held, or on a double-tap:
+
+| Thumb | Binding | Notes |
+|---|---|---|
+| Left outer | `&kp RGUI` | Cmd. Right Cmd, faithfully copied from the Ximi2, where every other layer uses left Cmd |
+| Left middle | `&lt 2 SPACE` | Space / hold for nav — hence the green |
+| Left inner | `&kp LSHFT` | Shift |
+| Right inner | `&control_record` | Ctrl; double-tap for the record hotkey. 210 ms, the Ximi2's term |
+| Right middle | `&lt 1 ENTER` | Enter / hold for symbols — hence the teal |
+| Right outer | `&kp LALT` | Alt |
+
+The lock-screen macro on the right outer column is that column's only surviving tenant on either board. Its final home is still an open question in the plan.
+
+### Symbols — what sits where
+
+Left hand: the three bracket-pair macros stacked vertically, each leaving the cursor inside, then the quotes, the colons and the shifted number row. Right hand: **⌥+digit** for all ten digits, which is an application switcher, plus word and paragraph motion and a terminal launcher.
+
+### Nav — what sits where
+
+Left hand: Cmd+1..3, Ctrl+1..5, the screen-capture and terminal chords, F4 and Shift+F4. Right hand: an inverted-T arrow cluster with Home, End, PgUp, PgDn and Delete, the three editor fold macros down the inner column, and word-wise delete on the pinky.
+
+### Numbers — the emptiest layer
+
+The operators `* + -` run down the inner column, which is where they belong and where the Corne did not have them before. The left hand carries digits 1–4 and Ctrl+1..4, and the whole bottom-left row is `&none`.
+
+The second `9` on the right pinky is a known Ximi2 defect, drawn in red. It is reproduced here on purpose: the two boards being identical is worth more than one key being right on one of them.
+
+### Function — sticky, never locked
+
+Caps Lock sits on the left outer column and `&caps_word` on the left inner thumb. Layer 4 has a sticky form and no locked form, by design.
+
+`./` appears twice because `M4` and `M12` are both `./` in the Vial table. Another deliberate reproduction.
+
+### F-keys — what the left half is for
+
+Bluetooth used to fill that left half. It has moved out entirely into the `o`+`p` combo grid, which means the radio occupies no keymap position on either board and this layer is down to the three things ZMK needs and QMK has no equivalent for: `STU` is ZMK Studio unlock, `⏻` is soft off, `BLD` the bootloader. They sit on `z`, `g` and `b`, none of which the layer-entry combo `x`+`c`+`v` touches.
+
+That takes layer 5 from fifteen divergent positions to three, and it is the single largest parity gain since the port itself.
+
+Reaching the layer is `x`+`c`+`v` held, or `z`+`x`+`c`+`v` to lock it, the same on both boards. Nothing on the base thumbs opens it any more.
 
 ---
 
@@ -300,7 +332,7 @@ The left thumb is a plain Shift. The Ximi2 gets Caps Lock there from a tap-then-
 
 Forty combos, 150 ms timeout, **all scoped to `layers = <0>`** — they fire on base and nowhere else. The Ximi2 leaves its combos global; the Corne leads here.
 
-Every one of them is drawn key by key in [`combos.md`](combos.md); what follows is the summary.
+Every one of them is drawn key by key in [`combos.md`](combos.md), which uses its own two-colour scheme — amber for a combo's keys, cyan for the shared Bluetooth anchor — rather than the per-layer hues above. What follows is the summary.
 
 **Punctuation** — the mnemonic core of the layout, and the part that works best:
 
@@ -403,7 +435,7 @@ The deprecated mouse-emulation flag is gone along with mouse movement and scroll
 
 What changed: the right outer column is dead on every layer except one tenant; mouse movement and scrolling are gone; backtick moved down onto the old `/` key; layer access was rebuilt into a uniform momentary/locked pair; and two structural Vial bugs were found and fixed.
 
-### Layer maps
+### Ximi2 layer maps
 
 Vial stores the right half **reversed** in the JSON — array `col0` is the outermost right key. Everything below is in physical left-to-right order.
 
