@@ -57,7 +57,7 @@ Within a layer, the shade says what kind of key it is — lightest to deepest:
 | mid | a macro — a sequence, not a single chord |
 | deepest | the layer's own signature output — the symbols on layer 1, the operators on layer 3, the macros on layer 4 |
 
-Three classes ignore the layer hue, because what they mean does not change between layers: **red** is destructive, irreversible, or a known defect; **dashed slate ⌷** is `&trans`, showing whatever is underneath; **dashed grey ❌** is `&none`.
+Two classes ignore the layer hue, because what they mean does not change between layers: **red** is destructive, irreversible, or a known defect; **dashed grey ❌** is a key with nothing on it — `&none` everywhere, plus layer 5's `&trans` left half, which only shows base through.
 
 One rule ties the hues together: **a key that switches layers wears the colour of the layer it goes to.** That is why layer 0's Space is green and its Enter is teal — holding them is how nav and symbols are reached — and why `TO0`, the escape hatch back to base, is slate on all five of the others.
 
@@ -143,7 +143,7 @@ columns 13
   class g1,g2,g3,c1,c2,c3,c4,c5,cgr,e1,e2,sf4,emj,abs,cdl,cmd,spc,sft,ctl,sen,alt mod
   class gat,fa,fo,uf seq
   class to0,t0b goL0
-  class x1,x2,x3,x4 dead
+  class x1,x2,x3,x4,tra,trb,trc,trd,tre,trf,trg,trh,tri,trj,trk,trl,trm,trn,tro dead
 ```
 
 ### Layer 3 — numbers
@@ -213,9 +213,9 @@ The Ximi2's F-key block, ported straight across. The left half is transparent ba
 block
 columns 13
 
-  to0["TO0"] tra["⌷"] trb["⌷"] trc["⌷"] trd["⌷"] t0b["TO0"] space tre["⌷"] f7["F7"] f8["F8"] f9["F9"] x1["❌"] x2["❌"]
-  trf["⌷"] trg["⌷"] trh["⌷"] tri["⌷"] trj["⌷"] off["⏻"] space trk["⌷"] f4["F4"] f5["F5"] f6["F6"] f12["F12"] x3["❌"]
-  trl["⌷"] stu["STU"] trm["⌷"] trn["⌷"] tro["⌷"] bld["BLD"] space f10["F10"] f1["F1"] f2["F2"] f3["F3"] f11["F11"] x4["❌"]
+  to0["TO0"] tra["❌"] trb["❌"] trc["❌"] trd["❌"] t0b["TO0"] space tre["❌"] f7["F7"] f8["F8"] f9["F9"] x1["❌"] x2["❌"]
+  trf["❌"] trg["❌"] trh["❌"] tri["❌"] trj["❌"] off["⏻"] space trk["❌"] f4["F4"] f5["F5"] f6["F6"] f12["F12"] x3["❌"]
+  trl["❌"] stu["STU"] trm["❌"] trn["❌"] tro["❌"] bld["BLD"] space f10["F10"] f1["F1"] f2["F2"] f3["F3"] f11["F11"] x4["❌"]
   space:3 cmd["⌘"] t0c["TO0"] sft["⇧"] space ctl["⌃"] t0d["TO0"] alt["⌥"] space:3
 
   classDef plain fill:#fdecf2,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
@@ -223,7 +223,6 @@ columns 13
   classDef spec fill:#f29ebc,stroke:#560735,stroke-width:3px,color:#250317
   classDef goL0 fill:#adc2d8,stroke:#1d2c3d,stroke-width:3px,color:#060c12
   classDef alert fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
-  classDef ghost fill:#eef1f5,stroke:#5b6673,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12 plain
@@ -231,8 +230,7 @@ columns 13
   class stu spec
   class to0,t0b,t0c,t0d goL0
   class off,bld alert
-  class tra,trb,trc,trd,tre,trf,trg,trh,tri,trj,trk,trl,trm,trn,tro ghost
-  class x1,x2,x3,x4 dead
+  class x1,x2,x3,x4,tra,trb,trc,trd,tre,trf,trg,trh,tri,trj,trk,trl,trm,trn,tro dead
 ```
 
 ---
@@ -440,7 +438,6 @@ What changed: the right outer column is dead on every layer except one tenant; m
 Vial stores the right half **reversed** in the JSON — array `col0` is the outermost right key. Everything below is in physical left-to-right order.
 
 **Layer 0 — base**
-
 ```
  ⇥   q w e r t        y u i o p   M10
  ␛   a s d f g        h j k l ⌫    ·
@@ -453,7 +450,6 @@ Left thumbs: `RGUI`, `LT2(SPACE)`, `LSHIFT`. Right thumbs: `TD(4)` (Ctrl), `LT1(
 Backtick sits on the right pinky bottom, where `/` used to be. `/` is now combo-only (`d`+`r`), and tilde comes free as shifted backtick — one move retires two doomed keys. `M10` (`Ctrl+Cmd+Q`, lock screen) is the sole remaining tenant of the right outer column, deferred to a later phase. The left outer column is still live for `⇥` and `␛`; its bottom key is already dead.
 
 **Layer 1 — symbols / Alt-digit**
-
 ```
 DF0  {}  :  "  '  $      ⌥⌃←  ⌥7 ⌥8 ⌥9  ⌥⌃→   ·
  ␛   ()  $  %  &  *      TRM  ⌥4 ⌥5 ⌥6   ^    ·
@@ -463,7 +459,6 @@ DF0  {}  :  "  '  $      ⌥⌃←  ⌥7 ⌥8 ⌥9  ⌥⌃→   ·
 The high-frequency `⌥←`/`⌥→` pair took the tight adjacent slot on the bottom row, paying with `⌥3`. The low-frequency `⌥⌃←`/`⌥⌃→` became bookends of the top row. `⌥6` never moved — that was the binding constraint the whole redesign was built around.
 
 **Layer 2 — nav**
-
 ```
 TO0  ⌘1 ⌘2 ⌘3  ·  TO0     foldall HOME  ↑  PgUp  ⇧⌘.   ·
  ␛   ⌃1 ⌃2 ⌃3 ⌃4  ⌃5      fold     ←    ↓   →    ⌥⌫    ·
@@ -471,7 +466,6 @@ TO0  ⌘1 ⌘2 ⌘3  ·  TO0     foldall HOME  ↑  PgUp  ⇧⌘.   ·
 ```
 
 **Layer 3 — numpad**
-
 ```
 TO0  1 2 3 4  TO0       *  7 8 9  9   ·
 DF0  ⌃1 ⌃2 ⌃3 ⌃4  ·     +  4 5 6  ⌫   ·
@@ -482,7 +476,6 @@ DF0  ⌃1 ⌃2 ⌃3 ⌃4  ·     +  4 5 6  ⌫   ·
 The duplicated `9` on the pinky is a pre-existing defect, still unfixed.
 
 **Layer 4 — function**
-
 ```
 TO0  M9  F2  ⌘F12 F12 TO0      F5   F10 F11 ⇧F11  M8    ·
 DF0  M20 ⌃⌥⌘S ⇧⌘5 ⌘F  ⇧⌘F      ⇧⌘F5 F4  M15 ⇧⌘L   ⇧⌥M   ·
@@ -490,7 +483,6 @@ DF0  M20 ⌃⌥⌘S ⇧⌘5 ⌘F  ⇧⌘F      ⇧⌘F5 F4  M15 ⇧⌘L   ⇧⌥
 ```
 
 **Layer 5 — F-keys**
-
 ```
 TO0  ·  ·  ·  ·  TO0        ·  F7 F8 F9  ·    ·
  ·   ·  ·  ·  ·   ·         ·  F4 F5 F6  F12  ·

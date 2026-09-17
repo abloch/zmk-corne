@@ -705,13 +705,13 @@
         // combo grid, which hands the left half back to &trans and puts the two
         // boards one step closer to identical. What is left here is the three things
         // ZMK needs and QMK has no equivalent for, parked on keys the layer-entry
-        // combo (x+c+v) does not touch. ⌷ = transparent.
+        // combo (x+c+v) does not touch. ❌ = transparent.
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
-        // │TO0│ ⌷ │ ⌷ │ ⌷ │ ⌷ │TO0│   │ ⌷ │F7 │F8 │F9 │▒▒▒│▒▒▒│
+        // │TO0│ ❌ │ ❌ │ ❌ │ ❌ │TO0│   │ ❌ │F7 │F8 │F9 │▒▒▒│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ⌷ │ ⌷ │ ⌷ │ ⌷ │ ⌷ │OFF│   │ ⌷ │F4 │F5 │F6 │F12│▒▒▒│
+        // │ ❌ │ ❌ │ ❌ │ ❌ │ ❌ │OFF│   │ ❌ │F4 │F5 │F6 │F12│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ⌷ │STU│ ⌷ │ ⌷ │ ⌷ │BLD│   │F10│F1 │F2 │F3 │F11│▒▒▒│
+        // │ ❌ │STU│ ❌ │ ❌ │ ❌ │BLD│   │F10│F1 │F2 │F3 │F11│▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │TO0│ ⇧ │   │ ⌃ │TO0│ ⌥ │
         //             └───┴───┴───┘   └───┴───┴───┘
