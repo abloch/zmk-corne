@@ -21,6 +21,7 @@ Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 | `config/west.yml` | West manifest pinning ZMK to `zmkfirmware/zmk@main` |
 | `build.yaml` | Build matrix: `corne_left`, `corne_right`, `settings_reset`, all on `nice_nano_v2` |
 | `.github/workflows/build.yml` | Calls ZMK's reusable `build-user-config.yml` |
+| `combos.md` | All 28 combos, one diagram each |
 | `32-keys.md` | The 36-key transition plan (English) |
 | `32-keys.he.md` | Same plan, Hebrew |
 | `akiva.vil` | Vial export for the **Ximi2**, the work keyboard — the source of truth for the layout |
@@ -289,6 +290,8 @@ The left thumb is a plain Shift. The Ximi2 gets Caps Lock there from a tap-then-
 ## Corne combos
 
 Twenty-eight combos, 150 ms timeout, **all scoped to `layers = <0>`** — they fire on base and nowhere else. The Ximi2 leaves its combos global; the Corne leads here.
+
+Every one of them is drawn key by key in [`combos.md`](combos.md); what follows is the summary.
 
 **Punctuation** — the mnemonic core of the layout, and the part that works best:
 
