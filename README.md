@@ -42,7 +42,7 @@ columns 13
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
   esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
-  space:3 cmd["⌘"] spc["␣<br/>L2"] sft["⇧"] space ctl["⌃<br/>⏺"] ent["⏎<br/>L1"] alt["⌥"] space:3
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -79,6 +79,8 @@ Six layers, each with a `display-name`. The maps below are drawn the same way as
 ### Layer 0 — base
 
 QWERTY, drawn in the diagram above. **All modifiers live on the thumbs** — there are no home row mods anywhere in this keymap. Five of the six thumb keys are plain; only the right inner one is a tap-dance.
+
+The diagram shows each thumb's tap only. What two of them do when held, and what the third does on a double-tap, is the table:
 
 | Thumb | Binding | Notes |
 |---|---|---|
