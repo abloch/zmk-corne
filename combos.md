@@ -1,6 +1,6 @@
 # Corne combos
 
-Forty combos, one diagram each. Every combo has a 150 ms timeout and is scoped to `layers = <0>`, so it fires on the base layer and nowhere else.
+Forty-one combos, one diagram each. Every combo has a 150 ms timeout and is scoped to `layers = <0>`, so it fires on the base layer and nowhere else.
 
 The diagrams show the base layer with the combo's own keys picked out in amber. The Bluetooth combos additionally show their shared `o`+`p` anchor in cyan. Both halves are drawn side by side in physical left-to-right order, with the gap between them standing in for the two controllers.
 
@@ -18,7 +18,7 @@ Combos are defined by **key position**, not by keycode. That is the one real dif
 
 ## Punctuation
 
-The mnemonic core of the layout, and the part that works best. Most of these skip a column or run vertically, because two adjacent columns of the same hand fire on an ordinary typing roll. `r`+`d`, `e`+`f`, `q`+`s` and `a`+`w` are grandfathered exceptions, not a precedent.
+The mnemonic core of the layout, and the part that works best. Most of these skip a column or run vertically, because two adjacent columns of the same hand fire on an ordinary typing roll. `r`+`d`, `e`+`f`, `q`+`s` and `a`+`w` are grandfathered exceptions, inherited rather than chosen. `d`+`v` is the one that was chosen knowingly, and it is defended only by sitting in the same geometry as the two diagonals it copies.
 
 ### `t`+`g` → `;`
 
@@ -28,7 +28,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -39,9 +39,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class t,g trig
-  class tab,q,w,e,r,y,u,i,o,p,lock,esc,a,s,d,f,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,y,u,i,o,p,lock,a,s,d,f,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Vertical, both keys on the left index's outer column. Nothing rolls down a single column, which is what makes a vertical pair safe.
@@ -54,7 +54,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -65,9 +65,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class g,b trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,h,j,k,l,bspc,z,x,c,v,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,h,j,k,l,bspc,z,x,c,v,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Vertical on the same outer column, one row below semicolon. Semicolon and pipe are neighbours on a staggered keyboard too, so the pairing is already in the fingers.
@@ -80,7 +80,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -91,9 +91,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class r,d trig
-  class tab,q,w,e,t,y,u,i,o,p,lock,esc,a,s,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,t,y,u,i,o,p,lock,a,s,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The two keys trace the glyph: `d` is lower-left, `r` is upper-right, and the slash runs between them. This is also the only place slash exists — it has no base key any more.
@@ -106,7 +106,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -117,12 +117,40 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class e,f trig
-  class tab,q,w,r,t,y,u,i,o,p,lock,esc,a,s,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,r,t,y,u,i,o,p,lock,a,s,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The mirror of the slash combo, tracing a backslash from upper-left down to lower-right.
+
+### `d`+`v` → `?`
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class d,v trig
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,f,g,h,j,k,l,bspc,z,x,c,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3,x4 dead
+```
+
+The backslash combo moved one row down: middle-column home plus index-column bottom, the same down-right diagonal a row lower. It sits with the slash family because `?` is shifted slash, and it is the only route to the glyph — layer 1's outer bottom key, which used to carry it, is unbound on both boards.
+
+This is the fifth adjacent-column combo and the first one chosen rather than inherited. `d` and `v` are neighbouring columns of the same hand, which is the pattern the rest of this group avoids, and the defence is entirely that it is `e`+`f`'s and `r`+`d`'s geometry one row down: if `r`+`d` has never emitted `/` while you typed "address", this will not emit `?` while you type "advice". The idle guard that protects the Bluetooth anchor is no help here, because `?` is typed mid-word. So this combo rides on the two diagonals above it continuing to behave, and if either of them ever misfires, this is the second casualty and they move together.
 
 ### `s`+`f` → `-`
 
@@ -132,7 +160,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -143,9 +171,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class s,f trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Home row, skipping the `d` column. The skipped column is deliberate: two adjacent columns of the same hand would fire on an ordinary typing roll.
@@ -158,7 +186,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -169,9 +197,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class x,v trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,c,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,j,k,l,bspc,z,c,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Directly below dash, on the same two columns. Underscore is a shifted dash on a normal keyboard, and here it is a dash moved one row down.
@@ -184,7 +212,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -195,9 +223,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class j,l trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,k,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,k,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The right hand's mirror of the dash combo — home row, skipping the middle column.
@@ -210,7 +238,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -221,9 +249,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class m,dot trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,cma,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,cma,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Directly below plus, same two columns, exactly as underscore sits below dash. Plus and equals share a key on a normal keyboard; here they share a column pair.
@@ -236,7 +264,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -247,9 +275,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class q,s trig
-  class tab,w,e,r,t,y,u,i,o,p,lock,esc,a,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,w,e,r,t,y,u,i,o,p,lock,a,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 A diagonal on the left hand's outer two columns. One of four grandfathered adjacent-column combos, kept because the fingers already know it.
@@ -262,7 +290,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -273,9 +301,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class w,a trig
-  class tab,q,e,r,t,y,u,i,o,p,lock,esc,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,e,r,t,y,u,i,o,p,lock,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The opposite diagonal across the same two columns, so the two brackets mirror each other.
@@ -292,7 +320,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -303,12 +331,12 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class q,e trig
-  class tab,w,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,w,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
-A second Escape, on the left hand, skipping the `w` column. The dedicated Escape key on the outer column is slated for retirement, and this is the habit that replaces it.
+The only Escape on either board, on the left hand, skipping the `w` column. The dedicated key on the outer column is gone rather than standing beside this combo — the dual home the plan allowed itself was spent deliberately, so a miss here is answered by pressing again, not by reaching outward.
 
 ### `q`+`b` → `think hard and be smart`
 
@@ -318,7 +346,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -329,9 +357,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class q,b trig
-  class tab,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,n,m,cma,dot,grv core
+  class tab,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The full diagonal reach of the left hand, corner to corner. Deliberately awkward: it types a long string, and a long string is the worst thing to emit by accident.
@@ -348,7 +376,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -359,9 +387,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class i,p trig
-  class tab,q,w,e,r,t,y,u,o,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,o,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Right hand, skipping the `o` column. Survives the trackpad because no trackpad gesture maps browser forward.
@@ -374,7 +402,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -385,9 +413,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class k,bspc trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,l,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,j,l,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The home-row pair directly below forward, so back and forward sit one row apart on the same two columns.
@@ -400,7 +428,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -411,9 +439,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class q,d trig
-  class tab,w,e,r,t,y,u,i,o,p,lock,esc,a,s,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,w,e,r,t,y,u,i,o,p,lock,a,s,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 A left-hand diagonal. Clicks exist as combos only because the pointer itself belongs to the trackpad now — movement and scroll are gone from the keymap entirely.
@@ -426,7 +454,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -437,9 +465,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class a,c trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,s,d,f,g,h,j,k,l,bspc,z,x,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,s,d,f,g,h,j,k,l,bspc,z,x,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The diagonal below left click, one row down on the same two columns.
@@ -456,7 +484,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -467,9 +495,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class e,s,f trig
-  class tab,q,w,r,t,y,u,i,o,p,lock,esc,a,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,r,t,y,u,i,o,p,lock,a,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The dash combo plus `e`. Every layer is a three-key momentary combo and a four-key locked one, and the fourth key is always `a`.
@@ -482,7 +510,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -493,9 +521,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class e,a,s,f trig
-  class tab,q,w,r,t,y,u,i,o,p,lock,esc,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,r,t,y,u,i,o,p,lock,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Adding `a` to the momentary form locks the layer. Return with `TO0`, which every non-base layer carries in its top-left corner.
@@ -508,7 +536,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -519,9 +547,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class s,d,f trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Three adjacent home-row keys. The dash combo `s`+`f` is a strict subset of this one; both QMK and ZMK prefer the longer match, so the cost is a slow-roll timing tax, not a collision.
@@ -534,7 +562,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -545,9 +573,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class a,s,d,f trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The whole left home row. The locked form of the numpad, for entering more than a couple of digits.
@@ -560,7 +588,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -571,9 +599,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class x,c,v trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,j,k,l,bspc,z,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Three adjacent bottom-row keys. This is the only way onto layer 5 now that the thumb tap-dances are gone — the bootloader, soft off and Studio unlock all live behind it.
@@ -586,7 +614,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -597,9 +625,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class z,x,c,v trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,j,k,l,bspc,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The whole left bottom row, following the same add-one-key-to-the-left rule as the other locked layers.
@@ -612,7 +640,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -623,9 +651,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class j,k,l trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Right home row, the mirror of the numpad combo. Function is sticky rather than momentary: it fires for exactly one key and then releases.
@@ -638,7 +666,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -649,9 +677,9 @@ columns 13
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
   class m,cma,dot trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,grv core
+  class tab,q,w,e,r,t,y,u,i,o,p,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The same sticky function layer from the row below, for when the home row is already busy. Function has no locked form on purpose — one-shot is the point, and a lock would be a trap.
@@ -676,7 +704,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -688,9 +716,9 @@ columns 13
 
   class o,p anchor
   class q trig
-  class tab,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,w,e,r,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Top row selects. The anchor picks the verb's row and the third key picks the profile.
@@ -703,7 +731,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -715,9 +743,9 @@ columns 13
 
   class o,p anchor
   class w trig
-  class tab,q,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,e,r,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 1, on the second key of the row.
@@ -730,7 +758,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -742,9 +770,9 @@ columns 13
 
   class o,p anchor
   class e trig
-  class tab,q,w,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,r,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 2, on the third key of the row.
@@ -757,7 +785,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -769,9 +797,9 @@ columns 13
 
   class o,p anchor
   class r trig
-  class tab,q,w,e,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 3, on the fourth key of the row.
@@ -784,7 +812,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -796,9 +824,9 @@ columns 13
 
   class o,p anchor
   class t trig
-  class tab,q,w,e,r,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 4, on the fifth key of the row.
@@ -811,7 +839,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -823,9 +851,9 @@ columns 13
 
   class o,p anchor
   class a trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Home row disconnects without forgetting the pairing — the host can reconnect.
@@ -838,7 +866,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -850,9 +878,9 @@ columns 13
 
   class o,p anchor
   class s trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 1, on the second key of the row.
@@ -865,7 +893,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -877,9 +905,9 @@ columns 13
 
   class o,p anchor
   class d trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,s,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 2, on the third key of the row.
@@ -892,7 +920,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -904,9 +932,9 @@ columns 13
 
   class o,p anchor
   class f trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,s,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 3, on the fourth key of the row.
@@ -919,7 +947,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -931,9 +959,9 @@ columns 13
 
   class o,p anchor
   class g trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,s,d,f,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 4, on the fifth key of the row.
@@ -946,7 +974,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -958,9 +986,9 @@ columns 13
 
   class o,p anchor
   class z trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,x,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Bottom row forgets the pairing. Each of these is a macro, not a bare behavior: ZMK's `BT_CLR` clears whichever profile is current, so the macro selects the profile first and then clears it.
@@ -973,7 +1001,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -985,9 +1013,9 @@ columns 13
 
   class o,p anchor
   class x trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,c,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,z,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 1, on the second key of the row.
@@ -1000,7 +1028,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -1012,9 +1040,9 @@ columns 13
 
   class o,p anchor
   class c trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,v,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 2, on the third key of the row.
@@ -1027,7 +1055,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -1039,9 +1067,9 @@ columns 13
 
   class o,p anchor
   class v trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 3, on the fourth key of the row.
@@ -1054,7 +1082,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -1066,9 +1094,9 @@ columns 13
 
   class o,p anchor
   class b trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 Profile 4, on the fifth key of the row.
@@ -1081,7 +1109,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x4["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -1093,9 +1121,9 @@ columns 13
 
   class o,p anchor
   class z,x,c,v trig
-  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,b,n,m,cma,dot,grv core
+  class tab,q,w,e,r,t,y,u,i,lock,a,s,d,f,g,h,j,k,l,bspc,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
+  class x1,x2,x3,x4 dead
 ```
 
 The whole bottom row plus the anchor — six keys, the largest combo in the keymap, and the only one that needs the per-combo key limit raised to six. It forgets all five pairings at once, which is the reset of last resort.

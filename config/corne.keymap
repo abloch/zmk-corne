@@ -380,6 +380,19 @@
             layers = <0>;
         };
 
+        // ? — the slash family's second direction. Slash is r + d, anchored on D
+        // reaching up-right; this is the same anchor reaching down-right, one row
+        // below e + f. It crosses two adjacent columns, which the rest of the
+        // combo set avoids, and it is the first such pair chosen rather than
+        // inherited: require-prior-idle-ms cannot guard it, because ? is typed
+        // mid-word. It rides on r + d and e + f being clean in daily use.
+
+        qmark {
+            bindings = <&kp QMARK>;
+            key-positions = <15 28>; // D + V
+            layers = <0>;
+        };
+
         think_hard {
             bindings = <&m23>;
             key-positions = <1 29>; // Q + B
@@ -591,9 +604,9 @@
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
         // │ ⇥ │ Q │ W │ E │ R │ T │   │ Y │ U │ I │ O │ P │🔒 │
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ␛ │ A │ S │ D │ F │ G │   │ H │ J │ K │ L │ ⌫ │▒▒▒│
+        // │   │ A │ S │ D │ F │ G │   │ H │ J │ K │ L │ ⌫ │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │▒▒▒│ Z │ X │ C │ V │ B │   │ N │ M │ , │ . │ ` │▒▒▒│
+        // │   │ Z │ X │ C │ V │ B │   │ N │ M │ , │ . │ ` │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │ ␣ │ ⇧ │   │ ⌃ │ ⏎ │ ⌥ │
         //             │   │L2 │   │   │ ⏺ │L1 │   │
@@ -602,7 +615,7 @@
         base {
             bindings = <
 &kp TAB     &kp Q  &kp W  &kp E  &kp R       &kp T        &kp Y            &kp U        &kp I      &kp O    &kp P      &m10
-&kp ESCAPE  &kp A  &kp S  &kp D  &kp F       &kp G        &kp H            &kp J        &kp K      &kp L    &kp BSPC   &none
+&none       &kp A  &kp S  &kp D  &kp F       &kp G        &kp H            &kp J        &kp K      &kp L    &kp BSPC   &none
 &none       &kp Z  &kp X  &kp C  &kp V       &kp B        &kp N            &kp M        &kp COMMA  &kp DOT  &kp GRAVE  &none
                           &kp RGUI  &lt 2 SPACE  &kp LSHFT    &control_record  &lt 1 ENTER  &kp LALT
             >;
@@ -614,9 +627,9 @@
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
         // │TO0│{} │ ; │ " │ ' │ $ │   │⌥⌃←│⌥7 │⌥8 │⌥9 │⌥⌃→│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ␛ │() │ $ │ % │ & │ * │   │💻 │⌥4 │⌥5 │⌥6 │ ^ │▒▒▒│
+        // │   │() │ $ │ % │ & │ * │   │💻 │⌥4 │⌥5 │⌥6 │ ^ │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ? │[] │ ! │ @ │ # │ : │   │⌥0 │⌥1 │⌥2 │⌥← │⌥→ │▒▒▒│
+        // │   │[] │ ! │ @ │ # │ : │   │⌥0 │⌥1 │⌥2 │⌥← │⌥→ │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │ ␣ │ ⇧ │   │ ⌃ │ ⏎ │ ⌥ │
         //             └───┴───┴───┘   └───┴───┴───┘
@@ -624,8 +637,8 @@
         symbols {
             bindings = <
 &to 0      &m0  &kp SEMI         &kp DQT      &kp SQT        &kp DOLLAR      &m13        &kp LA(N7)  &kp LA(N8)  &kp LA(N9)  &m14          &none
-&kp ESC    &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &m3         &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &kp CARET     &none
-&kp QMARK  &m2  &kp EXCLAMATION  &kp AT       &kp HASH       &kp COLON       &kp LA(N0)  &kp LA(N1)  &kp LA(N2)  &kp LA(LEFT)  &kp LA(RIGHT)  &none
+&none      &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &m3         &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &kp CARET     &none
+&none      &m2  &kp EXCLAMATION  &kp AT       &kp HASH       &kp COLON       &kp LA(N0)  &kp LA(N1)  &kp LA(N2)  &kp LA(LEFT)  &kp LA(RIGHT)  &none
                                  &kp LGUI     &kp SPACE      &kp LSHFT       &kp LCTRL   &kp RET  &kp LALT
             >;
 
@@ -636,9 +649,9 @@
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
         // │TO0│⌘1 │⌘2 │⌘3 │   │TO0│   │⊟≡ │ ⇱ │ ↑ │ ⇞ │⇧⌘.│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ␛ │⌃1 │⌃2 │⌃3 │⌃4 │⌃5 │   │ ⊟ │ ← │ ↓ │ → │⌥⌫ │▒▒▒│
+        // │   │⌃1 │⌃2 │⌃3 │⌃4 │⌃5 │   │ ⊟ │ ← │ ↓ │ → │⌥⌫ │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │⌃` │   │   │   │   │   │   │ ⊞ │ ⇲ │ ⌦ │ ⇟ │⌃⌦ │▒▒▒│
+        // │   │   │   │   │   │   │   │ ⊞ │ ⇲ │ ⌦ │ ⇟ │⌃⌦ │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │ ␣ │ ⇧ │   │ ⌃ │⇧⌘⏎│ ⌥ │
         //             └───┴───┴───┘   └───┴───┴───┘
@@ -646,8 +659,8 @@
         nav {
             bindings = <
 &to 0          &kp LG(N1)     &kp LG(N2)  &kp LG(N3)     &none       &to 0       &m7        &kp HOME  &kp UP    &kp PG_UP  &kp LS(LG(DOT))  &none
-&kp ESC        &kp LC(N1)     &kp LC(N2)  &kp LC(N3)     &kp LC(N4)  &kp LC(N5)  &m5        &kp LEFT  &kp DOWN  &kp RIGHT  &kp LA(BSPC)     &none
-&kp LC(GRAVE)  &none          &none       &none          &none       &none       &m6        &kp END   &kp DEL   &kp PG_DN  &kp LC(DEL)      &none
+&none          &kp LC(N1)     &kp LC(N2)  &kp LC(N3)     &kp LC(N4)  &kp LC(N5)  &m5        &kp LEFT  &kp DOWN  &kp RIGHT  &kp LA(BSPC)     &none
+&none          &none          &none       &none          &none       &none       &m6        &kp END   &kp DEL   &kp PG_DN  &kp LC(DEL)      &none
                                           &kp LGUI       &kp SPACE   &kp LSHFT   &kp LCTRL  &kp LS(LG(ENTER))  &kp LALT
             >;
 
@@ -658,7 +671,7 @@
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
         // │TO0│ 1 │ 2 │ 3 │ 4 │TO0│   │ * │ 7 │ 8 │ 9 │   │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │TO0│⌃1 │⌃2 │⌃3 │⌃4 │   │   │ + │ 4 │ 5 │ 6 │ ⌫ │▒▒▒│
+        // │   │⌃1 │⌃2 │⌃3 │⌃4 │   │   │ + │ 4 │ 5 │ 6 │ ⌫ │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
         // │   │   │   │   │   │   │   │ - │ 1 │ 2 │ 3 │   │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
@@ -668,7 +681,7 @@
         numbers {
             bindings = <
 &to 0  &kp N1      &kp N2      &kp N3      &kp N4      &to 0      &kp KP_MULTIPLY  &kp N7   &kp N8    &kp N9  &none     &none
-&to 0  &kp LC(N1)  &kp LC(N2)  &kp LC(N3)  &kp LC(N4)  &none      &kp KP_PLUS      &kp N4   &kp N5    &kp N6  &kp BSPC  &none
+&none  &kp LC(N1)  &kp LC(N2)  &kp LC(N3)  &kp LC(N4)  &none      &kp KP_PLUS      &kp N4   &kp N5    &kp N6  &kp BSPC  &none
 &none  &none       &none       &none       &none       &none      &kp KP_MINUS     &kp N1   &kp N2    &kp N3  &none     &none
                                &kp LGUI    &kp SPACE   &kp LSHFT  &kp KP_DOT       &kp N0   &kp LALT
             >;
@@ -681,10 +694,10 @@
         // │TO0│␛ZZ│F2 │ ⌘ │F12│TO0│   │F5 │F10│F11│ ⇧ │⌥⌘P│▒▒▒│
         // │   │   │   │F12│   │   │   │   │   │   │F11│   │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │TO0│🔁 │⌃⌥⌘│🎥 │🔍 │🔍 │   │⇧⌘ │F4 │📧 │⇧⌘L│⇧⌥M│▒▒▒│
+        // │   │🔁 │⌃⌥⌘│🎥 │🔍 │🔍 │   │⇧⌘ │F4 │📧 │⇧⌘L│⇧⌥M│▒▒▒│
         // │   │!! │ S │   │   │all│   │F5 │   │   │   │   │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ⇪ │💭 │📷 │⇧⌘C│ ⌃ │⌃⌥⌘│   │⇧F5│~/ │./ │../│   │▒▒▒│
+        // │   │💭 │📷 │⇧⌘C│ ⌃ │⌃⌥⌘│   │⇧F5│~/ │./ │../│ ⇪ │▒▒▒│
         // │   │   │   │   │Ins│ V │   │   │   │   │   │   │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │⇧⌘␛│⇪w │   │ ⌃ │⇧⌘␣│ ⌥ │
@@ -693,8 +706,8 @@
         function {
             bindings = <
 &to 0     &m9   &kp F2             &kp LG(F12)     &kp F12             &to 0           &kp F5          &kp F10            &kp F11    &kp LS(F11)    &m8            &none
-&to 0     &m20  &kp LC(LA(LG(S)))  &kp LS(LG(N5))  &kp LG(F)           &kp LS(LG(F))   &kp LS(LG(F5))  &kp F4             &m15       &kp LS(LG(L))  &kp LS(LA(M))  &none
-&capslock &m23  &kp LS(LG(N4))     &kp LS(LG(C))   &kp LC(INSERT)      &kp LC(LA(LG(V)))  &kp LS(F5)   &m24               &m4        &m12           &none          &none
+&none     &m20  &kp LC(LA(LG(S)))  &kp LS(LG(N5))  &kp LG(F)           &kp LS(LG(F))   &kp LS(LG(F5))  &kp F4             &m15       &kp LS(LG(L))  &kp LS(LA(M))  &none
+&none     &m23  &kp LS(LG(N4))     &kp LS(LG(C))   &kp LC(INSERT)      &kp LC(LA(LG(V)))  &kp LS(F5)   &m24               &m4        &m12           &capslock      &none
                                    &kp LGUI        &kp LS(LG(ESCAPE))  &caps_word      &kp LCTRL       &kp LS(LG(SPACE))  &kp LALT
             >;
 
@@ -710,9 +723,9 @@
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
         // │TO0│ ❌ │ ❌ │ ❌ │ ❌ │TO0│   │ ❌ │F7 │F8 │F9 │▒▒▒│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ❌ │ ❌ │ ❌ │ ❌ │ ❌ │OFF│   │ ❌ │F4 │F5 │F6 │F12│▒▒▒│
+        // │   │ ❌ │ ❌ │ ❌ │ ❌ │OFF│   │ ❌ │F4 │F5 │F6 │F12│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │ ❌ │STU│ ❌ │ ❌ │ ❌ │BLD│   │F10│F1 │F2 │F3 │F11│▒▒▒│
+        // │   │STU│ ❌ │ ❌ │ ❌ │BLD│   │F10│F1 │F2 │F3 │F11│▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │TO0│ ⇧ │   │ ⌃ │TO0│ ⌥ │
         //             └───┴───┴───┘   └───┴───┴───┘
@@ -722,8 +735,8 @@
         fkeys {
             bindings = <
 &to 0    &trans          &trans  &trans  &trans  &to 0          &trans     &kp F7  &kp F8  &kp F9  &none    &none
-&trans   &trans          &trans  &trans  &trans  &soft_off      &trans     &kp F4  &kp F5  &kp F6  &kp F12  &none
-&trans   &studio_unlock  &trans  &trans  &trans  &bootloader    &kp F10    &kp F1  &kp F2  &kp F3  &kp F11  &none
+&none    &trans          &trans  &trans  &trans  &soft_off      &trans     &kp F4  &kp F5  &kp F6  &kp F12  &none
+&none    &studio_unlock  &trans  &trans  &trans  &bootloader    &kp F10    &kp F1  &kp F2  &kp F3  &kp F11  &none
                                  &kp LGUI  &to 0  &kp LSHFT     &kp LCTRL  &to 0   &kp LALT
             >;
 

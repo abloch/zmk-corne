@@ -8,7 +8,7 @@ Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 >
 > The divergence the status note used to apologise for is paid off. Stage 4 — converge the two keyboards — is done for the bindings, and stages 1, 2, 3, 5 and 6 came with it. What is left is stage 7, retiring the left outer column, which is the only gate on buying hardware.
 >
-> The two maps now differ in exactly two places, both of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for, and the layer-tap protection on `&lt`, which QMK has no equivalent knob for either. Caps Lock used to be the third; the Ximi2 has put it back on layer 4's left outer bottom key alongside its left-thumb gesture, and the Corne binds the same key, so that gap is closed. Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
+> The two maps now differ in exactly two places, both of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for, and the layer-tap protection on `&lt`, which QMK has no equivalent knob for either. Caps Lock used to be the third; both boards now bind it on layer 4's right pinky bottom key, inside the 36-key core, and the Ximi2 keeps its left-thumb gesture as a second route — a capability difference rather than a divergence, since the maps say the same thing at the same position. Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
 
 ---
 
@@ -16,12 +16,12 @@ Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 
 | Path | What it is |
 |---|---|
-| `config/corne.keymap` | The whole Corne layout — 6 layers, 25 macro definitions, 1 behavior, 40 combos |
+| `config/corne.keymap` | The whole Corne layout — 6 layers, 25 macro definitions, 1 behavior, 41 combos |
 | `config/corne.conf` | Kconfig flags (Studio, pointer buttons, combo limits, sleep, BLE power, debounce) |
 | `config/west.yml` | West manifest pinning ZMK to `zmkfirmware/zmk@main` |
 | `build.yaml` | Build matrix: `corne_left`, `corne_right`, `settings_reset`, all on `nice_nano_v2` |
 | `.github/workflows/build.yml` | Calls ZMK's reusable `build-user-config.yml` |
-| `combos.md` | All 40 combos, one diagram each |
+| `combos.md` | All 41 combos, one diagram each |
 | `32-keys.md` | The 36-key transition plan (English) |
 | `32-keys.he.md` | Same plan, Hebrew |
 | `akiva.vil` | Vial export for the **Ximi2**, the work keyboard — the source of truth for the layout |
@@ -34,7 +34,7 @@ There is no local build. Every push builds through GitHub Actions and produces f
 
 Corne 42 keys: three rows of six columns per half, three thumb keys per half. Every map below draws both halves together, in physical left-to-right order, with the gap between them standing in for the two controllers.
 
-The outer pinky column on each half is the part the 36-key migration removes, and both boards now agree on what is still standing there — Tab and Escape on the left, the lock-screen macro on the right, ❌ everywhere else. Backtick sits on the right pinky bottom row, where slash used to be; slash is now the `d`+`r` combo and tilde is gone. Backspace is on the right pinky home position. The base layer carries no `-` `=` `;` `'` `[` `]` `\` at all — every one of those is a combo or a layer.
+The outer pinky column on each half is the part the 36-key migration removes, and both boards now agree on what is still standing there — Tab and its return-to-base copies on the left, the lock-screen macro on the right, ❌ everywhere else. Escape and Caps Lock were the last two tenants of the left column's other keys, and both left in the same pass: Escape into the `q`+`e` combo, Caps Lock into the core. Backtick sits on the right pinky bottom row, where slash used to be; slash is now the `d`+`r` combo and tilde is gone. Backspace is on the right pinky home position. The base layer carries no `-` `=` `;` `'` `[` `]` `\` at all — every one of those is a combo or a layer.
 
 ---
 
@@ -71,7 +71,7 @@ block
 columns 13
 
   tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  xe1["❌"] a s d f g space h j k l bspc["⌫"] x1["❌"]
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -86,8 +86,8 @@ columns 13
   class cmd,sft,ctl,alt mod
   class ent goL1
   class spc goL2
-  class tab,esc,lock alert
-  class x1,x2,x3 dead
+  class tab,lock alert
+  class xe1,x1,x2,x3 dead
 ```
 
 ### Layer 1 — symbols
@@ -100,8 +100,8 @@ block
 columns 13
 
   to0["TO0"] cur[" {}"] semi[";"] dqt["#quot;"] sqt["'"] dol["$"] space wl["⌥⌃←"] a7["⌥7"] a8["⌥8"] a9["⌥9"] wr["⌥⌃→"] x1["❌"]
-  esc["␛"] par[" ()"] dl2["$"] pct["%"] amp[" &"] ast["*"] space trm["💻"] a4["⌥4"] a5["⌥5"] a6["⌥6"] car["^"] x2["❌"]
-  qm["?"] sqb[" []"] exc["!"] at["@"] hsh[" #"] col[":"] space a0["⌥0"] a1["⌥1"] a2["⌥2"] al["⌥←"] ar["⌥→"] x3["❌"]
+  xe2["❌"] par[" ()"] dl2["$"] pct["%"] amp[" &"] ast["*"] space trm["💻"] a4["⌥4"] a5["⌥5"] a6["⌥6"] car["^"] x2["❌"]
+  xq["❌"] sqb[" []"] exc["!"] at["@"] hsh[" #"] col[":"] space a0["⌥0"] a1["⌥1"] a2["⌥2"] al["⌥←"] ar["⌥→"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
   classDef plain fill:#e6f6f9,stroke:#0a4f63,stroke-width:2px,color:#04222b
@@ -111,12 +111,11 @@ columns 13
   classDef goL0 fill:#adc2d8,stroke:#1d2c3d,stroke-width:3px,color:#060c12
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class esc plain
   class a0,a1,a2,a4,a5,a6,a7,a8,a9,al,ar,cmd,spc,sft,ctl,ent,alt mod
   class cur,par,sqb,wl,wr,trm seq
-  class semi,dqt,sqt,dol,dl2,pct,amp,ast,qm,exc,at,hsh,col,car spec
+  class semi,dqt,sqt,dol,dl2,pct,amp,ast,exc,at,hsh,col,car spec
   class to0 goL0
-  class x1,x2,x3 dead
+  class xe2,xq,x1,x2,x3 dead
 ```
 
 ### Layer 2 — nav
@@ -129,8 +128,8 @@ block
 columns 13
 
   to0["TO0"] g1["⌘1"] g2["⌘2"] g3["⌘3"] x1["❌"] t0b["TO0"] space fa["⊟≡"] hom["⇱"] up["↑"] pgu["⇞"] emj["⇧⌘."] x2["❌"]
-  esc["␛"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] c5["⌃5"] space fo["⊟"] lft["←"] dn["↓"] rgt["→"] abs["⌥⌫"] x3["❌"]
-  cgr["⌃` "] xa["❌"] xb["❌"] xc["❌"] xd["❌"] xe["❌"] space uf["⊞"] endk["⇲"] del["⌦"] pgd["⇟"] cdl["⌃⌦"] x4["❌"]
+  xe3["❌"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] c5["⌃5"] space fo["⊟"] lft["←"] dn["↓"] rgt["→"] abs["⌥⌫"] x3["❌"]
+  xf["❌"] xa["❌"] xb["❌"] xc["❌"] xd["❌"] xe["❌"] space uf["⊞"] endk["⇲"] del["⌦"] pgd["⇟"] cdl["⌃⌦"] x4["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] sen["⇧⌘⏎"] alt["⌥"] space:3
 
   classDef plain fill:#e8f7ec,stroke:#0b5946,stroke-width:2px,color:#06241c
@@ -139,11 +138,11 @@ columns 13
   classDef goL0 fill:#adc2d8,stroke:#1d2c3d,stroke-width:3px,color:#060c12
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class esc,hom,up,pgu,lft,dn,rgt,endk,del,pgd plain
-  class g1,g2,g3,c1,c2,c3,c4,c5,cgr,emj,abs,cdl,cmd,spc,sft,ctl,sen,alt mod
+  class hom,up,pgu,lft,dn,rgt,endk,del,pgd plain
+  class g1,g2,g3,c1,c2,c3,c4,c5,emj,abs,cdl,cmd,spc,sft,ctl,sen,alt mod
   class fa,fo,uf seq
   class to0,t0b goL0
-  class x1,x2,x3,x4,xa,xb,xc,xd,xe dead
+  class x1,x2,x3,x4,xa,xb,xc,xd,xe,xf,xe3 dead
 ```
 
 ### Layer 3 — numbers
@@ -156,7 +155,7 @@ block
 columns 13
 
   to0["TO0"] n1["1"] n2["2"] n3["3"] n4["4"] t0b["TO0"] space mul["*"] s7["7"] s8["8"] s9["9"] x12["❌"] x1["❌"]
-  t0c["TO0"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] x2["❌"] space pls["+"] s4["4"] s5["5"] s6["6"] bsp["⌫"] x3["❌"]
+  x13["❌"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] x2["❌"] space pls["+"] s4["4"] s5["5"] s6["6"] bsp["⌫"] x3["❌"]
   x4["❌"] x5["❌"] x6["❌"] x7["❌"] x8["❌"] x9["❌"] space mns["-"] s1["1"] s2["2"] s3["3"] x10["❌"] x11["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space kdt["."] zro["0"] alt["⌥"] space:3
 
@@ -170,8 +169,8 @@ columns 13
   class n1,n2,n3,n4,s1,s2,s3,s4,s5,s6,s7,s8,s9,bsp plain
   class c1,c2,c3,c4,cmd,spc,sft,kdt,zro,alt mod
   class mul,pls,mns spec
-  class to0,t0b,t0c goL0
-  class x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12 dead
+  class to0,t0b goL0
+  class x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13 dead
 ```
 
 ### Layer 4 — function
@@ -184,8 +183,8 @@ block
 columns 13
 
   to0["TO0"] vz["␛ZZ"] f2["F2"] gf["⌘F12"] lf12["F12"] t0b["TO0"] space f5["F5"] f10["F10"] f11["F11"] s11["⇧F11"] ap["⌥⌘P"] x1["❌"]
-  t0c["TO0"] rr["!!"] rec["⌃⌥⌘S"] c5["⇧⌘5"] fnd["⌘F"] fna["⇧⌘F"] space sgf5["⇧⌘F5"] f4["F4"] mai["📧"] lck["⇧⌘L"] mut["⇧⌥M"] x2["❌"]
-  cl["⇪"] thk["💭"] c4["⇧⌘4"] cpy["⇧⌘C"] ins["⌃Ins"] pst["⌃⌥⌘V"] space sf5["⇧F5"] ts["~/"] ds["./"] dds["../"] x4["❌"] x3["❌"]
+  x14["❌"] rr["!!"] rec["⌃⌥⌘S"] c5["⇧⌘5"] fnd["⌘F"] fna["⇧⌘F"] space sgf5["⇧⌘F5"] f4["F4"] mai["📧"] lck["⇧⌘L"] mut["⇧⌥M"] x2["❌"]
+  x24["❌"] thk["💭"] c4["⇧⌘4"] cpy["⇧⌘C"] ins["⌃Ins"] pst["⌃⌥⌘V"] space sf5["⇧F5"] ts["~/"] ds["./"] dds["../"] cl["⇪"] x3["❌"]
   space:3 cmd["⌘"] ses["⇧⌘␛"] cw["⇪w"] space ctl["⌃"] ssp["⇧⌘␣"] alt["⌥"] space:3
 
   classDef plain fill:#f3ecfb,stroke:#4a1f72,stroke-width:2px,color:#240c39
@@ -199,8 +198,8 @@ columns 13
   class gf,rec,c5,fnd,fna,c4,cpy,ins,pst,s11,sgf5,lck,mut,sf5,cmd,ses,ctl,ssp,alt mod
   class vz,rr,thk,ap,mai,cl,ts,ds,dds seq
   class cw spec
-  class to0,t0b,t0c goL0
-  class x1,x2,x3,x4 dead
+  class to0,t0b goL0
+  class x1,x2,x3,x14,x24 dead
 ```
 
 ### Layer 5 — F-keys
@@ -253,13 +252,17 @@ Detail that does not fit on a one-line caption, kept out of the maps above so th
 
 The lock-screen macro on the right outer column is that column's only surviving tenant on either board. Its final home is still an open question in the plan.
 
+The left outer column is down to its top key: Tab on base, a return-to-base copy on the five other layers. Escape's key is gone from all six on both boards — `q`+`e` is the only Escape now, with nothing beside it, so the dual home the plan allowed itself was granted and then spent unused. The middle and bottom positions are `&none` throughout, which means two of the three positions stage 7 has to retire are already retired.
+
 ### Symbols — what sits where
 
 Left hand: the three bracket-pair macros stacked vertically, each leaving the cursor inside, then the quotes, the colons and the shifted number row. Right hand: **⌥+digit** for all ten digits, which is an application switcher, plus word and paragraph motion and a terminal launcher.
 
+The outer column's bottom key used to carry `?`, and it is unbound now on both boards: the glyph moved to a combo, `d`+`v`, rather than to another key. Two earlier candidates were rejected for rolling — `a`+`x` catches "tax" and "max", `s`+`c` catches "scan" and "escape" — and `d`+`v` was taken knowing it is adjacent columns too, because it is the backslash diagonal one row down and those diagonals have held for years.
+
 ### Nav — what sits where
 
-Left hand: Cmd+1..3, Ctrl+1..5, and Ctrl+backtick on the outer column. The bottom row is empty now — it carried `⇧⌘E` on two separate keys, plus `⌘⌥T`, F4 and Shift+F4, and the Ximi2 cleared the whole row when it fixed the duplicate. Five positions inside the core are free there. Right hand: an inverted-T arrow cluster with Home, End, PgUp, PgDn and Delete, the three editor fold macros down the inner column, and word-wise delete on the pinky.
+Left hand: Cmd+1..3, Ctrl+1..5, and a bottom row that is empty now — it carried `⇧⌘E` on two separate keys, plus `⌘⌥T`, F4 and Shift+F4, and the Ximi2 cleared the whole row when it fixed the duplicate. Five positions inside the core are free there. The outer column's bottom key went the same way for a different reason: it held Ctrl+backtick, the terminal-cycling chord, and that was dropped rather than rehoused — the worst case is pressing `⌃` and `` ` `` explicitly — which also closed the last divergence on that position, since the Ximi2 had cleared it already. Right hand: an inverted-T arrow cluster with Home, End, PgUp, PgDn and Delete, the three editor fold macros down the inner column, and word-wise delete on the pinky.
 
 ### Numbers — the emptiest layer
 
@@ -269,7 +272,7 @@ The right pinky is dead. It used to carry a second `9`, a Ximi2 defect this file
 
 ### Function — sticky, never locked
 
-`&caps_word` sits on the left inner thumb, and **Caps Lock is back on the left outer bottom key** — the Ximi2 restored it there rather than leaving the thumb gesture as its only route, and the Corne, which cannot express that gesture at all, gains a real binding for it. Layer 4 has a sticky form and no locked form, by design.
+`&caps_word` sits on the left inner thumb, and **Caps Lock is on the right pinky bottom key** — the position that carries backtick on base, which puts it inside the 36-key core on both boards. It used to sit on the left outer bottom key, on a column the plan is retiring; this is where it landed instead. Layer 4 has a sticky form and no locked form, by design.
 
 The three path prefixes run `~/`, `./`, `../` inward along the bottom row. `M12` used to be a second copy of `M4`'s `./`; it is `../` now. `thisisunsafe` lost its key in the same shuffle and is defined but unbound on both boards.
 
@@ -304,6 +307,7 @@ Twenty-five definitions. Twenty are numbered to match the Vial macro table in `a
 | `m23` | `think hard and be smart` |
 | `m24` | `~/` |
 | `m27` | `⌘⌥T` |
+| `capslock` | Caps Lock, on layer 4's right pinky bottom on both boards |
 | `btclr0`-`btclr4` | select Bluetooth profile 0-4, wait 30 ms, then clear it |
 
 The twelve legacy named macros are gone, the nine byte-identical duplicates with them, and with them the pair whose `fold` and `expand` names were inverted.
@@ -320,7 +324,9 @@ One tap-dance. No hold-taps, no mod-morphs, no `&mt` anywhere.
 
 The `gui5` and `alt5` triple-tap dances are gone. They put a 400 ms tapping term on Cmd and Alt, which are the two modifiers this user's zellij config leans on hardest. `td10` is gone too; its lock-screen tap is now a plain macro on the key it already shared.
 
-The left thumb is a plain Shift. The Ximi2's dance there now carries both caps behaviours — Caps Word on a double-tap, Caps Lock on a tap-then-hold — and ZMK can express neither slot faithfully: it has no tap-hold at all, and a double-tap-to-caps would fire while typing two capitals in a row. `&caps_word` is on layer 4's left inner thumb on both boards. Caps Lock stopped being a casualty: the Ximi2 put it back on layer 4's left outer bottom key while keeping the thumb gesture, and the `capslock` macro is bound to that same position here. The Corne reaches Caps Lock by one route, the Ximi2 by two.
+The left thumb is a plain Shift. The Ximi2's dance there — `tap_dance[0]` — now carries both caps behaviours, Caps Word on a double-tap and `M11`, Caps Lock, on a tap-then-hold, and ZMK can express neither slot faithfully: it has no tap-hold at all, and a double-tap-to-caps would fire while typing two capitals in a row. `&caps_word` is on layer 4's left inner thumb on both boards.
+
+Putting Caps Lock on the Corne's Shift key as well was considered and declined. The two shapes ZMK offers in place of the missing slot, a hold-tap or a tap-dance, both charge a tapping term on plain Shift — the same tax `gui5` and `alt5` were deleted for, this time on the thumb held most often, bought for a key pressed a few times a week. So the `capslock` macro is bound as a plain key instead, on layer 4's right pinky bottom on both boards. The Corne reaches Caps Lock by one route, the Ximi2 by two, and the Corne's single route is now inside the 36-key core rather than on a column being retired.
 
 `&lt` now carries `quick-tap-ms = 200`, `require-prior-idle-ms = 125` and `flavor = "tap-preferred"`, so a fast Space or Enter cannot resolve as a layer hold. This is a Corne-only improvement; QMK has no equivalent knob, so the Ximi2 goes without.
 
@@ -328,7 +334,7 @@ The left thumb is a plain Shift. The Ximi2's dance there now carries both caps b
 
 ## Corne combos
 
-Forty combos, 150 ms timeout, **all scoped to `layers = <0>`** — they fire on base and nowhere else. The Ximi2 leaves its combos global; the Corne leads here.
+Forty-one combos, 150 ms timeout, **all scoped to `layers = <0>`** — they fire on base and nowhere else. The Ximi2 leaves its combos global; the Corne leads here.
 
 Every one of them is drawn key by key in [`combos.md`](combos.md), which uses its own two-colour scheme — amber for a combo's keys, cyan for the shared Bluetooth anchor — rather than the per-layer hues above. What follows is the summary.
 
@@ -338,6 +344,7 @@ Every one of them is drawn key by key in [`combos.md`](combos.md), which uses it
 |---|---|---|
 | `d`+`r` | `/` | traces the glyph, lower-left to upper-right |
 | `e`+`f` | `\` | traces the glyph, upper-left to lower-right |
+| `d`+`v` | `?` | the backslash diagonal one row down, and `?` is shifted slash |
 | `s`+`f` | `-` | |
 | `x`+`v` | `_` | directly below dash, same two columns |
 | `t`+`g` | `;` | vertical, outer column |
@@ -346,9 +353,9 @@ Every one of them is drawn key by key in [`combos.md`](combos.md), which uses it
 | `m`+`.` | `=` | directly below plus, same two columns |
 | `q`+`s` | `[` | |
 | `a`+`w` | `]` | |
-| `q`+`e` | Escape | |
+| `q`+`e` | Escape | the only Escape on either board; the outer key is gone |
 
-Almost none of these sit on two adjacent columns of the same hand — they skip a column or run vertically, which is what keeps a typing roll from firing them. `d`+`r`, `f`+`e`, `q`+`s` and `a`+`w` are the grandfathered exceptions, not a precedent.
+Almost none of these sit on two adjacent columns of the same hand — they skip a column or run vertically, which is what keeps a typing roll from firing them. `d`+`r`, `f`+`e`, `q`+`s` and `a`+`w` are the grandfathered exceptions, inherited rather than chosen. `d`+`v` is the exception that was chosen: it breaks the rule on purpose, on the bet that the two diagonals it copies have never misfired, and it is the weakest-defended combo in the set.
 
 **Layer access** — a uniform momentary/locked pair per layer, identical on both boards:
 
@@ -419,7 +426,8 @@ The deprecated mouse-emulation flag is gone along with mouse movement and scroll
 - The Bluetooth anchor `o`+`p` sits on two adjacent columns of the same hand, breaking the rule the rest of the combo set follows. `require-prior-idle-ms = <250>` is what makes it safe, so that number is load-bearing: lower it and `t`-`o`-`p` starts switching profiles inside the word "stop".
 - The 1 ms press debounce widens the window for a slow roll to emit `-` instead of entering a layer. The combo overlap itself is accepted; the debounce is not examined.
 - The lock-screen macro is the only tenant of the right outer column, on either board. It needs a home inside the 36-key core before that column can be retired.
-- Tab and Escape still sit on the left outer column and have no new home.
+- The left outer column is down to its top key, which is the last decision in the whole left-column stage, and it has two problems on it. **Tab** has no candidate anywhere; shell completion drives it, so whatever takes it has to be cheap. And with the middle position dead, position 0's `&to 0` is also the only way off layer 1 — layer 1's `t` position is `$`, not `TO0` — so Tab cannot be retired until the symbols layer has another way home.
+- `?` is combo-only, on `d`+`v`, which is two adjacent columns of the same hand. It breaks the rule the rest of the combo set follows and is defended only by the two grandfathered diagonals it copies, `r`+`d` and `e`+`f`. The idle guard that protects the Bluetooth anchor cannot be reused here, because `?` gets typed mid-word.
 
 ---
 
@@ -436,20 +444,20 @@ Vial stores the right half **reversed** in the JSON — array `col0` is the oute
 **Layer 0 — base**
 ```
  ⇥   q w e r t        y u i o p   M10
- ␛   a s d f g        h j k l ⌫    ·
+ ·   a s d f g        h j k l ⌫    ·
  ·   z x c v b        n m , . `    ·
-        ⌘  ␣/L2  ⇧    ⌃(TD4) ⏎/L1  ⌥
+        ⌘  ␣/L2  ⇧    ⌃(TD1) ⏎/L1  ⌥
 ```
 
-Left thumbs: `RGUI`, `LT2(SPACE)`, `LSHIFT`. Right thumbs: `TD(4)` (Ctrl), `LT1(ENTER)`, `LALT`.
+Left thumbs: `RGUI`, `LT2(SPACE)`, `LSHIFT`. Right thumbs: `TD(1)` (Ctrl), `LT1(ENTER)`, `LALT`.
 
-Backtick sits on the right pinky bottom, where `/` used to be. `/` is now combo-only (`d`+`r`), and tilde comes free as shifted backtick — one move retires two doomed keys. `M10` (`Ctrl+Cmd+Q`, lock screen) is the sole remaining tenant of the right outer column, deferred to a later phase. The left outer column is still live for `⇥` and `␛`; its bottom key is already dead.
+Backtick sits on the right pinky bottom, where `/` used to be. `/` is now combo-only (`d`+`r`), and tilde comes free as shifted backtick — one move retires two doomed keys. `M10` (`Ctrl+Cmd+Q`, lock screen) is the sole remaining tenant of the right outer column, deferred to a later phase. The left outer column is down to `⇥` on its top key; the middle and bottom keys are `KC_NO` on every layer, Escape having become the `q`+`e` combo and Caps Lock having moved into the core.
 
 **Layer 1 — symbols / Alt-digit**
 ```
 DF0  {}  :  "  '  $      ⌥⌃←  ⌥7 ⌥8 ⌥9  ⌥⌃→   ·
- ␛   ()  $  %  &  *      TRM  ⌥4 ⌥5 ⌥6   ^    ·
- ?   []  !  @  #  :       ⌥0  ⌥1 ⌥2 ⌥←   ⌥→   ·
+ ·   ()  $  %  &  *      TRM  ⌥4 ⌥5 ⌥6   ^    ·
+ ·   []  !  @  #  :       ⌥0  ⌥1 ⌥2 ⌥←   ⌥→   ·
 ```
 
 The high-frequency `⌥←`/`⌥→` pair took the tight adjacent slot on the bottom row, paying with `⌥3`. The low-frequency `⌥⌃←`/`⌥⌃→` became bookends of the top row. `⌥6` never moved — that was the binding constraint the whole redesign was built around.
@@ -457,14 +465,14 @@ The high-frequency `⌥←`/`⌥→` pair took the tight adjacent slot on the bo
 **Layer 2 — nav**
 ```
 TO0  ⌘1 ⌘2 ⌘3  ·  TO0     foldall HOME  ↑  PgUp  ⇧⌘.   ·
- ␛   ⌃1 ⌃2 ⌃3 ⌃4  ⌃5      fold     ←    ↓   →    ⌥⌫    ·
+ ·   ⌃1 ⌃2 ⌃3 ⌃4  ⌃5      fold     ←    ↓   →    ⌥⌫    ·
  ·    ·   ·   ·   ·  ·    expand  END  ⌦  PgDn   ⌃⌦    ·
 ```
 
 **Layer 3 — numpad**
 ```
 TO0  1 2 3 4  TO0       *  7 8 9  ·   ·
-DF0  ⌃1 ⌃2 ⌃3 ⌃4  ·     +  4 5 6  ⌫   ·
+ ·   ⌃1 ⌃2 ⌃3 ⌃4  ·     +  4 5 6  ⌫   ·
  ·   ·  ·  ·  ·   ·     -  1 2 3  ·   ·
                             thumbs: ⌥  0  .
 ```
@@ -474,8 +482,8 @@ The duplicated `9` on the pinky is fixed — that position is dead now.
 **Layer 4 — function**
 ```
 TO0  M9  F2  ⌘F12 F12 TO0      F5   F10 F11 ⇧F11  M8    ·
-DF0  M20 ⌃⌥⌘S ⇧⌘5 ⌘F  ⇧⌘F      ⇧⌘F5 F4  M15 ⇧⌘L   ⇧⌥M   ·
-M11  M23 ⇧⌘4 ⇧⌘C ⌃Ins ⌃⌥⌘V     ⇧F5  M24 M4  M12   ·     ·
+ ·   M20 ⌃⌥⌘S ⇧⌘5 ⌘F  ⇧⌘F      ⇧⌘F5 F4  M15 ⇧⌘L   ⇧⌥M   ·
+ ·   M23 ⇧⌘4 ⇧⌘C ⌃Ins ⌃⌥⌘V     ⇧F5  M24 M4  M12   M11   ·
 ```
 
 **Layer 5 — F-keys**
@@ -512,6 +520,8 @@ Unchanged from the Corne, and the part that works:
 | `x`+`v` | `_` | `a`+`w` | `]` |
 | `j`+`l` | `+` | `m`+`.` | `=` |
 
+`d`+`v` → `?` joined the set on both boards in the same pass, once the glyph's key on layer 1 was unbound. It is the one combo here that crosses two adjacent columns by choice rather than by inheritance.
+
 ### Pointer combos
 
 Mouse movement and scroll are deleted — the trackpad owns the pointer. Four pointer combos survive because no trackpad maps them:
@@ -523,7 +533,7 @@ Mouse movement and scroll are deleted — the trackpad owns the pointer. Four po
 | `q`+`d` | `BTN1` | left click without leaving home row |
 | `a`+`c` | `BTN2` | right click without leaving home row |
 
-`q`+`b` fires the prose macro and `q`+`e` gives a second Escape. Both are re-anchored inside the 36-key core, so neither dies with the outer columns — `⇥`+`b`, which an earlier draft of this section recorded, no longer exists on either board.
+`q`+`b` fires the prose macro and `q`+`e` is now the only Escape on either board, the outer key having been retired rather than kept beside it. Both are anchored inside the 36-key core, so neither dies with the outer columns — `⇥`+`b`, which an earlier draft of this section recorded, no longer exists on either board.
 
 ---
 
@@ -553,7 +563,7 @@ These are decisions, not defects. Each was taken knowingly and each has a reason
 
 **Direction reversal on the bottom-row pinky.** That key was `⌥⌃←` and is now `⌥→`. Re-learning a reversed direction on one key is the price of putting the high-frequency `⌥←`/`⌥→` pair on adjacent keys, and the low-frequency pair got the bookend positions instead.
 
-**Combo subset overlaps.** Thirteen subset relationships exist among the twenty-three live combos — a shorter combo whose keys are all contained in a longer one. QMK defers to the longer combo for as long as it is still reachable, so the shorter one only escapes when the last key of the longer chord lands after `COMBO_TERM`. That makes this a timing bug under slow rolls, not an always-on collision. Explicitly accepted: *"I am not afraid of combo overlaps."* The notable cases:
+**Combo subset overlaps.** Thirteen subset relationships exist among the twenty-five live combos — a shorter combo whose keys are all contained in a longer one. QMK defers to the longer combo for as long as it is still reachable, so the shorter one only escapes when the last key of the longer chord lands after `COMBO_TERM`. That makes this a timing bug under slow rolls, not an always-on collision. Explicitly accepted: *"I am not afraid of combo overlaps."* The notable cases:
 
 | Shorter | Contained in |
 |---|---|
@@ -565,7 +575,7 @@ These are decisions, not defects. Each was taken knowingly and each has a reason
 
 Note that the fix chosen here was the mirror image of the one `32-keys.md` proposed: the *layer combo* moved, not the punctuation.
 
-**`td[4]` stays a tap dance.** `[tap=LCTRL, hold=LCTRL, double=LCAG(\), 210 ms]`. Stage 3 says replace tap-dance modifiers with plain ones, and this one is declined on purpose: the Corne has no spare key for the record hotkey, so keeping the double-Ctrl habit on the Ximi2 is what lets it transfer.
+**`td[1]` stays a tap dance.** `[tap=LCTRL, hold=LCTRL, double=LCAG(\), 210 ms]`. Stage 3 says replace tap-dance modifiers with plain ones, and this one is declined on purpose: the Corne has no spare key for the record hotkey, so keeping the double-Ctrl habit on the Ximi2 is what lets it transfer.
 
 **Layer 5's left half stays `KC_TRNS`.** Originally reserved for the Bluetooth controls the Corne needs and the work board does not; the Corne then moved Bluetooth into combos, so the reservation turned out to be unnecessary and the transparency is now simply parity. The consequence is real and accepted either way: while locked into layer 5, every left-hand combo is still armed.
 
@@ -575,12 +585,12 @@ Note that the fix chosen here was the mirror image of the one `32-keys.md` propo
 
 ## Ximi2 backlog
 
-Open, known, and deliberately not fixed yet. Twenty-three combos are live (`UI1`-`UI7`, `UI10`-`UI21`, `UI24`, `UI26`, `UI28`, `UI29`); of the other nine slots, all are empty except `UI31`.
+Open, known, and deliberately not fixed yet. Twenty-five of the thirty-two combo slots are live and the other seven are empty.
 
-- `UI31` is a malformed leftover: no trigger keys at all, but a `KC_BTN1` output keycode still stranded in the slot. Inert, and untidy.
-- `td[2]` gates layer 1's Shift behind a 200 ms dance while base-layer Shift is plain — an inconsistency with no justification.
-- Ten configured tap-dance slots are unreferenced; only `TD(2)` and `TD(4)` are bound anywhere.
-- Orphan macros: `M21`, `M25`, `M26`. `M11` is not one any more — it is Caps Lock, bound on layer 4's left outer bottom key.
+- ~~`UI31` is a malformed leftover: no trigger keys at all, but a `KC_BTN1` output keycode still stranded in the slot.~~ Fixed. The combo table was compacted and the stranded keycode went with the empty slots.
+- ~~`td[2]` gates layer 1's Shift behind a 200 ms dance while base-layer Shift is plain.~~ Fixed, though not the way this line wanted: `td[2]` no longer exists, and layer 1 carries the same `td[0]` the base layer does, so the inconsistency is gone and the tapping term is on both.
+- ~~Ten configured tap-dance slots are unreferenced.~~ Fixed. The dance table holds two live entries, `td[0]` for Shift and `td[1]` for Ctrl, and the remaining thirty slots are empty.
+- Orphan macros: `M21`, `M25`, `M26`. `M11` is not one any more — it is Caps Lock, bound on layer 4's right pinky bottom key, inside the core.
 - ~~`M12` and `M4` are both `./`.~~ Fixed. `M12` is `../`, and the function layer's bottom row now runs `~/`, `./`, `../` inward. `M22`, `thisisunsafe`, lost its key in the shuffle and is unbound on both boards.
 - ~~Layer 3's duplicate `9`.~~ Fixed; that pinky position is dead.
 - ~~Layer 2 binds `SGUI(E)` twice.~~ Fixed by clearing the whole bottom-left row, which also freed `M27`, F4 and Shift+F4 — five core positions on the nav layer with nothing in them.
@@ -607,7 +617,7 @@ The approach is deliberately gradual, and the hardware is bought **last**, only 
 | 4 | **Converge the two keyboards** — identical 30-key core on both | done — every binding on all six layers ported from `akiva.vil`, and layer 5 down from fifteen divergent positions to three now that Bluetooth is combos-only | done |
 | 5 | **Two homes for every orphan** — new locations go live while the old keys still work | done — `/`, backtick and the square brackets moved with the port | done for `/`, backtick and the square brackets |
 | 6 | **Retire the right column** — nearly free after stage 2 | done except `M10` (lock screen), matching the Ximi2 | done except `M10` (lock screen), which is deferred |
-| 7 | **Retire the left column** — Tab, Escape and backtick; the real test, and the only gate on buying hardware | started — the outer bottom key is dead and the `TO(0)` escape hatch is pre-placed on the `t` column | started — the outer bottom key is dead and the `TO(0)` escape hatch is pre-placed on the `t` column |
+| 7 | **Retire the left column** — Tab, Escape and backtick; the real test, and the only gate on buying hardware | two of the three positions are dead on all six layers; only the top key still pays, for Tab and for layer 1's way home | the same — middle and bottom dead, top key still live |
 | 8 | **Order the Toucan2** | blocked on stage 7, both boards | |
 
 Home row mods are an optional side quest that can run at any point after stage 3 and deliberately gates nothing.
