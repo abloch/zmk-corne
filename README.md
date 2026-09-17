@@ -8,7 +8,7 @@ Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 >
 > The divergence the status note used to apologise for is paid off. Stage 4 — converge the two keyboards — is done for the bindings, and stages 1, 2, 3, 5 and 6 came with it. What is left is stage 7, retiring the left outer column, which is the only gate on buying hardware.
 >
-> The two maps now differ in exactly two places, both of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for, and the layer-tap protection on `&lt`, which QMK has no equivalent knob for either. Caps Lock used to be the third; both boards now bind it on layer 4's right pinky bottom key, inside the 36-key core, and the Ximi2 keeps its left-thumb gesture as a second route — a capability difference rather than a divergence, since the maps say the same thing at the same position. Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
+> The two maps now differ in exactly two places, both of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for, and the layer-tap protection on `&lt`, which QMK has no equivalent knob for either. Caps Lock used to be the third; both boards now bind it on layer 4's right pinky bottom key, inside the 36-key core, and both boards also carry it on the left thumb's tap-dance — Caps Word on double-tap, Caps Lock on tap-then-hold (Ximi2) or triple-tap (Corne, since ZMK tap-dance has no hold slot). Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
 
 ---
 
@@ -245,7 +245,7 @@ Detail that does not fit on a one-line caption, kept out of the maps above so th
 |---|---|---|
 | Left outer | `&kp RGUI` | Cmd. Right Cmd, faithfully copied from the Ximi2, where every other layer uses left Cmd |
 | Left middle | `&lt 2 SPACE` | Space / hold for nav — hence the green |
-| Left inner | `&kp LSHFT` | Shift |
+| Left inner | `&shift_caps` | Shift; double-tap for Caps Word, triple-tap for Caps Lock. 200 ms, the Ximi2's term. Bound on layers 0 and 1; plain `&kp LSHFT` on 2, 3 and 5; one-tap `&caps_word` on layer 4 — as on Ximi2 |
 | Right inner | `&control_record` | Ctrl; double-tap for the record hotkey. 210 ms, the Ximi2's term |
 | Right middle | `&lt 1 ENTER` | Enter / hold for symbols — hence the teal |
 | Right outer | `&kp LALT` | Alt |
@@ -272,7 +272,7 @@ The right pinky is dead. It used to carry a second `9`, a Ximi2 defect this file
 
 ### Function — sticky, never locked
 
-`&caps_word` sits on the left inner thumb, and **Caps Lock is on the right pinky bottom key** — the position that carries backtick on base, which puts it inside the 36-key core on both boards. It used to sit on the left outer bottom key, on a column the plan is retiring; this is where it landed instead. Layer 4 has a sticky form and no locked form, by design.
+`&caps_word` sits on the left inner thumb, and **Caps Lock is on the right pinky bottom key** — the position that carries backtick on base, which puts it inside the 36-key core on both boards. It used to sit on the left outer bottom key, on a column the plan is retiring; this is where it landed instead. Both Caps Word and Caps Lock are also reachable from base via the `&shift_caps` tap-dance on the left thumb (double-tap, triple-tap), mirroring the Ximi2's `tap_dance[0]`. Layer 4 has a sticky form and no locked form, by design.
 
 The three path prefixes run `~/`, `./`, `../` inward along the bottom row. `M12` used to be a second copy of `M4`'s `./`; it is `../` now. `thisisunsafe` lost its key in the same shuffle and is defined but unbound on both boards.
 
@@ -318,15 +318,16 @@ The five `btclr` macros exist because ZMK's `BT_CLR` takes no profile index — 
 
 ## Corne behaviors
 
-One tap-dance. No hold-taps, no mod-morphs, no `&mt` anywhere.
+Two tap-dances. No hold-taps, no mod-morphs, no `&mt` anywhere.
 
 - **`control_record`** — tap for Ctrl, double-tap for `⌃⌥⌘\`. 210 ms, matching the Ximi2. Kept on purpose: the Corne has no spare key for the record hotkey, so the double-Ctrl habit is what transfers between boards.
+- **`shift_caps`** — tap for Shift, double-tap for `&caps_word`, triple-tap for the `capslock` macro. 200 ms, matching the Ximi2's `tap_dance[0]`. The Ximi2's third slot is a tap-then-hold; ZMK tap-dance has no hold slot, so Caps Lock takes the third tap instead — the closest gesture ZMK can express.
 
 The `gui5` and `alt5` triple-tap dances are gone. They put a 400 ms tapping term on Cmd and Alt, which are the two modifiers this user's zellij config leans on hardest. `td10` is gone too; its lock-screen tap is now a plain macro on the key it already shared.
 
-The left thumb is a plain Shift. The Ximi2's dance there — `tap_dance[0]` — now carries both caps behaviours, Caps Word on a double-tap and `M11`, Caps Lock, on a tap-then-hold, and ZMK can express neither slot faithfully: it has no tap-hold at all, and a double-tap-to-caps would fire while typing two capitals in a row. `&caps_word` is on layer 4's left inner thumb on both boards.
+The left inner thumb is `&shift_caps` on layers 0 and 1, mirroring the Ximi2's `tap_dance[0]`, and a plain `&kp LSHFT` on layers 2, 3 and 5 — the dance buys nothing on nav/number/F-key layers and would only tax the modifier. Layer 4's left inner thumb stays a one-tap `&caps_word`, as on the Ximi2, so Caps Word is reachable from base without going to layer 4. The double-tap is safe under normal typing: a held Shift plus a letter resolves on the letter (the tap-dance interrupt path), not on a second tap, so two capitals typed in a row never arm it.
 
-Putting Caps Lock on the Corne's Shift key as well was considered and declined. The two shapes ZMK offers in place of the missing slot, a hold-tap or a tap-dance, both charge a tapping term on plain Shift — the same tax `gui5` and `alt5` were deleted for, this time on the thumb held most often, bought for a key pressed a few times a week. So the `capslock` macro is bound as a plain key instead, on layer 4's right pinky bottom on both boards. The Corne reaches Caps Lock by one route, the Ximi2 by two, and the Corne's single route is now inside the 36-key core rather than on a column being retired.
+The `capslock` macro also stays bound on layer 4's right pinky bottom on both boards, inside the 36-key core — a second route that does not depend on a triple-tap gesture. The Corne now reaches Caps Lock by two routes, like the Ximi2, with the thumb gesture adapted from tap-then-hold to triple-tap.
 
 `&lt` now carries `quick-tap-ms = 200`, `require-prior-idle-ms = 125` and `flavor = "tap-preferred"`, so a fast Space or Enter cannot resolve as a layer hold. This is a Corne-only improvement; QMK has no equivalent knob, so the Ximi2 goes without.
 
