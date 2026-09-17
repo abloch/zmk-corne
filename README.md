@@ -31,52 +31,27 @@ There is no local build. Every push builds through GitHub Actions and produces f
 
 ## Hardware and physical shape
 
-Corne 42 keys: three rows of six columns per half, three thumb keys per half. The outer pinky column on each half is the part the 36-key migration removes, and both boards now agree on what is left standing there — Tab and Escape on the left, the lock-screen macro on the right, and dead keys everywhere else.
-
-**Left half**
+Corne 42 keys: three rows of six columns per half, three thumb keys per half. Both halves are drawn together below, in physical left-to-right order, with the gap between them standing in for the two controllers. The outer pinky column on each half is the part the 36-key migration removes, and both boards now agree on what is still standing there — Tab and Escape on the left, the lock-screen macro on the right, ❌ everywhere else.
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
 block
-columns 6
+columns 13
 
-  tab["⇥"] q w e r t
-  esc["␛"] a s d f g
-  xa["·"] z x c v b
-  space:3 cmd["⌘"] spc["␣ L2"] sft["⇧"]
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣<br/>L2"] sft["⇧"] space ctl["⌃<br/>⏺"] ent["⏎<br/>L1"] alt["⌥"] space:3
 
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef doomed fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class q,w,e,r,t,a,s,d,f,g,z,x,c,v,b core
-  class cmd,spc,sft thumb
-  class tab,esc doomed
-  class xa dead
-```
-
-**Right half**
-
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
-block
-columns 6
-
-  y u i o p lock["lock"]
-  h j k l bspc["⌫"] xb["·"]
-  n m comma[","] dot["."] grav["grave"] xc["·"]
-  ctrl["⌃ ⏺"] entr["⏎ L1"] alt["⌥"] space:3
-
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
-  classDef doomed fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
-  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
-
-  class y,u,i,o,p,h,j,k,l,bspc,n,m,comma,dot,grav core
-  class ctrl,entr,alt thumb
-  class lock doomed
-  class xb,xc dead
+  class q,w,e,r,t,a,s,d,f,g,z,x,c,v,b,y,u,i,o,p,h,j,k,l,bspc,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class tab,esc,lock doomed
+  class x1,x2,x3 dead
 ```
 
 Backtick sits on the right pinky bottom row, where slash used to be; slash is now the `d`+`r` combo and tilde is gone. Backspace is on the right pinky home position. Base carries no `-` `=` `;` `'` `[` `]` `\` at all — every one of those is a combo or a layer.
@@ -85,7 +60,7 @@ Backtick sits on the right pinky bottom row, where slash used to be; slash is no
 
 ## Corne layer structure
 
-Six layers, each with a `display-name`. The maps below are drawn in physical left-to-right order, left half then right half, and the colours mean the same thing on every layer:
+Six layers, each with a `display-name`. The maps below are drawn the same way as the one above — both halves side by side, physical left-to-right, one layer below the next — and the colours mean the same thing on every one:
 
 | Colour | Meaning |
 |---|---|
@@ -95,14 +70,14 @@ Six layers, each with a `display-name`. The maps below are drawn in physical lef
 | amber | a macro — a sequence, not a single chord |
 | purple | layer switch |
 | mint | thumb key |
-| red | destructive or irreversible |
-| dashed grey | `&none`, or the retired outer column |
+| red | destructive, irreversible, or slated for retirement |
+| dashed grey | `&none`, marked ❌ |
 
 `TO0` is `&to 0`, the escape hatch back to base. `⌷` is `&trans`, falling through to the layer below.
 
 ### Layer 0 — base
 
-QWERTY. **All modifiers live on the thumbs** — there are no home row mods anywhere in this keymap. Five of the six thumb keys are plain; only the right inner one is a tap-dance.
+QWERTY, drawn in the diagram above. **All modifiers live on the thumbs** — there are no home row mods anywhere in this keymap. Five of the six thumb keys are plain; only the right inner one is a tap-dance.
 
 | Thumb | Binding | Notes |
 |---|---|---|
@@ -117,52 +92,33 @@ The lock-screen macro on the right outer column is that column's only surviving 
 
 ### Layer 1 — symbols
 
-Left hand: the three bracket-pair macros stacked vertically (`{}`, `()`, `[]`, each leaving the cursor inside), the quotes, the colons, and the shifted number row. Right hand: **Alt+digit** for all ten digits — an application switcher — plus word and paragraph motion and a terminal launcher.
+Left hand: the three bracket-pair macros stacked vertically, each leaving the cursor inside, then the quotes, the colons and the shifted number row. Right hand: **Alt+digit** for all ten digits — an application switcher — plus word and paragraph motion and a terminal launcher.
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
 block
-columns 6
+columns 13
 
-  to0["TO0"] curly["curly pair"] semi[";"] dq["dquote"] sq["squote"] dol["$"]
-  esc["␛"] paren["paren pair"] dol2["$"] pct["%"] amp["ampersand"] ast["*"]
-  qm["?"] sqr["square pair"] exc["!"] at["@"] hash["hash"] colon[":"]
-  space:3 cmd["⌘"] spc["␣"] sft["⇧"]
-
-  classDef punc fill:#bfe6f0,stroke:#0a4f63,stroke-width:3px,color:#04222b
-  classDef macro fill:#ffe6b8,stroke:#7a4a00,stroke-width:3px,color:#3a2200
-  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
-
-  class semi,dq,sq,dol,dol2,pct,amp,ast,qm,exc,at,hash,colon punc
-  class curly,paren,sqr macro
-  class to0 layerk
-  class esc core
-  class cmd,spc,sft thumb
-```
-
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
-block
-columns 6
-
-  wl["⌥⌃←"] a7["⌥7"] a8["⌥8"] a9["⌥9"] wr["⌥⌃→"] xa["·"]
-  term["terminal"] a4["⌥4"] a5["⌥5"] a6["⌥6"] car["^"] xb["·"]
-  a0["⌥0"] a1["⌥1"] a2["⌥2"] al["⌥←"] ar["⌥→"] xc["·"]
-  ctrl["⌃"] entr["⏎"] alt["⌥"] space:3
+  to0["TO0"] cur[" {}"] semi[";"] dqt["#quot;"] sqt["'"] dol["$"] space wl["⌥⌃←"] a7["⌥7"] a8["⌥8"] a9["⌥9"] wr["⌥⌃→"] x1["❌"]
+  esc["␛"] par[" ()"] dl2["$"] pct["%"] amp[" &"] ast["*"] space trm["💻"] a4["⌥4"] a5["⌥5"] a6["⌥6"] car["^"] x2["❌"]
+  qm["?"] sqb[" []"] exc["!"] at["@"] hsh[" #"] col[":"] space a0["⌥0"] a1["⌥1"] a2["⌥2"] al["⌥←"] ar["⌥→"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
   classDef punc fill:#bfe6f0,stroke:#0a4f63,stroke-width:3px,color:#04222b
   classDef macro fill:#ffe6b8,stroke:#7a4a00,stroke-width:3px,color:#3a2200
   classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
+  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class a7,a8,a9,a4,a5,a6,a0,a1,a2,al,ar chord
-  class wl,wr,term macro
-  class car punc
-  class ctrl,entr,alt thumb
-  class xa,xb,xc dead
+  class semi,dqt,sqt,dol,dl2,pct,amp,ast,qm,exc,at,hsh,col,car punc
+  class cur,par,sqb,wl,wr,trm macro
+  class a0,a1,a2,a4,a5,a6,a7,a8,a9,al,ar chord
+  class to0 layerk
+  class esc core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
 ```
 
 ### Layer 2 — nav
@@ -172,12 +128,12 @@ Left hand: Cmd+1..3, Ctrl+1..5, the screen-capture and terminal chords, F4 and S
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
 block
-columns 6
+columns 13
 
-  to0["TO0"] g1["⌘1"] g2["⌘2"] g3["⌘3"] xa["·"] to0b["TO0"]
-  esc["␛"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] c5["⌃5"]
-  cgr["⌃grave"] e1["⇧⌘E"] gat["⌘⌥T"] e2["⇧⌘E"] sf4["⇧F4"] f4["F4"]
-  space:3 cmd["⌘"] spc["␣"] sft["⇧"]
+  to0["TO0"] g1["⌘1"] g2["⌘2"] g3["⌘3"] x1["❌"] t0b["TO0"] space fa["⊟≡"] hom["⇱"] up["↑"] pgu["⇞"] emj["⇧⌘."] x2["❌"]
+  esc["␛"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] c5["⌃5"] space fo["⊟"] lft["←"] dn["↓"] rgt["→"] abs["⌥⌫"] x3["❌"]
+  cgr["⌃` "] e1["⇧⌘E"] gat["⌘⌥T"] e2["⇧⌘E"] sf4["⇧F4"] f4["F4"] space uf["⊞"] endk["⇲"] del["⌦"] pgd["⇟"] cdl["⌃⌦"] x4["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] sen["⇧⌘⏎"] alt["⌥"] space:3
 
   classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
   classDef macro fill:#ffe6b8,stroke:#7a4a00,stroke-width:3px,color:#3a2200
@@ -186,35 +142,12 @@ columns 6
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class g1,g2,g3,c1,c2,c3,c4,c5,cgr,e1,e2,sf4 chord
-  class gat macro
-  class to0,to0b layerk
-  class esc,f4 core
-  class cmd,spc,sft thumb
-  class xa dead
-```
-
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
-block
-columns 6
-
-  fall["fold all"] home["⇱"] up["↑"] pgu["⇞"] emj["⇧⌘."] xa["·"]
-  fold["fold"] lft["←"] dn["↓"] rgt["→"] abs["⌥⌫"] xb["·"]
-  unf["unfold"] endk["⇲"] del["⌦"] pgd["⇟"] cdel["⌃⌦"] xc["·"]
-  ctrl["⌃"] sent["⇧⌘⏎"] alt["⌥"] space:3
-
-  classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
-  classDef macro fill:#ffe6b8,stroke:#7a4a00,stroke-width:3px,color:#3a2200
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
-  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
-
-  class home,up,pgu,lft,dn,rgt,endk,del,pgd core
-  class fall,fold,unf macro
-  class emj,abs,cdel chord
-  class ctrl,sent,alt thumb
-  class xa,xb,xc dead
+  class g1,g2,g3,c1,c2,c3,c4,c5,cgr,e1,e2,sf4,emj,abs,cdl chord
+  class gat,fa,fo,uf macro
+  class to0,t0b layerk
+  class esc,f4,hom,up,pgu,lft,dn,rgt,endk,del,pgd core
+  class cmd,spc,sft,ctl,sen,alt thumb
+  class x1,x2,x3,x4 dead
 ```
 
 ### Layer 3 — numbers
@@ -224,47 +157,28 @@ columns 6
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
 block
-columns 6
+columns 13
 
-  to0["TO0"] n1["1"] n2["2"] n3["3"] n4["4"] to0b["TO0"]
-  to0c["TO0"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] xa["·"]
-  xb["·"] xc["·"] xd["·"] xe["·"] xf["·"] xg["·"]
-  space:3 cmd["⌘"] spc["␣"] sft["⇧"]
+  to0["TO0"] n1["1"] n2["2"] n3["3"] n4["4"] t0b["TO0"] space mul["*"] s7["7"] s8["8"] s9["9"] d9["9"] x1["❌"]
+  t0c["TO0"] c1["⌃1"] c2["⌃2"] c3["⌃3"] c4["⌃4"] x2["❌"] space pls["+"] s4["4"] s5["5"] s6["6"] bsp["⌫"] x3["❌"]
+  x4["❌"] x5["❌"] x6["❌"] x7["❌"] x8["❌"] x9["❌"] space mns["-"] s1["1"] s2["2"] s3["3"] x10["❌"] x11["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space kdt["."] zro["0"] alt["⌥"] space:3
 
   classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
-  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
-  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
-
-  class n1,n2,n3,n4 core
-  class c1,c2,c3,c4 chord
-  class to0,to0b,to0c layerk
-  class cmd,spc,sft thumb
-  class xa,xb,xc,xd,xe,xf,xg dead
-```
-
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
-block
-columns 6
-
-  mul["*"] n7["7"] n8["8"] n9["9"] n9b["9 dup"] xa["·"]
-  plus["+"] n4["4"] n5["5"] n6["6"] bspc["⌫"] xb["·"]
-  minus["-"] n1["1"] n2["2"] n3["3"] xc["·"] xd["·"]
-  kdot["."] zero["0"] alt["⌥"] space:3
-
   classDef punc fill:#bfe6f0,stroke:#0a4f63,stroke-width:3px,color:#04222b
+  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef doomed fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class n7,n8,n9,n4,n5,n6,n1,n2,n3,bspc core
-  class mul,plus,minus punc
-  class n9b doomed
-  class kdot,zero,alt thumb
-  class xa,xb,xc,xd dead
+  class n1,n2,n3,n4,s1,s2,s3,s4,s5,s6,s7,s8,s9,bsp core
+  class c1,c2,c3,c4 chord
+  class mul,pls,mns punc
+  class d9 doomed
+  class to0,t0b,t0c layerk
+  class cmd,spc,sft,kdt,zro,alt thumb
+  class x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11 dead
 ```
 
 The second `9` on the right pinky is a known Ximi2 defect. It is reproduced here on purpose: the two boards being identical is worth more than one key being right on one of them.
@@ -276,50 +190,29 @@ F-keys on the right, screenshot and window chords on the left, a vim-exit macro,
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
 block
-columns 6
+columns 13
 
-  to0["TO0"] vz["␛ZZ"] f2["F2"] gf12["⌘F12"] f12["F12"] to0b["TO0"]
-  to0c["TO0"] rerun["rerun !!"] rec["⌃⌥⌘S"] cap5["⇧⌘5"] find["⌘F"] fnda["⇧⌘F"]
-  caps["⇪"] think["think hard"] cap4["⇧⌘4"] copy["⇧⌘C"] ins["⌃Ins"] pste["⌃⌥⌘V"]
-  space:3 cmd["⌘"] sesc["⇧⌘␛"] cw["⇪ word"]
+  to0["TO0"] vz["␛ZZ"] f2["F2"] gf["⌘F12"] lf12["F12"] t0b["TO0"] space f5["F5"] f10["F10"] f11["F11"] s11["⇧F11"] ap["⌥⌘P"] x1["❌"]
+  t0c["TO0"] rr["!!"] rec["⌃⌥⌘S"] c5["⇧⌘5"] fnd["⌘F"] fna["⇧⌘F"] space sgf5["⇧⌘F5"] f4["F4"] mai["📧"] lck["⇧⌘L"] mut["⇧⌥M"] x2["❌"]
+  cap["⇪"] thk["💭"] c4["⇧⌘4"] cpy["⇧⌘C"] ins["⌃Ins"] pst["⌃⌥⌘V"] space sf5["⇧F5"] ds["./"] uns["🔓"] ds2["./"] ts["~/"] x3["❌"]
+  space:3 cmd["⌘"] ses["⇧⌘␛"] cw["⇪w"] space ctl["⌃"] ssp["⇧⌘␣"] alt["⌥"] space:3
 
   classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
   classDef macro fill:#ffe6b8,stroke:#7a4a00,stroke-width:3px,color:#3a2200
   classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
-
-  class f2,f12,caps core
-  class gf12,rec,cap5,find,fnda,cap4,copy,ins,pste chord
-  class vz,rerun,think macro
-  class to0,to0b,to0c layerk
-  class cmd,sesc,cw thumb
-```
-
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
-block
-columns 6
-
-  f5["F5"] f10["F10"] f11["F11"] sf11["⇧F11"] altp["⌥⌘P"] xa["·"]
-  sgf5["⇧⌘F5"] f4["F4"] mail["email"] slck["⇧⌘L"] mute["⇧⌥M"] xb["·"]
-  sf5["⇧F5"] dsl["dot slash"] unsf["thisisunsafe"] dsl2["dot slash"] tsl["tilde slash"] xc["·"]
-  ctrl["⌃"] sspc["⇧⌘␣"] alt["⌥"] space:3
-
-  classDef chord fill:#ffd9ec,stroke:#7a0a4a,stroke-width:2px,color:#3a0523
-  classDef macro fill:#ffe6b8,stroke:#7a4a00,stroke-width:3px,color:#3a2200
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class f5,f10,f11,f4 core
-  class sf11,sgf5,slck,mute,sf5 chord
-  class altp,mail,dsl,unsf,dsl2,tsl macro
-  class ctrl,sspc,alt thumb
-  class xa,xb,xc dead
+  class f2,lf12,cap,f5,f10,f11,f4 core
+  class gf,rec,c5,fnd,fna,c4,cpy,ins,pst,s11,sgf5,lck,mut,sf5 chord
+  class vz,rr,thk,ap,mai,ds,uns,ds2,ts macro
+  class to0,t0b,t0c layerk
+  class cmd,ses,cw,ctl,ssp,alt thumb
+  class x1,x2,x3 dead
 ```
 
-`dot slash` appears twice because `M4` and `M12` are both `./` in the Vial table. Another deliberate reproduction.
+`./` appears twice because `M4` and `M12` are both `./` in the Vial table. Another deliberate reproduction.
 
 ### Layer 5 — bluetooth and F-keys
 
@@ -328,48 +221,29 @@ The right half is the Ximi2's F-key block, ported straight across. The Ximi2 lea
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
 block
-columns 6
+columns 13
 
-  to0["TO0"] bt0["BT 0"] bt1["BT 1"] bt2["BT 2"] bt3["BT 3"] to0b["TO0"]
-  tra["⌷"] dc0["✂ 0"] dc1["✂ 1"] dc2["✂ 2"] dc3["✂ 3"] soff["soft off"]
-  trb["⌷"] clr["clear"] cla["clear all"] stu["studio"] xa["·"] boot["bootloader"]
-  space:3 cmd["⌘"] to0c["TO0"] sft["⇧"]
+  to0["TO0"] b0["BT0"] b1["BT1"] b2["BT2"] b3["BT3"] t0b["TO0"] space tra["⌷"] f7["F7"] f8["F8"] f9["F9"] x1["❌"] x2["❌"]
+  trc["⌷"] d0["✂0"] d1["✂1"] d2["✂2"] d3["✂3"] off["⏻"] space trd["⌷"] f4["F4"] f5["F5"] f6["F6"] f12["F12"] x3["❌"]
+  tre["⌷"] clr["CLR"] cla["CLA"] stu["STU"] x4["❌"] bld["BLD"] space f10["F10"] f1["F1"] f2["F2"] f3["F3"] f11["F11"] x5["❌"]
+  space:3 cmd["⌘"] t0c["TO0"] sft["⇧"] space ctl["⌃"] t0d["TO0"] alt["⌥"] space:3
 
   classDef radio fill:#bfe6f0,stroke:#0a4f63,stroke-width:3px,color:#04222b
   classDef danger fill:#ffd5d0,stroke:#8c1008,stroke-width:3px,color:#3d0603
   classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
-  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
-
-  class bt0,bt1,bt2,bt3,dc0,dc1,dc2,dc3,clr,stu radio
-  class cla,soff,boot danger
-  class to0,to0b,to0c layerk
-  class cmd,sft thumb
-  class tra,trb,xa dead
-```
-
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
-block
-columns 6
-
-  tra["⌷"] f7["F7"] f8["F8"] f9["F9"] xa["·"] xb["·"]
-  trb["⌷"] f4["F4"] f5["F5"] f6["F6"] f12["F12"] xc["·"]
-  f10["F10"] f1["F1"] f2["F2"] f3["F3"] f11["F11"] xd["·"]
-  ctrl["⌃"] to0["TO0"] alt["⌥"] space:3
-
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef layerk fill:#e3d2f5,stroke:#4a1f72,stroke-width:3px,color:#240c39
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
+  class b0,b1,b2,b3,d0,d1,d2,d3,clr,stu radio
+  class cla,off,bld danger
+  class to0,t0b,t0c,t0d layerk
   class f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12 core
-  class to0 layerk
-  class ctrl,alt thumb
-  class tra,trb,xa,xb,xc,xd dead
+  class cmd,sft,ctl,alt thumb
+  class tra,trc,trd,tre,x1,x2,x3,x4,x5 dead
 ```
 
-Reaching layer 5 is `x`+`c`+`v` held, or `z`+`x`+`c`+`v` to lock it, the same on both boards. Nothing on the base thumbs opens it any more.
+`CLR` clears the current profile, `CLA` clears all of them, `STU` is ZMK Studio unlock, `⏻` is soft off and `BLD` the bootloader. Reaching the layer is `x`+`c`+`v` held, or `z`+`x`+`c`+`v` to lock it, the same on both boards. Nothing on the base thumbs opens it any more.
 
 ---
 
