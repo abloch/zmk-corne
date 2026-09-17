@@ -16,12 +16,12 @@ Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 
 | Path | What it is |
 |---|---|
-| `config/corne.keymap` | The whole Corne layout — 6 layers, 20 macro definitions, 1 behavior, 28 combos |
+| `config/corne.keymap` | The whole Corne layout — 6 layers, 25 macro definitions, 1 behavior, 40 combos |
 | `config/corne.conf` | Kconfig flags (Studio, pointer buttons, combo limits, sleep, BLE power, debounce) |
 | `config/west.yml` | West manifest pinning ZMK to `zmkfirmware/zmk@main` |
 | `build.yaml` | Build matrix: `corne_left`, `corne_right`, `settings_reset`, all on `nice_nano_v2` |
 | `.github/workflows/build.yml` | Calls ZMK's reusable `build-user-config.yml` |
-| `combos.md` | All 28 combos, one diagram each |
+| `combos.md` | All 40 combos, one diagram each |
 | `32-keys.md` | The 36-key transition plan (English) |
 | `32-keys.he.md` | Same plan, Hebrew |
 | `akiva.vil` | Vial export for the **Ximi2**, the work keyboard — the source of truth for the layout |
@@ -246,11 +246,13 @@ columns 13
 
 `CLR` clears the current profile, `CLA` clears all of them, `STU` is ZMK Studio unlock, `⏻` is soft off and `BLD` the bootloader. Reaching the layer is `x`+`c`+`v` held, or `z`+`x`+`c`+`v` to lock it, the same on both boards. Nothing on the base thumbs opens it any more.
 
+The day-to-day radio work now happens on the `o`+`p` combo grid instead, so what this layer is really for is the four things no combo covers: Studio unlock, soft off, the bootloader, and profile 4, which the `TO0` corner crowds off the top row here.
+
 ---
 
 ## Corne macros
 
-Twenty definitions, numbered to match the Vial macro table in `akiva.vil` rather than renamed. The gaps in the sequence are the Vial slots that are empty or bound only to Ximi2-only keys.
+Twenty-five definitions. Twenty are numbered to match the Vial macro table in `akiva.vil` rather than renamed, with the gaps being the Vial slots that are empty or bound only to Ximi2-only keys. The other five are Bluetooth, which the Ximi2 has no equivalent for.
 
 | Macro | What it does |
 |---|---|
@@ -268,8 +270,11 @@ Twenty definitions, numbered to match the Vial macro table in `akiva.vil` rather
 | `m23` | `think hard and be smart` |
 | `m24` | `~/` |
 | `m27` | `⌘⌥T` |
+| `btclr0`-`btclr4` | select Bluetooth profile 0-4, wait 30 ms, then clear it |
 
 The twelve legacy named macros are gone, the nine byte-identical duplicates with them, and with them the pair whose `fold` and `expand` names were inverted.
+
+The five `btclr` macros exist because ZMK's `BT_CLR` takes no profile index — it clears whichever profile is current. Clearing a *named* profile therefore means selecting it first, which is a sequence, which is a macro.
 
 ---
 
@@ -289,7 +294,7 @@ The left thumb is a plain Shift. The Ximi2 gets Caps Lock there from a tap-then-
 
 ## Corne combos
 
-Twenty-eight combos, 150 ms timeout, **all scoped to `layers = <0>`** — they fire on base and nowhere else. The Ximi2 leaves its combos global; the Corne leads here.
+Forty combos, 150 ms timeout, **all scoped to `layers = <0>`** — they fire on base and nowhere else. The Ximi2 leaves its combos global; the Corne leads here.
 
 Every one of them is drawn key by key in [`combos.md`](combos.md); what follows is the summary.
 
@@ -335,26 +340,35 @@ Function has a sticky form and no locked form on purpose — one-shot is the poi
 | `q`+`d` | left click |
 | `a`+`c` | right click |
 
-**Bluetooth** — four cross-hand combos on the bottom row, the one place the two maps differ by design:
+**Bluetooth** — sixteen combos on one shared anchor, and the only part of the keymap with no Ximi2 equivalent, since the work board is wired.
 
-| Combo | Effect |
-|---|---|
-| `z`+`m` | profile 0 |
-| `x`+`,` | profile 1 |
-| `c`+`.` | profile 2 |
-| `v`+`n` | clear the current profile |
+`o`+`p` is the anchor. Every Bluetooth combo holds it, and a third key names the profile. The row that third key sits on picks the verb:
 
-Cross-hand pairs on the bottom row are never rolled while typing, and all eight keys sit inside the 36-key core, so the combos survive the move to a smaller board. The full grid — all four profiles, disconnect, clear, clear-all — is still on layer 5.
+| Row | Verb | Profile 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|---|---|
+| top | select | `q` | `w` | `e` | `r` | `t` |
+| home | disconnect | `a` | `s` | `d` | `f` | `g` |
+| bottom | clear | `z` | `x` | `c` | `v` | `b` |
+
+Plus one escalation: `o`+`p`+`z`+`x`+`c`+`v` clears every profile. Six keys, the largest combo in the keymap.
+
+The whole radio is one posture with fifteen destinations. **ZMK counts profiles from 0**, so the first key of a row is profile 0, not profile 1.
+
+The anchor has a cost, and it is paid explicitly. `o` and `p` are adjacent columns of the same hand — the exact pattern every other combo here avoids — and `t`-`o`-`p` is a triple that "top" and "stop" roll straight through. So every Bluetooth combo carries `require-prior-idle-ms = <250>` and will not fire unless the keyboard was already idle, which mid-word it never is. A deliberate press starts from a standing stop and is unaffected.
+
+Every key in the grid is inside the 36-key core, so all sixteen survive the move to a smaller board.
 
 **Everything else** — `q`+`b` types the prose macro.
 
-Thirteen of these combos overlap as subsets of each other. That is accepted, not a defect: both QMK and ZMK defer to the longer combo, so the cost is a slow-roll timing tax, not an always-on collision. In particular, do not "fix" `s`+`f` out of the layer-access family.
+Many of these combos overlap as subsets of each other — `s`+`f` inside the four home-row layer combos, `x`+`c`+`v` inside `z`+`x`+`c`+`v`, the four bottom-row Bluetooth clears inside clear-everything. That is accepted, not a defect: both QMK and ZMK defer to the longer combo, so the cost is a slow-roll timing tax, not an always-on collision. In particular, do not "fix" `s`+`f` out of the layer-access family.
 
 ---
 
 ## Configuration
 
-Active in `corne.conf`: ZMK Studio, pointer buttons (`CONFIG_ZMK_POINTING`, for the four pointer combos), a raised per-key combo limit of 8 because `s` and `f` each sit in six combos, soft-off, experimental BLE features, sleep with a 15-minute idle timeout, split battery reporting, +8 dBm TX power, and an aggressive 1 ms press debounce (the default is 5). RGB underglow and display are commented out.
+Active in `corne.conf`: ZMK Studio, pointer buttons (`CONFIG_ZMK_POINTING`, for the four pointer combos), raised combo budgets, soft-off, experimental BLE features, sleep with a 15-minute idle timeout, split battery reporting, +8 dBm TX power, and an aggressive 1 ms press debounce (the default is 5). RGB underglow and display are commented out.
+
+Both combo budgets are raised for the Bluetooth grid: `p` now sits in seventeen combos, past the default of five per key, and clear-everything needs six keys, past the default of four per combo.
 
 The deprecated mouse-emulation flag is gone along with mouse movement and scroll.
 
@@ -371,6 +385,8 @@ The deprecated mouse-emulation flag is gone along with mouse movement and scroll
 **Still open on the Corne**
 
 - Layer 5 holds `&bootloader` and `&soft_off`, and the layer has two entrances, one of them a three-key combo. Nothing guards the destructive keys once you are there; they are placed away from the `x`+`c`+`v` entry keys, which is mitigation, not a fix.
+- The Bluetooth anchor `o`+`p` sits on two adjacent columns of the same hand, breaking the rule the rest of the combo set follows. `require-prior-idle-ms = <250>` is what makes it safe, so that number is load-bearing: lower it and `t`-`o`-`p` starts switching profiles inside the word "stop".
+- Layer 5's select row reaches profiles 0-3 only, because the `TO0` corner the Ximi2 puts on the `t` position takes the fifth slot. Profile 4 is combo-only.
 - The 1 ms press debounce widens the window for a slow roll to emit `-` instead of entering a layer. The combo overlap itself is accepted; the debounce is not examined.
 - The lock-screen macro is the only tenant of the right outer column, on either board. It needs a home inside the 36-key core before that column can be retired.
 - Tab and Escape still sit on the left outer column and have no new home.

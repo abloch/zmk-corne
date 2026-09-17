@@ -1,12 +1,13 @@
 # Corne combos
 
-Twenty-eight combos, one diagram each. Every combo has a 150 ms timeout and is scoped to `layers = <0>`, so it fires on the base layer and nowhere else.
+Forty combos, one diagram each. Every combo has a 150 ms timeout and is scoped to `layers = <0>`, so it fires on the base layer and nowhere else.
 
-The diagrams show the base layer with the combo's own keys picked out in amber. Both halves are drawn side by side in physical left-to-right order, with the gap between them standing in for the two controllers.
+The diagrams show the base layer with the combo's own keys picked out in amber. The Bluetooth combos additionally show their shared `o`+`p` anchor in cyan. Both halves are drawn side by side in physical left-to-right order, with the gap between them standing in for the two controllers.
 
 | Colour | Meaning |
 |---|---|
 | amber, thick border | the keys this combo needs |
+| cyan, thick border | the shared Bluetooth anchor, held by all sixteen |
 | grey | every other key, for orientation |
 | mint | thumb key |
 | dashed grey, ❌ | `&none` |
@@ -31,6 +32,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -56,6 +58,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -81,6 +84,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -106,6 +110,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -131,6 +136,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -156,6 +162,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -181,6 +188,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -206,6 +214,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -231,6 +240,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -256,6 +266,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -285,6 +296,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -310,6 +322,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -339,6 +352,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -364,6 +378,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -389,6 +404,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -414,6 +430,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -443,6 +460,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -468,6 +486,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -493,6 +512,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -518,6 +538,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -543,6 +564,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -554,7 +576,7 @@ columns 13
   class x1,x2,x3 dead
 ```
 
-Three adjacent bottom-row keys. This is the only way onto layer 5 now that the thumb tap-dances are gone — the Bluetooth controls and the bootloader both live behind it.
+Three adjacent bottom-row keys. This is the only way onto layer 5 now that the thumb tap-dances are gone — the bootloader and soft off both live behind it.
 
 ### `z`+`x`+`c`+`v` → layer 5, locked
 
@@ -568,6 +590,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -593,6 +616,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -618,6 +642,7 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
@@ -633,34 +658,15 @@ The same sticky function layer from the row below, for when the home row is alre
 
 ## Bluetooth
 
-Four cross-hand combos on the bottom row, and the only place the Corne and the Ximi2 differ by design. Cross-hand pairs on the bottom row are never rolled while typing, and all eight keys sit inside the 36-key core, so these survive the move to a smaller board. The full grid — all four profiles, disconnect, clear, clear all — is on layer 5.
+Sixteen combos on one shared anchor, and the only part of the keymap with no Ximi2 equivalent — the work board is wired.
 
-### `z`+`m` → profile 0
+`o`+`p` is the anchor, drawn in cyan below. Every Bluetooth combo holds it, and a third key names the profile. The row the third key sits on picks the verb: **top row selects, home row disconnects, bottom row clears.** So the whole radio is one posture with fifteen destinations, plus a sixth-key escalation to clear everything.
 
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
-block
-columns 13
+**ZMK counts profiles from 0.** The five keys of a row are profiles 0 through 4, so the first key of a row is profile 0, not profile 1.
 
-  tab["⇥"] q w e r t space y u i o p lock["🔒"]
-  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
-  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
-  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+The anchor has a cost that has to be paid explicitly. `o` and `p` are adjacent columns of the same hand, which is exactly the pattern the rest of this document avoids, and `t`-`o`-`p` is a combo triple that "top" and "stop" both roll straight through. So every Bluetooth combo carries `require-prior-idle-ms = <250>`: it will not fire unless the keyboard was already idle, which mid-word it never is. Deliberate presses start from a standing stop and are unaffected.
 
-  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
-  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
-  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
-  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
-
-  class z,m trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,x,c,v,b,n,cma,dot,grv core
-  class cmd,spc,sft,ctl,ent,alt thumb
-  class x1,x2,x3 dead
-```
-
-Cross-hand, bottom row. Bluetooth is the one thing on this keyboard with no Ximi2 equivalent, so its combos are chosen rather than ported.
-
-### `x`+`,` → profile 1
+### `o`+`p`+`q` → profile 0
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
@@ -672,20 +678,22 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class x,cma trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,c,v,b,n,m,dot,grv core
+  class o,p anchor
+  class q trig
+  class tab,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
   class x1,x2,x3 dead
 ```
 
-One column right of profile 0, so the three profiles read left to right across the bottom row.
+Top row selects. The anchor picks the verb's row and the third key picks the profile.
 
-### `c`+`.` → profile 2
+### `o`+`p`+`w` → profile 1
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
@@ -697,20 +705,22 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class c,dot trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,v,b,n,m,cma,grv core
+  class o,p anchor
+  class w trig
+  class tab,q,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
   class x1,x2,x3 dead
 ```
 
-The third of the three profiles, continuing rightward.
+Profile 1, on the second key of the row.
 
-### `v`+`n` → clear the current profile
+### `o`+`p`+`e` → profile 2
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
@@ -722,24 +732,379 @@ columns 13
   x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
   classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
   classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
   classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
   classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
 
-  class v,n trig
-  class tab,q,w,e,r,t,y,u,i,o,p,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,b,m,cma,dot,grv core
+  class o,p anchor
+  class e trig
+  class tab,q,w,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
   class cmd,spc,sft,ctl,ent,alt thumb
   class x1,x2,x3 dead
 ```
 
-The innermost cross-hand pair of the bottom row. Clearing is what you reach for when a pairing has gone stale and the host refuses to reconnect.
+Profile 2, on the third key of the row.
+
+### `o`+`p`+`r` → profile 3
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class r trig
+  class tab,q,w,e,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 3, on the fourth key of the row.
+
+### `o`+`p`+`t` → profile 4
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class t trig
+  class tab,q,w,e,r,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 4, on the fifth key of the row.
+
+### `o`+`p`+`a` → disconnect profile 0
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class a trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,s,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Home row disconnects without forgetting the pairing — the host can reconnect.
+
+### `o`+`p`+`s` → disconnect profile 1
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class s trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,d,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 1, on the second key of the row.
+
+### `o`+`p`+`d` → disconnect profile 2
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class d trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,f,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 2, on the third key of the row.
+
+### `o`+`p`+`f` → disconnect profile 3
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class f trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,g,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 3, on the fourth key of the row.
+
+### `o`+`p`+`g` → disconnect profile 4
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class g trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,h,j,k,l,bspc,z,x,c,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 4, on the fifth key of the row.
+
+### `o`+`p`+`z` → clear profile 0
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class z trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,x,c,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Bottom row forgets the pairing. Each of these is a macro, not a bare behavior: ZMK's `BT_CLR` clears whichever profile is current, so the macro selects the profile first and then clears it.
+
+### `o`+`p`+`x` → clear profile 1
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class x trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,c,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 1, on the second key of the row.
+
+### `o`+`p`+`c` → clear profile 2
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class c trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,v,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 2, on the third key of the row.
+
+### `o`+`p`+`v` → clear profile 3
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class v trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 3, on the fourth key of the row.
+
+### `o`+`p`+`b` → clear profile 4
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class b trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,z,x,c,v,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+Profile 4, on the fifth key of the row.
+
+### `o`+`p`+`z`+`x`+`c`+`v` → clear every profile
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#eef1f5','primaryTextColor':'#0b0f14','primaryBorderColor':'#5b6673','nodeTextColor':'#0b0f14','textColor':'#0b0f14','mainBkg':'#eef1f5','fontSize':'18px'}}}%%
+block
+columns 13
+
+  tab["⇥"] q w e r t space y u i o p lock["🔒"]
+  esc["␛"] a s d f g space h j k l bspc["⌫"] x1["❌"]
+  x2["❌"] z x c v b space n m cma[","] dot["."] grv[" `"] x3["❌"]
+  space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
+
+  classDef anchor fill:#bfe6f0,stroke:#0a4f63,stroke-width:4px,color:#04222b
+  classDef trig fill:#ffe6b3,stroke:#7a5000,stroke-width:4px,color:#2e1e00
+  classDef core fill:#eef1f5,stroke:#5b6673,stroke-width:2px,color:#0b0f14
+  classDef thumb fill:#c8ece0,stroke:#0b5946,stroke-width:3px,color:#06241c
+  classDef dead fill:#f2f3f5,stroke:#98a2ae,stroke-width:2px,stroke-dasharray:5 4,color:#5b6673
+
+  class o,p anchor
+  class z,x,c,v trig
+  class tab,q,w,e,r,t,y,u,i,lock,esc,a,s,d,f,g,h,j,k,l,bspc,b,n,m,cma,dot,grv core
+  class cmd,spc,sft,ctl,ent,alt thumb
+  class x1,x2,x3 dead
+```
+
+The whole bottom row plus the anchor — six keys, the largest combo in the keymap, and the only one that needs the per-combo key limit raised to six. It forgets all five pairings at once, which is the reset of last resort.
 
 ---
 
 ## Overlaps
 
-Thirteen of these combos are subsets of each other — `s`+`f` inside all four of the nav and numpad combos, `x`+`c`+`v` inside `z`+`x`+`c`+`v`, `j`+`k`+`l` overlapping `j`+`l`, and so on. That is accepted, not a defect. Both QMK and ZMK resolve in favour of the longest match, so an overlap costs a slow-roll timing tax rather than producing an always-on collision. In particular, do not "fix" `s`+`f` out of the layer-access family: the subset relationship is what makes the layer combos reachable from the same finger posture as the dash.
+Many of these combos are subsets of each other — `s`+`f` inside all four of the nav and numpad combos, `x`+`c`+`v` inside `z`+`x`+`c`+`v`, `j`+`k`+`l` overlapping `j`+`l`, and the four bottom-row Bluetooth clears inside clear-everything. That is accepted, not a defect. Both QMK and ZMK resolve in favour of the longest match, so an overlap costs a slow-roll timing tax rather than producing an always-on collision. In particular, do not "fix" `s`+`f` out of the layer-access family: the subset relationship is what makes the layer combos reachable from the same finger posture as the dash.
+
+Two budgets had to be raised in `corne.conf` for the Bluetooth grid. `p` now sits in seventeen combos, past the default of five per key, and clear-everything needs six keys, past the default of four per combo.
 
 ## Related
 

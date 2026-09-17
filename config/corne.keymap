@@ -222,6 +222,46 @@
             bindings = <&kp LG(LA(T))>;
             label = "M27";
         };
+
+        // BTCLR0-4: clear one named Bluetooth profile. ZMK's BT_CLR takes no index —
+        // it clears whichever profile is current — so each of these selects the
+        // profile, waits for the switch to settle, then clears it. You are left on
+        // the profile you just cleared, which is what you want before re-pairing.
+
+        btclr0: btclr0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 0>, <&macro_wait_time 30>, <&bt BT_CLR>;
+            label = "BTCLR0";
+        };
+
+        btclr1: btclr1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 1>, <&macro_wait_time 30>, <&bt BT_CLR>;
+            label = "BTCLR1";
+        };
+
+        btclr2: btclr2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 2>, <&macro_wait_time 30>, <&bt BT_CLR>;
+            label = "BTCLR2";
+        };
+
+        btclr3: btclr3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 3>, <&macro_wait_time 30>, <&bt BT_CLR>;
+            label = "BTCLR3";
+        };
+
+        btclr4: btclr4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 4>, <&macro_wait_time 30>, <&bt BT_CLR>;
+            label = "BTCLR4";
+        };
     };
 
     behaviors {
@@ -401,32 +441,129 @@
             layers = <0>;
         };
 
-        // ZMK-only: Bluetooth has no Ximi equivalent, so it gets cross-hand combos on
-        // the bottom row (never rolled while typing) plus the full set on layer 5.
-        // Both live inside the 36-key core, so they survive a move to a 36-key board.
+        // ZMK-only: Bluetooth has no Ximi equivalent. The whole radio grid hangs off
+        // one shared anchor pair, O + P, with the third key naming the profile:
+        // the top row selects, the home row disconnects, the bottom row clears.
+        // Every key is inside the 36-key core, so the grid survives a smaller board.
+        //
+        // ZMK counts profiles from 0, so the five keys of a row are profiles 0-4 —
+        // the first key of the row is profile 0, not profile 1.
+        //
+        // require-prior-idle-ms is load-bearing here, not decoration. O and P are
+        // adjacent columns of the same hand, so "top" and "stop" roll T-O-P inside
+        // the combo timeout and would otherwise select a profile mid-word. These
+        // combos only fire from a standing start.
 
         bt_sel_0 {
             bindings = <&bt BT_SEL 0>;
-            key-positions = <25 31>; // Z + M
+            key-positions = <1 9 10>; // O + P + Q
             layers = <0>;
+            require-prior-idle-ms = <250>;
         };
 
         bt_sel_1 {
             bindings = <&bt BT_SEL 1>;
-            key-positions = <26 32>; // X + ,
+            key-positions = <2 9 10>; // O + P + W
             layers = <0>;
+            require-prior-idle-ms = <250>;
         };
 
         bt_sel_2 {
             bindings = <&bt BT_SEL 2>;
-            key-positions = <27 33>; // C + .
+            key-positions = <3 9 10>; // O + P + E
             layers = <0>;
+            require-prior-idle-ms = <250>;
         };
 
-        bt_clear {
-            bindings = <&bt BT_CLR>;
-            key-positions = <28 30>; // V + N
+        bt_sel_3 {
+            bindings = <&bt BT_SEL 3>;
+            key-positions = <4 9 10>; // O + P + R
             layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_sel_4 {
+            bindings = <&bt BT_SEL 4>;
+            key-positions = <5 9 10>; // O + P + T
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_disc_0 {
+            bindings = <&bt BT_DISC 0>;
+            key-positions = <9 10 13>; // O + P + A
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_disc_1 {
+            bindings = <&bt BT_DISC 1>;
+            key-positions = <9 10 14>; // O + P + S
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_disc_2 {
+            bindings = <&bt BT_DISC 2>;
+            key-positions = <9 10 15>; // O + P + D
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_disc_3 {
+            bindings = <&bt BT_DISC 3>;
+            key-positions = <9 10 16>; // O + P + F
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_disc_4 {
+            bindings = <&bt BT_DISC 4>;
+            key-positions = <9 10 17>; // O + P + G
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_clr_0 {
+            bindings = <&btclr0>;
+            key-positions = <9 10 25>; // O + P + Z
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_clr_1 {
+            bindings = <&btclr1>;
+            key-positions = <9 10 26>; // O + P + X
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_clr_2 {
+            bindings = <&btclr2>;
+            key-positions = <9 10 27>; // O + P + C
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_clr_3 {
+            bindings = <&btclr3>;
+            key-positions = <9 10 28>; // O + P + V
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_clr_4 {
+            bindings = <&btclr4>;
+            key-positions = <9 10 29>; // O + P + B
+            layers = <0>;
+            require-prior-idle-ms = <250>;
+        };
+
+        bt_clr_all {
+            bindings = <&bt BT_CLR_ALL>;
+            key-positions = <9 10 25 26 27 28>; // O + P + Z + X + C + V
+            layers = <0>;
+            require-prior-idle-ms = <250>;
         };
     };
 
