@@ -604,7 +604,7 @@ columns 13
   class tab,x1,x2,x3,x4 dead
 ```
 
-Three adjacent bottom-row keys. This is the only way onto layer 5 now that the thumb tap-dances are gone — the bootloader, soft off and Studio unlock all live behind it.
+Three adjacent bottom-row keys. This is the only way onto layer 5 now that the thumb tap-dances are gone — the bootloader, soft off, Studio unlock and the two output-endpoint keys all live behind it.
 
 ### `z`+`x`+`c`+`v` → layer 5, locked
 

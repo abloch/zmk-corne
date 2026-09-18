@@ -2,6 +2,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
 // Corne-only hardening (32-keys.md): the layer-taps on the thumbs get a quick-tap
@@ -698,16 +699,17 @@
         // either board — so you cannot be stranded on it and it needs no way home.
         // The return-to-base copy that used to sit on position 0 was dead weight.
         //
-        // ^ moved from the right pinky home key to the t position, which held a
-        // second copy of $. $ keeps the home-row slot (position 14): it is the more
-        // frequent glyph and that is the better finger. The right pinky key it
-        // vacated now carries ⌥Tab, joining the ⌥-digit window-management block.
+        // ^ moved from the right pinky home key to the home-row slot at
+        // position 14, pushing $ out to the t position, which had held a second
+        // copy of $. $ is the commoner glyph, but ^ is the one the owner wants
+        // under the stronger finger. The right pinky key it vacated now carries
+        // ⌥Tab, joining the ⌥-digit window-management block.
         // ⌥Tab is one-shot — it cannot hold the switcher open and cycle, because a
         // precomposed keycode releases Alt with the Tab.
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
-        // │   │{} │ ; │ " │ ' │ ^ │   │⌥⌃←│⌥7 │⌥8 │⌥9 │⌥⌃→│▒▒▒│
+        // │   │{} │ ; │ " │ ' │ $ │   │⌥⌃←│⌥7 │⌥8 │⌥9 │⌥⌃→│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │   │() │ $ │ % │ & │ * │   │💻 │⌥4 │⌥5 │⌥6 │⌥⇥ │▒▒▒│
+        // │   │() │ ^ │ % │ & │ * │   │💻 │⌥4 │⌥5 │⌥6 │⌥⇥ │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
         // │   │[] │ ! │ @ │ # │ : │   │⌥0 │⌥1 │⌥2 │⌥← │⌥→ │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
@@ -716,8 +718,8 @@
 
         symbols {
             bindings = <
-&none      &m0  &kp SEMI         &kp DQT      &kp SQT        &kp CARET       &m13        &kp LA(N7)  &kp LA(N8)  &kp LA(N9)  &m14          &none
-&none      &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &m3         &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &kp LA(TAB)   &none
+&none      &m0  &kp SEMI         &kp DQT      &kp SQT        &kp DOLLAR      &m13        &kp LA(N7)  &kp LA(N8)  &kp LA(N9)  &m14          &none
+&none      &m1  &kp CARET        &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &m3         &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &kp LA(TAB)   &none
 &none      &m2  &kp EXCLAMATION  &kp AT       &kp HASH       &kp COLON       &kp LA(N0)  &kp LA(N1)  &kp LA(N2)  &kp LA(LEFT)  &kp LA(RIGHT)  &none
                                  &kp LGUI     &kp SPACE      &shift_caps       &kp LCTRL   &kp RET  &kp LALT
             >;
@@ -797,25 +799,34 @@
         // Layer 5: F-keys — mirrors akiva.vil layer 5 almost exactly.
         // Bluetooth used to occupy this left half; it now lives entirely in the o+p
         // combo grid, which hands the left half back to &trans and puts the two
-        // boards one step closer to identical. What is left here is the three things
-        // ZMK needs and QMK has no equivalent for, parked on keys the layer-entry
-        // combo (x+c+v) does not touch. ❌ = transparent.
+        // boards one step closer to identical. What is left here is the handful of
+        // things ZMK needs and QMK has no equivalent for, parked on keys the
+        // layer-entry combo (x+c+v) does not touch. ❌ = transparent.
+        //
+        // The two output-endpoint keys sit above the unlock key because ZMK Studio
+        // asks for them. The Studio docs say that when the board is paired over
+        // Bluetooth and Studio is talking to it down the USB cable, output has to be
+        // pointed at the same endpoint Studio was opened on, or every key pressed to
+        // try out a change lands on the other host. USB and BLE get a key each rather
+        // than one &out OUT_TOG because the OLED is disabled on this build, so a
+        // toggle would leave nothing to read the current endpoint off of.
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
-        // │TO0│ ❌ │ ❌ │ ❌ │ ❌ │TO0│   │ ❌ │F7 │F8 │F9 │▒▒▒│▒▒▒│
+        // │TO0│USB│ ❌ │ ❌ │ ❌ │TO0│   │ ❌ │F7 │F8 │F9 │▒▒▒│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │   │ ❌ │ ❌ │ ❌ │ ❌ │OFF│   │ ❌ │F4 │F5 │F6 │F12│▒▒▒│
+        // │   │BLE│ ❌ │ ❌ │ ❌ │OFF│   │ ❌ │F4 │F5 │F6 │F12│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
         // │   │STU│ ❌ │ ❌ │ ❌ │BLD│   │F10│F1 │F2 │F3 │F11│▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │TO0│ ⇧ │   │ ⌃ │TO0│ ⌥ │
         //             └───┴───┴───┘   └───┴───┴───┘
-        // STU ZMK Studio unlock · OFF soft off · BLD bootloader
+        // USB / BLE output endpoint · STU ZMK Studio unlock · OFF soft off
+        // BLD bootloader
         // Bluetooth is combos only: o+p plus a third key. See combos.md.
 
         fkeys {
             bindings = <
-&to 0    &trans          &trans  &trans  &trans  &to 0          &trans     &kp F7  &kp F8  &kp F9  &none    &none
-&none    &trans          &trans  &trans  &trans  &soft_off      &trans     &kp F4  &kp F5  &kp F6  &kp F12  &none
+&to 0    &out OUT_USB    &trans  &trans  &trans  &to 0          &trans     &kp F7  &kp F8  &kp F9  &none    &none
+&none    &out OUT_BLE    &trans  &trans  &trans  &soft_off      &trans     &kp F4  &kp F5  &kp F6  &kp F12  &none
 &none    &studio_unlock  &trans  &trans  &trans  &bootloader    &kp F10    &kp F1  &kp F2  &kp F3  &kp F11  &none
                                  &kp LGUI  &to 0  &kp LSHFT     &kp LCTRL  &to 0   &kp LALT
             >;

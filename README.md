@@ -8,7 +8,7 @@ Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 >
 > The divergence the status note used to apologise for is paid off. Stage 4 — converge the two keyboards — is done for the bindings, and stages 1, 2, 3, 5 and 6 came with it. What is left is stage 7, retiring the left outer column, which is the only gate on buying hardware — and Tab, the last tenant that needed a home, now has one on the right outer thumb.
 >
-> The two maps now differ in exactly three places, all of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for; the layer-tap protection on `&lt`, which QMK has no equivalent knob for either; and the `alt_or_tab` mod-morph that makes Shift+Tab a keydown event, which Vial's `key_override` is the right shape for but cannot reach, since overrides act on resolved keycodes and a mod-tap resolves late. Caps Lock used to be the third; both boards now bind it on layer 4's right pinky bottom key, inside the 36-key core, and both boards also carry it on the left thumb's tap-dance — Caps Word on double-tap, Caps Lock on tap-then-hold (Ximi2) or triple-tap (Corne, since ZMK tap-dance has no hold slot). Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
+> The two maps now differ in exactly three places, all of them deliberate: five keys on layer 5 — Studio unlock, soft off, the bootloader and the two output-endpoint keys, USB and BLE — which ZMK needs and a wired QMK board has no equivalent for; the layer-tap protection on `&lt`, which QMK has no equivalent knob for either; and the `alt_or_tab` mod-morph that makes Shift+Tab a keydown event, which Vial's `key_override` is the right shape for but cannot reach, since overrides act on resolved keycodes and a mod-tap resolves late. Caps Lock used to be the third; both boards now bind it on layer 4's right pinky bottom key, inside the 36-key core, and both boards also carry it on the left thumb's tap-dance — Caps Word on double-tap, Caps Lock on tap-then-hold (Ximi2) or triple-tap (Corne, since ZMK tap-dance has no hold slot). Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
 
 ---
 
@@ -99,8 +99,8 @@ Bracket-pair macros and the shifted number row on the left; ⌥+digit app switch
 block
 columns 13
 
-  xs1["❌"] cur[" {}"] semi[";"] dqt["#quot;"] sqt["'"] dol["^"] space wl["⌥⌃←"] a7["⌥7"] a8["⌥8"] a9["⌥9"] wr["⌥⌃→"] x1["❌"]
-  xe2["❌"] par[" ()"] dl2["$"] pct["%"] amp[" &"] ast["*"] space trm["💻"] a4["⌥4"] a5["⌥5"] a6["⌥6"] car["⌥⇥"] x2["❌"]
+  xs1["❌"] cur[" {}"] semi[";"] dqt["#quot;"] sqt["'"] dol["$"] space wl["⌥⌃←"] a7["⌥7"] a8["⌥8"] a9["⌥9"] wr["⌥⌃→"] x1["❌"]
+  xe2["❌"] par[" ()"] dl2["^"] pct["%"] amp[" &"] ast["*"] space trm["💻"] a4["⌥4"] a5["⌥5"] a6["⌥6"] car["⌥⇥"] x2["❌"]
   xq["❌"] sqb[" []"] exc["!"] at["@"] hsh[" #"] col[":"] space a0["⌥0"] a1["⌥1"] a2["⌥2"] al["⌥←"] ar["⌥→"] x3["❌"]
   space:3 cmd["⌘"] spc["␣"] sft["⇧"] space ctl["⌃"] ent["⏎"] alt["⌥"] space:3
 
@@ -209,8 +209,8 @@ The Ximi2's F-key block, ported straight across. The left half is transparent ba
 block
 columns 13
 
-  to0["TO0"] tra["❌"] trb["❌"] trc["❌"] trd["❌"] t0b["TO0"] space tre["❌"] f7["F7"] f8["F8"] f9["F9"] x1["❌"] x2["❌"]
-  trf["❌"] trg["❌"] trh["❌"] tri["❌"] trj["❌"] off["⏻"] space trk["❌"] f4["F4"] f5["F5"] f6["F6"] f12["F12"] x3["❌"]
+  to0["TO0"] usb["USB"] trb["❌"] trc["❌"] trd["❌"] t0b["TO0"] space tre["❌"] f7["F7"] f8["F8"] f9["F9"] x1["❌"] x2["❌"]
+  trf["❌"] ble["BLE"] trh["❌"] tri["❌"] trj["❌"] off["⏻"] space trk["❌"] f4["F4"] f5["F5"] f6["F6"] f12["F12"] x3["❌"]
   trl["❌"] stu["STU"] trm["❌"] trn["❌"] tro["❌"] bld["BLD"] space f10["F10"] f1["F1"] f2["F2"] f3["F3"] f11["F11"] x4["❌"]
   space:3 cmd["⌘"] t0c["TO0"] sft["⇧"] space ctl["⌃"] t0d["TO0"] alt["⌥"] space:3
 
@@ -223,10 +223,10 @@ columns 13
 
   class f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12 plain
   class cmd,sft,ctl,alt mod
-  class stu spec
+  class stu,usb,ble spec
   class to0,t0b,t0c,t0d goL0
   class off,bld alert
-  class x1,x2,x3,x4,tra,trb,trc,trd,tre,trf,trg,trh,tri,trj,trk,trl,trm,trn,tro dead
+  class x1,x2,x3,x4,trb,trc,trd,tre,trf,trh,tri,trj,trk,trl,trm,trn,tro dead
 ```
 
 ---
@@ -276,9 +276,11 @@ The three path prefixes run `~/`, `./`, `../` inward along the bottom row. `M12`
 
 ### F-keys — what the left half is for
 
-Bluetooth used to fill that left half. It has moved out entirely into the `o`+`p` combo grid, which means the radio occupies no keymap position on either board and this layer is down to the three things ZMK needs and QMK has no equivalent for: `STU` is ZMK Studio unlock, `⏻` is soft off, `BLD` the bootloader. They sit on `z`, `g` and `b`, none of which the layer-entry combo `x`+`c`+`v` touches.
+Bluetooth used to fill that left half. It has moved out entirely into the `o`+`p` combo grid, which means the radio occupies no keymap position on either board and this layer is down to the five things ZMK needs and a wired QMK board has no equivalent for: `STU` is ZMK Studio unlock, `⏻` is soft off, `BLD` the bootloader, and `USB` and `BLE` point the output endpoint at one host or the other. They sit on `z`, `g`, `b`, `q` and `a`, none of which the layer-entry combo `x`+`c`+`v` touches.
 
-That takes layer 5 from fifteen divergent positions to three, and it is the single largest parity gain since the port itself.
+The two endpoint keys are there because ZMK Studio asks for them. With the board paired over Bluetooth and Studio talking to it down the USB cable, output has to be pointed at the endpoint Studio was opened on, or every key pressed to try out a change lands on the other host. They are two keys rather than one `&out OUT_TOG` because the OLED is disabled on this build, so a toggle would leave nothing to read the current endpoint off of.
+
+That took layer 5 from fifteen divergent positions to three, which was the single largest parity gain since the port itself; the two endpoint keys have since brought it back to five, and they are a capability the work board has no use for rather than a divergence that wants closing.
 
 Reaching the layer is `x`+`c`+`v` held, or `z`+`x`+`c`+`v` to lock it, the same on both boards. Nothing on the base thumbs opens it any more.
 
@@ -471,14 +473,14 @@ Backtick sits on the right pinky bottom, where `/` used to be. `/` is now combo-
 
 **Layer 1 — symbols / Alt-digit**
 ```
- ·   {}  :  "  '  ^      ⌥⌃←  ⌥7 ⌥8 ⌥9  ⌥⌃→   ·
- ·   ()  $  %  &  *      TRM  ⌥4 ⌥5 ⌥6  ⌥⇥    ·
+ ·   {}  ;  "  '  $      ⌥⌃←  ⌥7 ⌥8 ⌥9  ⌥⌃→   ·
+ ·   ()  ^  %  &  *      TRM  ⌥4 ⌥5 ⌥6  ⌥⇥    ·
  ·   []  !  @  #  :       ⌥0  ⌥1 ⌥2 ⌥←   ⌥→   ·
 ```
 
 The high-frequency `⌥←`/`⌥→` pair took the tight adjacent slot on the bottom row, paying with `⌥3`. The low-frequency `⌥⌃←`/`⌥⌃→` became bookends of the top row. `⌥6` never moved — that was the binding constraint the whole redesign was built around.
 
-`⌥⇥` joined that block on the right pinky home key, which used to carry `^`. It is a one-shot switch: a precomposed keycode releases Alt along with the Tab, so it cannot hold a switcher open and cycle. Holding the thumb's own Alt and cycling is the route for that. `^` took the `t` position, which held a second copy of `$`; `$` keeps the home-row slot, being the commoner glyph on the better finger. And position 0 is `KC_NO` here because layer 1 is reachable only by holding `LT1(ENTER)` — there is no `TO(1)`, `MO(1)` or combo entry on either board, so nothing can strand you on it and it needs no way home.
+`⌥⇥` joined that block on the right pinky home key, which used to carry `^`. It is a one-shot switch: a precomposed keycode releases Alt along with the Tab, so it cannot hold a switcher open and cycle. Holding the thumb's own Alt and cycling is the route for that. `^` took the home-row slot, pushing `$` out onto the `t` position, which held a second copy of `$`; `$` is the commoner glyph, but `^` is the one the owner wants on the better finger. And position 0 is `KC_NO` here because layer 1 is reachable only by holding `LT1(ENTER)` — there is no `TO(1)`, `MO(1)` or combo entry on either board, so nothing can strand you on it and it needs no way home.
 
 **Layer 2 — nav**
 ```
@@ -620,7 +622,7 @@ Note that the fix chosen here was the mirror image of the one `32-keys.md` propo
 
 **`⌃⇥` is correct but awkward.** Ctrl and Tab are now both right-thumb positions, so the chord needs one thumb on two keys. Layer 2's dead bottom-left row has six free core positions and is the obvious home for a `LCTL(KC_TAB)` / `LCTL(LSFT(KC_TAB))` pair if the awkwardness turns out to matter; nothing is bound there yet.
 
-**Shift must be released last on the Ximi2.** The Corne's mod-morph makes Shift+Tab a keydown event. Vial has no equivalent that reaches a mod-tap, so on the work board the Tab still emits on release and a left thumb that lifts early sends a plain Tab. Third Corne-only reliability item, alongside the `&lt` knobs and the Studio/soft-off/bootloader keys.
+**Shift must be released last on the Ximi2.** The Corne's mod-morph makes Shift+Tab a keydown event. Vial has no equivalent that reaches a mod-tap, so on the work board the Tab still emits on release and a left thumb that lifts early sends a plain Tab. Third Corne-only reliability item, alongside the `&lt` knobs and layer 5's ZMK-only keys.
 
 **Dropped and not missed:** `⌥↑`/`⌥↓`, `⌥3`, layer-4 `F8` and `F9`, layer-3's left-half `5`, `TO(4)`, and the `q`+`a`+`z` sticky layer-5 combo.
 
@@ -641,7 +643,7 @@ Open, known, and deliberately not fixed yet. Twenty-five of the thirty-two combo
 - ~~The Corne keymap bindings are unported.~~ Ported. The Corne now matches this file position for position, so every remaining item on this list is a defect on **both** boards.
 - Combos are still global on the Ximi2; the Corne has scoped its own to the base layer, and QMK should follow.
 - The base-layer left thumb is `KC_RGUI` while every other layer uses `KC_LGUI`. Copied faithfully to the Corne rather than silently corrected; worth deciding one way or the other.
-- ~~Layer 1 binds `$` twice, on the `t` position and on `s`.~~ Fixed. `^` took the `t` position when it was displaced by `⌥⇥`, so the duplicate paid for the move.
+- ~~Layer 1 binds `$` twice, on the `t` position and on `s`.~~ Fixed. `^` took the home-row `s` slot when it was displaced by `⌥⇥`, pushing `$` onto the `t` position, so the duplicate paid for the move.
 - **On-board check outstanding: does `shift_caps` register its Shift before `alt_or_tab` reads the modifiers?** Both landed in the same pass. A mod-morph branches on the mods held at its own keydown; a tap-dance emits on the interrupt path. If the order is wrong, Shift+Tab silently takes the hold-tap branch and the release-order hazard the morph exists to remove is back, with both halves still looking correct in the keymap. Hold the left thumb, tap Tab, watch which way a Claude Code session cycles.
 - **Bench test outstanding: can a Vial key override trigger on a mod-tap keycode?** The `key_override` table has thirty-two slots and none are used. If `trigger` can be set to `LALT_T(KC_TAB)` itself — QMK runs `process_key_override` before tap-hold resolution, so in principle it can — then `{trigger: LALT_T(KC_TAB), replacement: KC_TAB, layers: 1, trigger_mods: MOD_LSFT, suppressed_mods: 0, options: 7|16}` is an exact stand-in for the Corne's mod-morph, and the Ximi2's Shift+Tab becomes a keydown event too. `options` needs bit 16, `ko_option_no_reregister_trigger`, or releasing the key re-fires the mod-tap. Untested, so it is **not** written into `akiva.vil`; the fallback is the release-order discipline recorded under accepted costs.
 
@@ -660,7 +662,7 @@ The approach is deliberately gradual, and the hardware is bought **last**, only 
 | 1 | **Make both maps honest** — fix diagrams, delete dead and duplicated macros. No key changes | done — diagrams regenerated, twelve legacy macros deleted, macro numbering matched to Vial | done — the duplicate `9`, the double-bound `SGUI(E)` and the second `./` macro are all fixed, and the orphan macro slots are empty |
 | 2 | **Let the trackpads take the pointer** — delete movement, scroll and clicks; keep browser back/forward | done — movement and scroll deleted, four pointer combos kept | done — movement and scroll deleted, four pointer combos kept by choice |
 | 3 | **Take your hands off the brake** — plain modifiers, sane sticky timeout, per-layer combo scoping, layer-tap protection | done — `gui5`/`alt5` and `td10` deleted, the 60-second sticky window dropped, combos scoped to base, `&lt` given quick-tap, prior-idle and tap-preferred | partly declined — `td[4]` kept for Corne parity, `td[2]` still gating layer-1 Shift, combos still unscoped |
-| 4 | **Converge the two keyboards** — identical 30-key core on both | done — every binding on all six layers ported from `akiva.vil`, and layer 5 down from fifteen divergent positions to three now that Bluetooth is combos-only | done |
+| 4 | **Converge the two keyboards** — identical 30-key core on both | done — every binding on all six layers ported from `akiva.vil`, and layer 5 down from fifteen divergent positions to five now that Bluetooth is combos-only | done |
 | 5 | **Two homes for every orphan** — new locations go live while the old keys still work | done — `/`, backtick and the square brackets moved with the port | done for `/`, backtick and the square brackets |
 | 6 | **Retire the right column** — nearly free after stage 2 | done except `M10` (lock screen), matching the Ximi2 | done except `M10` (lock screen), which is deferred |
 | 7 | **Retire the left column** — Tab, Escape and backtick; the real test, and the only gate on buying hardware | middle and bottom dead on all six layers; the top key is dead on base and on layer 1 now that Tab is on the thumb and layer 1's way home proved unnecessary. A redundant `&to 0` remains on layers 2 to 5 | the same, position for position |
