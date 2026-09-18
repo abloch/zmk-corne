@@ -8,7 +8,7 @@ Visual keymap editor: <https://nickcoutsos.github.io/keymap-editor/>
 >
 > The divergence the status note used to apologise for is paid off. Stage 4 — converge the two keyboards — is done for the bindings, and stages 1, 2, 3, 5 and 6 came with it. What is left is stage 7, retiring the left outer column, which is the only gate on buying hardware — and Tab, the last tenant that needed a home, now has one on the right outer thumb.
 >
-> The two maps now differ in exactly two places, both of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for, and the layer-tap protection on `&lt`, which QMK has no equivalent knob for either. Caps Lock used to be the third; both boards now bind it on layer 4's right pinky bottom key, inside the 36-key core, and both boards also carry it on the left thumb's tap-dance — Caps Word on double-tap, Caps Lock on tap-then-hold (Ximi2) or triple-tap (Corne, since ZMK tap-dance has no hold slot). Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
+> The two maps now differ in exactly three places, all of them deliberate: three keys on layer 5 — Studio unlock, soft off and the bootloader — which ZMK needs and QMK has no equivalent for; the layer-tap protection on `&lt`, which QMK has no equivalent knob for either; and the `alt_or_tab` mod-morph that makes Shift+Tab a keydown event, which Vial's `key_override` is the right shape for but cannot reach, since overrides act on resolved keycodes and a mod-tap resolves late. Caps Lock used to be the third; both boards now bind it on layer 4's right pinky bottom key, inside the 36-key core, and both boards also carry it on the left thumb's tap-dance — Caps Word on double-tap, Caps Lock on tap-then-hold (Ximi2) or triple-tap (Corne, since ZMK tap-dance has no hold slot). Bluetooth, which used to be the largest difference, now lives entirely in combos and takes up no keymap positions at all.
 
 ---
 
@@ -324,7 +324,7 @@ Two tap-dances, one hold-tap, one mod-morph.
 - **`alt_tab`** — a hold-tap, `flavor = "hold-preferred"`, 180 ms, `hold-trigger-key-positions` listing the thirty letter positions and no thumb. Hold for Alt, tap for Tab. This is Tab's home now that the left outer column is being retired.
 - **`alt_or_tab`** — a mod-morph wrapping it. With Shift held it is a plain `&kp TAB`; otherwise it is the hold-tap. `mods` and `keep-mods` are both `MOD_LSFT|MOD_RSFT`.
 
-Those last two and `shift_caps` landed in the same pass and have an untested interaction. A mod-morph reads the held modifiers at the instant of its own keydown, and `shift_caps` is a tap-dance, so the Shift it produces is emitted on the interrupt path rather than at the moment the thumb goes down. Whether that Shift reaches the report before the morph looks for it decides which branch Shift+Tab takes — the plain `&kp TAB`, or the hold-tap with its release-order exposure. Verify on the first firmware build.
+Those last two and `shift_caps` landed in the same pass and have an untested interaction. A mod-morph reads the held modifiers at the instant of its own keydown, and `shift_caps` is a tap-dance, so the Shift it produces is emitted on the interrupt path rather than at the moment the thumb goes down. Whether that Shift reaches the report before the morph looks for it decides which branch Shift+Tab takes — the plain `&kp TAB`, or the hold-tap with its release-order exposure. The firmware **builds**, so the nesting is at least legal; nothing about the runtime order is settled by that. It is a two-minute check on the board: hold the left thumb, tap Tab, and see which way a Claude Code session cycles. If it fails, narrow the dance rather than the morph — a plain `&kp LSHFT` on base with the dance kept on layer 1 — since the dance is the newer feature and the cheaper one to give up.
 
 Three things make that affordable, and each one answers an objection this file raises elsewhere.
 
@@ -555,9 +555,9 @@ Mouse movement and scroll are deleted — the trackpad owns the pointer. Four po
 
 ---
 
-## Lessons learned — three Vial mechanics
+## Lessons learned — three Vial mechanics and one ZMK one
 
-The first two each cost a debugging round, and both are the kind of failure that produces no error and no log line. The third is not a bug but a capability limit, and it is what decides how much of the Corne's Tab arrangement the work board can copy. Together they are the most reusable output of the session.
+The first two each cost a debugging round, and both are the kind of failure that produces no error and no log line. The third is not a bug but a capability limit, and it is what decides how much of the Corne's Tab arrangement the work board can copy. The fourth is ZMK's and cost a failed build, which is the cheap kind. Together they are the most reusable output of the session.
 
 **1. Combos match resolved keycodes, not key positions.**
 
@@ -580,6 +580,17 @@ This broke ```` ``` ```` on the backtick key: three backticks came out as fewer 
 What it cannot do is pre-empt a mod-tap, and for the same reason as mechanic 1: overrides act on **resolved** keycodes. `LALT_T(KC_TAB)` does not produce `KC_TAB` until the key is released, so an override on `KC_TAB` fires at that same late moment and inherits the same release-order exposure. Whether `trigger` can name the `LALT_T(KC_TAB)` keycode *itself* — which would fire on keydown — is undocumented and is the bench test in the backlog.
 
 There is no Vial equivalent of `hold-trigger-key-positions` at all. QMK's Chordal Hold is opposite-hands-only, which is the wrong shape here: Alt is the right thumb and `⌥h`/`⌥j`/`⌥k`/`⌥l` are right-hand letters, so Chordal Hold would resolve exactly those as taps and break them. Achordion can express an arbitrary whitelist but is userspace C and needs a firmware build. And Vial's tapping term is global, exposed in its QMK Settings tab, so the Corne's per-behaviour 180 ms has no counterpart either — lowering it on the Ximi2 would retime every `LT()` layer-tap as well.
+
+**4. A ZMK hold-tap needs its own `bindings`, and the call site's parameters are not a substitute.**
+
+This one is ZMK's rather than Vial's, and it is the cheap kind of mistake: it fails at build time instead of silently on the board. `alt_tab` was written with `flavor`, `tapping-term-ms` and `hold-trigger-key-positions` and no `bindings`, on the assumption that `&alt_tab LALT TAB` at the call site said everything.
+
+```
+devicetree error: 'bindings' is marked as required in 'properties:' in
+zmk,behavior-hold-tap.yaml, but does not appear in <Node /behaviors/alt_tab>
+```
+
+A hold-tap's `bindings` names the two *behaviors* its hold and tap parameters are applied to; the call site supplies only the parameters. `bindings = <&kp>, <&kp>;` is what turns `LALT` into `&kp LALT` and `TAB` into `&kp TAB`.
 
 ---
 
@@ -631,6 +642,7 @@ Open, known, and deliberately not fixed yet. Twenty-five of the thirty-two combo
 - Combos are still global on the Ximi2; the Corne has scoped its own to the base layer, and QMK should follow.
 - The base-layer left thumb is `KC_RGUI` while every other layer uses `KC_LGUI`. Copied faithfully to the Corne rather than silently corrected; worth deciding one way or the other.
 - ~~Layer 1 binds `$` twice, on the `t` position and on `s`.~~ Fixed. `^` took the `t` position when it was displaced by `⌥⇥`, so the duplicate paid for the move.
+- **On-board check outstanding: does `shift_caps` register its Shift before `alt_or_tab` reads the modifiers?** Both landed in the same pass. A mod-morph branches on the mods held at its own keydown; a tap-dance emits on the interrupt path. If the order is wrong, Shift+Tab silently takes the hold-tap branch and the release-order hazard the morph exists to remove is back, with both halves still looking correct in the keymap. Hold the left thumb, tap Tab, watch which way a Claude Code session cycles.
 - **Bench test outstanding: can a Vial key override trigger on a mod-tap keycode?** The `key_override` table has thirty-two slots and none are used. If `trigger` can be set to `LALT_T(KC_TAB)` itself — QMK runs `process_key_override` before tap-hold resolution, so in principle it can — then `{trigger: LALT_T(KC_TAB), replacement: KC_TAB, layers: 1, trigger_mods: MOD_LSFT, suppressed_mods: 0, options: 7|16}` is an exact stand-in for the Corne's mod-morph, and the Ximi2's Shift+Tab becomes a keydown event too. `options` needs bit 16, `ko_option_no_reregister_trigger`, or releasing the key re-fires the mod-tap. Untested, so it is **not** written into `akiva.vil`; the fallback is the release-order discipline recorded under accepted costs.
 
 ---
