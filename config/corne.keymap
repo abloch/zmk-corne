@@ -290,6 +290,62 @@
             bindings = <&kp LEFT_CONTROL>, <&kp LC(LA(LG(BACKSLASH)))>;
         };
 
+        // Tab's new home. The left outer column is being retired and Tab was its
+        // last tenant, so it moves onto the right outer thumb: hold = Alt, tap = Tab.
+        //
+        // flavor = "hold-preferred" is what makes this affordable. A tap-dance (the
+        // gui5/alt5 bill this file tore up) charges its term on every press; a
+        // hold-preferred hold-tap resolves the hold the instant another key goes
+        // down, so Alt+letter costs nothing. The term only runs when nothing else
+        // follows, which is the keyless hold: ⌥-click, ⌥-drag, ⌥-scroll.
+        //
+        // hold-trigger-key-positions lists the thirty letter positions and no thumb.
+        // A thumb pressed after this key must therefore resolve it as a TAP, not a
+        // hold — without that, pressing Shift (38) a hair after this key turns
+        // Shift+Tab into Alt+Shift.
+        alt_tab: alt_tab {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALT_TAB";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <180>;
+            hold-trigger-key-positions = <1 2 3 4 5 6 7 8 9 10 13 14 15 16 17 18 19 20 21 22 25 26 27 28 29 30 31 32 33 34>;
+        };
+
+        // The Shift+Tab guard, and the reason Tab can live on a modifier at all.
+        //
+        // A hold-tap emits its tap on RELEASE. Shift+Tab is two thumbs on opposite
+        // halves, so if the left thumb lifts a few ms early the Tab lands unshifted
+        // — plain Tab instead of Shift+Tab, which in a Claude Code session cycles
+        // the mode the wrong way. No timing knob fixes that; the tap is simply late.
+        //
+        // mod-morph does. With Shift already held, this key is a plain &kp TAB that
+        // fires on KEYDOWN, and keep-mods lets the Shift through. Release order
+        // stops mattering.
+        //
+        // The mask is Shift and nothing else, deliberately. Widening it to Cmd and
+        // Ctrl would make ⌘Tab and ⌃Tab fire on keydown too, but it would also mean
+        // this key can never produce Alt while Cmd or Ctrl is held, which kills live
+        // ⌘⌥x and ⌃⌥x chords from the thumbs. ⌘Tab needs no help: you hold ⌘ far
+        // past the Tab while browsing the switcher, so the late tap is harmless.
+        // Modifiers absent from `mods` are not touched, so ⌘⇧Tab still works — the
+        // Shift branch fires and the Cmd passes straight through.
+        //
+        // UNVERIFIED, and it wants a build to settle: Shift on position 38 is now the
+        // shift_caps tap-dance, not a plain &kp LSHFT. A mod-morph reads the held mods
+        // at its own keydown, and a tap-dance emits its binding on the interrupt path,
+        // so the question is whether that Shift is in the report before this key is
+        // evaluated. If it is not, Shift+Tab takes the hold-tap branch and the
+        // release-order hazard this morph exists to remove comes back.
+        alt_or_tab: alt_or_tab {
+            compatible = "zmk,behavior-mod-morph";
+            label = "ALT_OR_TAB";
+            #binding-cells = <0>;
+            bindings = <&alt_tab LALT TAB>, <&kp TAB>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         // Vial TD(0) on the left inner thumb: tap = Shift, double tap = Caps Word,
         // tap-then-hold = Caps Lock. ZMK tap-dance has no tap-hold slot, so Caps Lock
         // takes the third tap instead — the closest gesture ZMK can express. The
@@ -613,32 +669,44 @@
 
         // Layer 0: Base — mirrors akiva.vil layer 0 (▒ = Ximi KC_NO, retired key)
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
-        // │ ⇥ │ Q │ W │ E │ R │ T │   │ Y │ U │ I │ O │ P │🔒 │
+        // │   │ Q │ W │ E │ R │ T │   │ Y │ U │ I │ O │ P │🔒 │
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
         // │   │ A │ S │ D │ F │ G │   │ H │ J │ K │ L │ ⌫ │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
         // │   │ Z │ X │ C │ V │ B │   │ N │ M │ , │ . │ ` │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
         //             │ ⌘ │ ␣ │ ⇧ │   │ ⌃ │ ⏎ │ ⌥ │
-        //             │   │L2 │   │   │ ⏺ │L1 │   │
+        //             │   │L2 │   │   │ ⏺ │L1 │ ⇥ │
         //             └───┴───┴───┘   └───┴───┴───┘
 
         base {
             bindings = <
-&kp TAB     &kp Q  &kp W  &kp E  &kp R       &kp T        &kp Y            &kp U        &kp I      &kp O    &kp P      &m10
+&none       &kp Q  &kp W  &kp E  &kp R       &kp T        &kp Y            &kp U        &kp I      &kp O    &kp P      &m10
 &none       &kp A  &kp S  &kp D  &kp F       &kp G        &kp H            &kp J        &kp K      &kp L    &kp BSPC   &none
 &none       &kp Z  &kp X  &kp C  &kp V       &kp B        &kp N            &kp M        &kp COMMA  &kp DOT  &kp GRAVE  &none
-                          &kp RGUI  &lt 2 SPACE  &shift_caps    &control_record  &lt 1 ENTER  &kp LALT
+                          &kp RGUI  &lt 2 SPACE  &shift_caps    &control_record  &lt 1 ENTER  &alt_or_tab
             >;
 
             display-name = "base";
         };
 
         // Layer 1: Symbols / ⌥-digit — mirrors akiva.vil layer 1
+        //
+        // Position 0 is &none here, and that is not a deferral. Layer 1 is reachable
+        // ONLY by holding &lt 1 ENTER — there is no TO(1), MO(1), TG(1) or combo on
+        // either board — so you cannot be stranded on it and it needs no way home.
+        // The return-to-base copy that used to sit on position 0 was dead weight.
+        //
+        // ^ moved from the right pinky home key to the t position, which held a
+        // second copy of $. $ keeps the home-row slot (position 14): it is the more
+        // frequent glyph and that is the better finger. The right pinky key it
+        // vacated now carries ⌥Tab, joining the ⌥-digit window-management block.
+        // ⌥Tab is one-shot — it cannot hold the switcher open and cycle, because a
+        // precomposed keycode releases Alt with the Tab.
         // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬───┐
-        // │TO0│{} │ ; │ " │ ' │ $ │   │⌥⌃←│⌥7 │⌥8 │⌥9 │⌥⌃→│▒▒▒│
+        // │   │{} │ ; │ " │ ' │ ^ │   │⌥⌃←│⌥7 │⌥8 │⌥9 │⌥⌃→│▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
-        // │   │() │ $ │ % │ & │ * │   │💻 │⌥4 │⌥5 │⌥6 │ ^ │▒▒▒│
+        // │   │() │ $ │ % │ & │ * │   │💻 │⌥4 │⌥5 │⌥6 │⌥⇥ │▒▒▒│
         // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼───┤
         // │   │[] │ ! │ @ │ # │ : │   │⌥0 │⌥1 │⌥2 │⌥← │⌥→ │▒▒▒│
         // └───┴───┴───┼───┼───┼───┤   ├───┼───┼───┴───┴───┴───┘
@@ -647,8 +715,8 @@
 
         symbols {
             bindings = <
-&to 0      &m0  &kp SEMI         &kp DQT      &kp SQT        &kp DOLLAR      &m13        &kp LA(N7)  &kp LA(N8)  &kp LA(N9)  &m14          &none
-&none      &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &m3         &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &kp CARET     &none
+&none      &m0  &kp SEMI         &kp DQT      &kp SQT        &kp CARET       &m13        &kp LA(N7)  &kp LA(N8)  &kp LA(N9)  &m14          &none
+&none      &m1  &kp DOLLAR       &kp PERCENT  &kp AMPERSAND  &kp ASTERISK    &m3         &kp LA(N4)  &kp LA(N5)  &kp LA(N6)  &kp LA(TAB)   &none
 &none      &m2  &kp EXCLAMATION  &kp AT       &kp HASH       &kp COLON       &kp LA(N0)  &kp LA(N1)  &kp LA(N2)  &kp LA(LEFT)  &kp LA(RIGHT)  &none
                                  &kp LGUI     &kp SPACE      &shift_caps       &kp LCTRL   &kp RET  &kp LALT
             >;
